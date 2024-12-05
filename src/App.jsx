@@ -1,14 +1,21 @@
-import { useState } from 'react'
-import './App.css'
+import { Route, Routes } from "react-router";
+import "./App.css";
+import Home from "./pages/Home";
+import Movies from "./pages/Movies";
+import TvSeries from "./pages/TvSeries";
+import Bookmarked from "./pages/Bookmarked";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      
+      <Routes>
+        <Route path="*" element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/tvseries" element={<TvSeries />} />
+        <Route path="/bookmarked" element={<Bookmarked />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
