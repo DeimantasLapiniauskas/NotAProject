@@ -5,7 +5,7 @@ function Signup () {
     <input type="text" placeholder="Password" id="PasswdSignup"/>
     <input type="text" placeholder="Repeat Password" id="RepeatSignup"/>
     <button id="SignupButton">Create an account</button>
-    <footer id="SignupFooter">Already have an account? <a href="localhost:5174/login">Login</a></footer>
+    <footer id="SignupFooter"><span>Already have an account?</span> <a href="localhost:5174/login">Login</a></footer>
     </>
 }
 export default Signup
