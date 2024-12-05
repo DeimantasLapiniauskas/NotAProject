@@ -8,7 +8,7 @@ function Login() {
       </div>
       <button id="LoginButton">Login to your account</button>
       <footer id="LoginFooter">
-        <span>Don't have an account?</span>
+        <span>Don&apos;t have an account?</span>
         <a href="/signup" id="SignUpLink">
           {" "}
           Sign Up
