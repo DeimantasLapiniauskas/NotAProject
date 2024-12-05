@@ -5,10 +5,13 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import TvSeries from "./pages/TvSeries";
 import Bookmarked from "./pages/Bookmarked";
-import Login from './pages/Login'
+import Nav from "./components/Nav";
+import Login from "./pages/Login";
+
 function App() {
   return (
     <>
+      <Nav />
       <Routes>
         <Route path="/Login" element={<Login/>} />
         <Route path="*" element={<Home />} />
