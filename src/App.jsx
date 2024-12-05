@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import TvSeries from "./pages/TvSeries";
 import Bookmarked from "./pages/Bookmarked";
-import Login from './Login'
+import Login from './pages/Login'
 function App() {
   return (
     <>
