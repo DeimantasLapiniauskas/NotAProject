@@ -14,16 +14,16 @@ const Nav = () => {
       </div>
       <nav>
         <NavLink to="/home">
-          <img src={home} alt="home icon" />
+          <img src={home} alt="home icon" className="PageIcon"/>
         </NavLink>
         <NavLink to="/movies">
-          <img src={movies} alt="movies icon" />
+          <img src={movies} alt="movies icon" className="PageIcon" />
         </NavLink>
         <NavLink to="/tvseries">
-          <img src={tvSeries} alt="tv series icon" />
+          <img src={tvSeries} alt="tv series icon" className="PageIcon"/>
         </NavLink>
         <NavLink to="/bookmarked">
-          <img src={bookmark} alt="bookmark icon" />
+          <img src={bookmark} alt="bookmark icon" className="PageIcon"/>
         </NavLink>
       </nav>
       <div className="avatar">
