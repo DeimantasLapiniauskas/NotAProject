@@ -1,3 +1,6 @@
+#LoginButton {
+    background-color: #fc4747;
+}
 #SignupButton:hover {
   background-color: #ffffff;
 }
