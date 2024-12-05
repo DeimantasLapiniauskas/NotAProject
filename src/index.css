@@ -1,0 +1,229 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+  
+  body {
+    font-family: "Outfit", sans-serif;
+    background-color: #10141e;
+  }
+  
+  /* 
+  Start of search box CSS
+  */
+  
+  .search__container {
+    display: flex;
+    align-items: center;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+    width: 18.75;
+  }
+
+  .search__container input {
+    border: none;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .search__container input::placeholder {
+    opacity: 0.4979;
+  }
+  
+  .search__container svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: #fff;
+  }
+  
+  /* 
+  End of search box CSS 
+  */
+  
+  /* 
+  Start of HomePage CSS
+  */
+  
+  .trending {
+    overflow: hidden;
+    width: 15rem;
+    position: relative;
+    left: 1rem;
+  }
+  .trending img {
+    width: 15rem;
+    height: 8.75rem;
+    flex-shrink: 0;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .trending__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4.375rem;
+    width: 15rem;
+    padding: 0.75rem;
+    border-radius: 0px 0px 8px 8px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 100%);
+    color: #fff;
+  }
+  
+  .trending__content--data {
+    font-size: 0.7rem;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: 8.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .trending__content--data span {
+    display: flex;
+    align-items: center;
+  }
+  
+  .trending__content--data .dot {
+    width: 5rem;
+    height: 0.25rem;
+    color: #fff;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 50%;
+    margin: 0 6px;
+  }
+  
+  .trending h1 {
+    color: #fff;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.312px;
+  }
+
+  .trending h3 {
+    color: #fff;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .trending__bookmark {
+    position: absolute;
+    top: 4rem;
+    right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .trending__bookmark::before {
+    width: 1rem;
+    height: 1rem;
+    fill: #fff;
+  }
+  
+  .recommended {
+    overflow: hidden;
+    width: 15rem;
+    position: relative;
+    left: 1rem;
+  }
+  
+  .recommended img {
+    width: 15rem;
+    height: 8.75rem;
+    flex-shrink: 0;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .recommended__content {
+    height: 3rem;
+    width: 15rem;
+    padding: 0.5rem;
+    color: #fff;
+  }
+  
+  .recommended__content--data {
+    font-size: 0.7rem;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: 8.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .recommended__content--data span {
+    display: flex;
+    align-items: center;
+  }
+  
+  .recommended__content--data .dot {
+    width: 5rem;
+    height: 0.25rem;
+    color: #fff;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 50%;
+    margin: 0 6px;
+  }
+  
+  .recommended h1 {
+    color: #fff;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.312px;
+  }
+  
+  .recommended h3 {
+    color: #fff;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .recommended__bookmark {
+    position: absolute;
+    top: 4rem;
+    right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .recommended__bookmark::before {
+    width: 1rem;
+    height: 1rem;
+    fill: #fff;
+  }
+  /* 
+    End of Home Page CSS
+  */
+  
