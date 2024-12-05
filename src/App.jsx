@@ -1,4 +1,3 @@
-
 import { Route, Routes } from "react-router";
 import "./App.css";
 import Home from "./pages/Home";
@@ -12,13 +11,15 @@ function App() {
   return (
     <>
       <Nav />
-      <Routes>
-        <Route path="/Login" element={<Login/>} />
-        <Route path="*" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/tvseries" element={<TvSeries />} />
-        <Route path="/bookmarked" element={<Bookmarked />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/Login" element={<Login />} />
+          <Route path="*" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/tvseries" element={<TvSeries />} />
+          <Route path="/bookmarked" element={<Bookmarked />} />
+        </Routes>
+      </main>
     </>
   );
 }
