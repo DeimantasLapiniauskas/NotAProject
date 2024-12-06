@@ -7,8 +7,12 @@ import Bookmarked from "./pages/Bookmarked";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
 import Login from "./pages/Login";
+
 import { useEffect, useState } from "react";
 import { getAll } from "./../helpers/CRUD";
+
+import PageTitle from "./components/PageTitle";
+
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -34,8 +38,9 @@ function App() {
 
   return (
     <>
-      <Nav />
-      <main>
+       <Nav />
+
+      {/* <main>
         {error && <div>OOPS</div>}
         <Routes>
           <Route
@@ -47,6 +52,66 @@ function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvseries" element={<TvSeries />} />
           <Route path="/bookmarked" element={<Bookmarked />} />
+        </Routes>
+      </main> */}
+
+      <main>
+        {error && <div>OOPS</div>}
+        <Routes>
+          <Route
+            path="/signup"
+            element={
+              <>
+                <PageTitle title="Sign up" />
+                <Signup setUser={setUser} users={users} />
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                <PageTitle title="Login" />
+                <Login />
+              </>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <>
+                <PageTitle title="Home" />
+                <Home user={user} setUser={setUser} />
+              </>
+            }
+          />
+          <Route
+            path="/movies"
+            element={
+              <>
+                <PageTitle title="Movies" />
+                <Movies />
+              </>
+            }
+          />
+          <Route
+            path="/tvseries"
+            element={
+              <>
+                <PageTitle title="TV series" />
+                <TvSeries />
+              </>
+            }
+          />
+          <Route
+            path="/bookmarked"
+            element={
+              <>
+                <PageTitle title="Bookmarks" />
+                <Bookmarked />
+              </>
+            }
+          />
         </Routes>
       </main>
     </>
