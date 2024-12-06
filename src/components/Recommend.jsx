@@ -5,7 +5,7 @@ import movieLogo from "../assets/icon-category-movie.svg";
 import seriesLogo from "../assets/icon-category-tv.svg";
 function Recommended() {
   const [movies, setMovies] = useState([]);
-  console.log(movies);
+  // console.log(movies);
   const getMovies = async () => {
     const movies = await getAllData();
     setMovies(movies);
@@ -15,7 +15,7 @@ function Recommended() {
   }, []);
   return (
     <>
-    <h1>Recommended</h1>
+      <h1>Recommended</h1>
       {movies.map((movie, index) => {
         if (!movie.isTrending) {
           return (
@@ -26,7 +26,7 @@ function Recommended() {
                 alt={movie.title + "'s image"}
               />
               <p>{movie.year}</p>
-              {console.log(movie.category)}
+              {/* {console.log(movie.category)} */}
               <p style={{ backgroundColor: "#999999" }}>
                 <img src={movie.category == "Movie" ? movieLogo : seriesLogo} />
                 {movie.category}

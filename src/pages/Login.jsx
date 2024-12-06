@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-import "./login.css"
+import "./login.css";
 function Login() {
   let navigate = useNavigate();
   const {
@@ -46,7 +46,7 @@ function Login() {
         </form>
       </main>
       <footer id="LoginFooter">
-        <span>Don't have an account?</span>
+        <span>{`Don't have an account?`}</span>
         <a href="/signup" id="SignUpLink">
           Sign Up
         </a>
