@@ -15,31 +15,11 @@ function Signup({ setUser, users }) {
     formState: { errors },
   } = useForm();
 
-  console.log(users);
-
   // onSubmit function is left as is but without the server interaction.
   // If all good user go to login page
-  const onSubmit = async (values) => {
+  const onSubmit = (values) => {
     console.log(values);
-    try {
-      if (users) {
-        users.forEach((user) => {
-          if (user.email === values.email)
-            throw new Error("User already exists");
-        });
-      }
-      // console.log(error);
-
-      // if (error) return;
-
-      const user = await postOne(`users`, { ...values, isLoggedIn: true });
-
-      setUser(user);
-
-      navigate("/home");
-    } catch (err) {
-      setError(err.message);
-    }
+    navigate("/login");
   };
 
   return (
@@ -80,7 +60,6 @@ function Signup({ setUser, users }) {
             Create an account
           </button>
         </form>
-        {error && <p>{error}</p>}
       </main>
       <footer id="SignupFooter">
         <span>Already have an account?</span> <a href="/login">Login</a>
