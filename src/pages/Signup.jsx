@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-
 import { postOne } from "../helpers/CRUD";
 import { useState } from "react";
-import "./signup.css";
 
 function Signup({ setUser, users }) {
   const navigate = useNavigate();
@@ -15,11 +13,28 @@ function Signup({ setUser, users }) {
     formState: { errors },
   } = useForm();
 
+  console.log(users);
+
   // onSubmit function is left as is but without the server interaction.
   // If all good user go to login page
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     console.log(values);
-    navigate("/login");
+    try {
+      if (users) {
+        users.forEach((user) => {
+          if (user.email === values.email)
+            throw new Error("User already exists");
+        });
+      }
+
+      const user = await postOne(`users`, { ...values, isLoggedIn: true });
+
+      setUser(user);
+
+      navigate("/home");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -60,6 +75,7 @@ function Signup({ setUser, users }) {
             Create an account
           </button>
         </form>
+        {error && <p>{error}</p>}
       </main>
       <footer id="SignupFooter">
         <span>Already have an account?</span> <a href="/login">Login</a>
