@@ -7,13 +7,13 @@ export const postOne = async (endpoint, data) => {
   return res.data;
 };
 
-export const getOne = async (endpoint) => {
+export const getAll = async (endpoint) => {
   const res = await axios.get(`${url}/${endpoint}`);
 
   return res.data;
 };
 
-export const getAll = async (endpoint, id) => {
+export const getOne = async (endpoint, id) => {
   const res = await axios.get(`${url}/${endpoint}/${id}`);
 
   return res.data;
