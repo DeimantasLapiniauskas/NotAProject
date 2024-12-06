@@ -5,7 +5,7 @@ export const Series = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/videos")
+    fetch("http://localhost:5000/videos")
       .then((response) => {
         return response.json();
       })
