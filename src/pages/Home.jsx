@@ -1,4 +1,5 @@
 import Recommended from "../components/Recommend";
+import { useNavigate } from "react-router";
 
 const Home = ({ user }) => {
   const navigate = useNavigate();

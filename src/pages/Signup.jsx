@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-import { postOne } from "../helpers/CRUD";
+import { postOne } from "../../helpers/CRUD";
 import { useState } from "react";
 
 function Signup({ setUser, users }) {

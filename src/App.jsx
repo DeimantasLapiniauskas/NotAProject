@@ -12,14 +12,16 @@ function App() {
   return (
     <>
       <Nav />
-      <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/tvseries" element={<TvSeries />} />
-        <Route path="/bookmarked" element={<Bookmarked />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/tvseries" element={<TvSeries />} />
+          <Route path="/bookmarked" element={<Bookmarked />} />
+        </Routes>
+      </main>
     </>
   );
 }
