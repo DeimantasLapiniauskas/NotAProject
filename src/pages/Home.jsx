@@ -3,7 +3,7 @@ import Recommended from "../components/Recommend";
 const Home = ({ user }) => {
   const navigate = useNavigate();
 
-  if (!user) navigate(`/signup`);
+  // if (!user) navigate(`/signup`);
 
   return (
     <>
