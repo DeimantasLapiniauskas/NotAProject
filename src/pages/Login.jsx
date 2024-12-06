@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-
+import "./login.css"
 function Login() {
   let navigate = useNavigate();
   const {
