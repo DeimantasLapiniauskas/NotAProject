@@ -12,7 +12,10 @@ import { getAll } from "./../helpers/CRUD";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(() => {
+    const currentUser = sessionStorage.getItem(`user`);
+    return JSON.parse(currentUser) || null;
+  });
   const [error, setError] = useState();
 
   const getUsers = async () => {
@@ -40,7 +43,7 @@ function App() {
             element={<Signup setUser={setUser} users={users} />}
           />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Home user={user} />} />
+          <Route path="*" element={<Home user={user} setUser={setUser} />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvseries" element={<TvSeries />} />
           <Route path="/bookmarked" element={<Bookmarked />} />

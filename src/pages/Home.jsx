@@ -6,8 +6,10 @@ const Home = ({ user }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(user);
+
     if (!user) {
-      // navigate(`/signup`);
+      navigate(`/signup`);
     }
   }, []);
   return (
