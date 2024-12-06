@@ -8,9 +8,9 @@ const Home = ({ user }) => {
   useEffect(() => {
     console.log(user);
 
-    if (!user) {
-      navigate(`/signup`);
-    }
+    // if (!user) {
+    //   navigate(`/signup`);
+    // }
   }, []);
   return (
     <>
