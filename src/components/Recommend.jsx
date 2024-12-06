@@ -13,6 +13,8 @@ function Recommended() {
   useEffect(() => {
     getMovies();
   }, []);
+  // console.log(movies);
+  
   return (
     <>
     <h1>Recommended</h1>
@@ -26,7 +28,6 @@ function Recommended() {
                 alt={movie.title + "'s image"}
               />
               <p>{movie.year}</p>
-              {console.log(movie.category)}
               <p style={{ backgroundColor: "#999999" }}>
                 <img src={movie.category == "Movie" ? movieLogo : seriesLogo} />
                 {movie.category}
