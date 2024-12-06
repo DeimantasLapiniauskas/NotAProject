@@ -13,8 +13,6 @@ function Signup({ setUser, users }) {
     formState: { errors },
   } = useForm();
 
-  console.log(users);
-
   // onSubmit function is left as is but without the server interaction.
   // If all good user go to login page
   const onSubmit = async (values) => {
