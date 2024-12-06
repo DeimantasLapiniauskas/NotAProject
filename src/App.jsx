@@ -14,6 +14,7 @@ function App() {
   const [users, setUsers] = useState();
   const [user, setUser] = useState();
   const [error, setError] = useState();
+  // const [update, setUpdate] = useState(true);
 
   const getUsers = async () => {
     try {
@@ -24,6 +25,16 @@ function App() {
       setError(err.message);
     }
   };
+
+  // const getCurrentUser = () => {
+  //   const currentUser = JSON.parse(localStorage.getItem("user"));
+
+  //   console.log(currentUser, Date.now());
+
+  //   if (currentUser.isLoggedIn) {
+  //     setUser(currentUser);
+  //   }
+  // };
 
   useEffect(() => {
     getUsers();
@@ -39,11 +50,14 @@ function App() {
             path="/signup"
             element={<Signup setUser={setUser} users={users} />}
           />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={<Login setUser={setUser} users={users} />}
+          />
           <Route path="*" element={<Home user={user} />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/tvseries" element={<TvSeries />} />
-          <Route path="/bookmarked" element={<Bookmarked />} />
+          <Route path="/movies" element={<Movies user={user} />} />
+          <Route path="/tvseries" element={<TvSeries user={user} />} />
+          <Route path="/bookmarked" element={<Bookmarked user={user} />} />
         </Routes>
       </main>
     </>

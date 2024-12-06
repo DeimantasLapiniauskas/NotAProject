@@ -1,9 +1,16 @@
 import { useNavigate } from "react-router";
 import Recommended from "../components/Recommend";
+import { useEffect } from "react";
 const Home = ({ user }) => {
+  console.log(user);
+
   const navigate = useNavigate();
 
-  if (!user) navigate(`/signup`);
+  useEffect(() => {
+    console.log(user);
+
+    if (!user) navigate(`/login`);
+  }, []);
 
   return (
     <>
