@@ -1,11 +1,11 @@
-import Series from "../components/TvSeries/Series";
+import SeriesList from "../components/TvSeries/SeriesList";
 
 const TvSeries = () => {
   return (
     <>
       <>
         <h1>TV SERIES</h1>
-        <Series />
+        <SeriesList />
       </>
     </>
   );

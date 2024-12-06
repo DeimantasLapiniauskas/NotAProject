@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Movie from "./Movie";
+import SerieSet from "./SerieSet";
 
-export const Movies1 = () => {
+export const SeriesList = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
@@ -16,11 +16,11 @@ export const Movies1 = () => {
     <>
       <div>
         {videos.map((video, index) => (
-          <Movie key={index} video={video} />
+          <SerieSet key={index} video={video} />
         ))}
       </div>
     </>
   );
 };
 
-export default Movies1;
+export default SeriesList;

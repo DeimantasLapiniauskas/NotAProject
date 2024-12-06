@@ -1,11 +1,11 @@
-import Movies1 from "../Movies/Movies1";
+import MoviesList from "../components/Movies/MoviesList";
 
 const Movies = () => {
   return (
     <>
       <>
         <h1>MOVIES</h1>
-        <Movies1 />
+        <MoviesList />
       </>
     </>
   );
