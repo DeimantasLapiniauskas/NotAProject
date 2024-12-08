@@ -6,7 +6,7 @@ const Home = ({ user }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(user);
+    // Code below force signup, commented because not actual now
 
     // if (!user) {
     //   navigate(`/signup`);
