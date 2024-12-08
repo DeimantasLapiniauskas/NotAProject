@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import { getAllData } from "../helpers/get";
+import { getAll } from "../../../helpers/CRUD";
 import { useState } from "react";
-import seriesLogo from "../../assets/icon-category-tv.svg";
+import seriesLogo from "/assets/icon-category-tv.svg";
 
 function SerieSet() {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
-    const movies = await getAllData();
+    const movies = await getAll("videos");
     setMovies(movies);
   };
   useEffect(() => {
@@ -20,7 +20,7 @@ function SerieSet() {
           return (
             <div key={index}>
               <img
-                src={"src" + movie.thumbnail.regular.small.substring(1)}
+                src={movie.thumbnail.regular.small.substring(1)}
                 alt={movie.title + "'s image"}
               />
               <p>{movie.year}</p>

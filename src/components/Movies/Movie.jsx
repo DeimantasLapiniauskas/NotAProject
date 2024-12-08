@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { getAllData } from "../helpers/get";
+import { getAll } from "../../../helpers/CRUD";
 import { useState } from "react";
-import movieLogo from "../../assets/icon-category-movie.svg";
+import movieLogo from "/assets/icon-category-movie.svg";
 function Movie() {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
-    const movies = await getAllData();
+    const movies = await getAll("videos");
     setMovies(movies);
   };
   useEffect(() => {
@@ -19,7 +19,7 @@ function Movie() {
           return (
             <div key={index}>
               <img
-                src={"src" + movie.thumbnail.regular.small.substring(1)}
+                src={movie.thumbnail.regular.small.substring(1)}
                 alt={movie.title + "'s image"}
               />
               <p>{movie.year}</p>

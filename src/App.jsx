@@ -40,20 +40,6 @@ function App() {
     <>
        <Nav />
 
-      {/* <main>
-        {error && <div>OOPS</div>}
-        <Routes>
-          <Route
-            path="/signup"
-            element={<Signup setUser={setUser} users={users} />}
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Home user={user} setUser={setUser} />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/tvseries" element={<TvSeries />} />
-          <Route path="/bookmarked" element={<Bookmarked />} />
-        </Routes>
-      </main> */}
 
       <main>
         {error && <div>OOPS</div>}
