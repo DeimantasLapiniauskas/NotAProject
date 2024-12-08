@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { getAllData } from "./helpers/get";
 import { useState } from "react";
-import movieLogo from "../assets/icon-category-movie.svg";
-import seriesLogo from "../assets/icon-category-tv.svg";
+import movieLogo from "/assets/icon-category-movie.svg";
+import seriesLogo from "/assets/icon-category-tv.svg";
 function Recommended() {
   const [movies, setMovies] = useState([]);
   // console.log(movies);

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { getAllData } from "../helpers/get";
 import { useState } from "react";
-import seriesLogo from "../../assets/icon-category-tv.svg";
+import seriesLogo from "/assets/icon-category-tv.svg";
 
 function SerieSet() {
   const [movies, setMovies] = useState([]);
