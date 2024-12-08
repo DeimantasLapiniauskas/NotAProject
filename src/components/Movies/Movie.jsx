@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { getAllData } from "../helpers/get";
+import { getAll } from "../../../helpers/CRUD";
 import { useState } from "react";
 import movieLogo from "/assets/icon-category-movie.svg";
 function Movie() {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
-    const movies = await getAllData();
+    const movies = await getAll("videos");
     setMovies(movies);
   };
   useEffect(() => {
