@@ -19,7 +19,7 @@ function Movie() {
           return (
             <div key={index}>
               <img
-                src={"src" + movie.thumbnail.regular.small.substring(1)}
+                src={movie.thumbnail.regular.small.substring(1)}
                 alt={movie.title + "'s image"}
               />
               <p>{movie.year}</p>
