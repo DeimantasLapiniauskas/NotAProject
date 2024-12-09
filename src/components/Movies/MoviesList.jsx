@@ -5,13 +5,6 @@ export const MoviesList = () => {
   const [videos, setVideos] = useState([]);
   const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/videos")
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((json) => setVideos(json));
-  // }, []);
   useEffect(() => {
     const fetchVideos = async () => {
       try {

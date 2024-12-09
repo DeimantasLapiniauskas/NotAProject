@@ -6,13 +6,6 @@ import movieLogo from "/assets/icon-category-movie.svg";
 function Movie() {
   const [movies, setMovies] = useState([]);
 
-  // const getMovies = async () => {
-  //   const movies = await getAll("videos");
-  //   setMovies(movies);
-  // };
-  // useEffect(() => {
-  //   getMovies();
-  // }, []);
   const [error, setError] = useState(null);
 
   const getMovies = async () => {
