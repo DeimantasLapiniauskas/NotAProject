@@ -56,9 +56,9 @@ function App() {
               </>
             }
           />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/home" />} />
           <Route
-            path="/"
+            path="/home"
             element={
               <>
                 <PageTitle title="Home" />
