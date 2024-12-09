@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Recommended from "../components/Recommend";
+import Recommended from "../components/Recommended";
 import { useNavigate } from "react-router";
 import Nav from "../components/Nav";
 
