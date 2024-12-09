@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { updateOne } from "../../helpers/CRUD";
 import "./login.css";
-
+import sitelogo from "../../public/assets/logo.svg";
 function Login({ users, setUser }) {
-
   let navigate = useNavigate();
   const [error, setError] = useState("");
   const {
@@ -14,9 +14,7 @@ function Login({ users, setUser }) {
   } = useForm();
 
   // onSubmit function is left as is but without the server interaction.
-  const onSubmit = (values) => {
-    console.log(values);
-
+  const onSubmit = async (values) => {
     try {
       const user = users.find((user) => user.email === values.email);
 
@@ -25,7 +23,11 @@ function Login({ users, setUser }) {
       if (user.password !== values.password)
         throw new Error("Wrong email or password");
 
-      setUser(user);
+      const updatedUser = await updateOne(`users`, user.id, {
+        isLoggedIn: true,
+      });
+
+      setUser(updatedUser);
 
       navigate("/home");
     } catch (err) {
@@ -36,9 +38,10 @@ function Login({ users, setUser }) {
   return (
     <>
       <header>
-        <h1>Login</h1>
+        <img src={sitelogo} alt="Site logo" />
       </header>
       <main>
+        <h1>Login</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input

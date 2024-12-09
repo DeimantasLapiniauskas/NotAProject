@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { postOne } from "../../helpers/CRUD";
 import { useState } from "react";
 import "./signup.css";
+import sitelogo from "../../public/assets/logo.svg"
 function Signup({ setUser, users }) {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -10,6 +11,7 @@ function Signup({ setUser, users }) {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -38,9 +40,10 @@ function Signup({ setUser, users }) {
   return (
     <>
       <header>
-        <h1>Sign up</h1>
+        <img src={sitelogo} alt="Site logo" />
       </header>
       <main>
+        <h1>Sign up</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
@@ -53,7 +56,7 @@ function Signup({ setUser, users }) {
           </div>
           <div>
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               id="PasswdSignup"
               {...register("password", { required: "Can't be empty" })}
@@ -62,12 +65,21 @@ function Signup({ setUser, users }) {
           </div>
           <div>
             <input
-              type="text"
+              type="password"
               placeholder="Repeat Password"
               id="RepeatSignup"
-              {...register("password", { required: "Can't be empty" })}
+              {...register("password-repeat", {
+                required: "Can't be empty",
+                validate: (val) => {
+                  if (watch("password") != val) {
+                    return "Your passwords do no match";
+                  }
+                },
+              })}
             />
-            {errors.password && <span>{errors.password.message}</span>}
+            {errors["password-repeat"] && (
+              <p>{errors["password-repeat"].message}</p>
+            )}
           </div>
           <button type="submit" id="SignupButton">
             Create an account
