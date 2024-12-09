@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import "./login.css";
-
+import sitelogo from "../../public/assets/logo.svg"
 function Login({ users, setUser }) {
 
   let navigate = useNavigate();
@@ -36,9 +36,10 @@ function Login({ users, setUser }) {
   return (
     <>
       <header>
-        <h1>Login</h1>
+        <img src={sitelogo} alt="Site logo" />
       </header>
       <main>
+        <h1>Login</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input

@@ -61,7 +61,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Home" />
-                <Home user={user} />
+                <Home user={user} setUser={setUser} />
               </>
             }
           />
@@ -70,7 +70,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Movies" />
-                <Movies user={user} />
+                <Movies user={user} setUser={setUser} />
               </>
             }
           />
@@ -79,7 +79,7 @@ function App() {
             element={
               <>
                 <PageTitle title="TV series" />
-                <TvSeries user={user} />
+                <TvSeries user={user} setUser={setUser} />
               </>
             }
           />
@@ -88,7 +88,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Bookmarks" />
-                <Bookmarked user={user} />
+                <Bookmarked user={user} setUser={setUser} />
               </>
             }
           />
