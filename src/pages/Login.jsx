@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import "./login.css";
 
-function Login() {
+function Login({ users, setUser }) {
+
   let navigate = useNavigate();
+  const [error, setError] = useState("");
   const {
     register,
     handleSubmit,
@@ -13,7 +16,21 @@ function Login() {
   // onSubmit function is left as is but without the server interaction.
   const onSubmit = (values) => {
     console.log(values);
-    navigate("/");
+
+    try {
+      const user = users.find((user) => user.email === values.email);
+
+      if (!user) throw new Error(`User doesn't exist. Please sign up`);
+
+      if (user.password !== values.password)
+        throw new Error("Wrong email or password");
+
+      setUser(user);
+
+      navigate("/home");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -45,6 +62,7 @@ function Login() {
             Login to your account
           </button>
         </form>
+        {error && <p>{error}</p>}
       </main>
       <footer id="LoginFooter">
         <span>{`Don't have an account?`}</span>

@@ -3,13 +3,12 @@ import Recommended from "../components/Recommended";
 import { useNavigate } from "react-router";
 
 const Home = ({ user }) => {
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Code below force signup, commented because not relevant yet
-
     // if (!user) {
-    //   navigate(`/signup`);
+    //   navigate(`/login`);
     // }
   }, []);
   return (

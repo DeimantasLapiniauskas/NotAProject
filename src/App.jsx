@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 import { getAll } from "./../helpers/CRUD";
 import PageTitle from "./components/PageTitle";
 
-
 function App() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(() => {
@@ -36,8 +35,7 @@ function App() {
 
   return (
     <>
-       <Nav />
-
+      <Nav />
 
       <main>
         {error && <div>OOPS</div>}
@@ -56,7 +54,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Login" />
-                <Login />
+                <Login users={users} setUser={setUser} />
               </>
             }
           />
@@ -74,7 +72,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Movies" />
-                <Movies />
+                <Movies user={user} />
               </>
             }
           />
@@ -83,7 +81,7 @@ function App() {
             element={
               <>
                 <PageTitle title="TV series" />
-                <TvSeries />
+                <TvSeries user={user} />
               </>
             }
           />
@@ -92,7 +90,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Bookmarks" />
-                <Bookmarked />
+                <Bookmarked user={user} />
               </>
             }
           />
