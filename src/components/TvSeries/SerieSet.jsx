@@ -6,10 +6,19 @@ import seriesLogo from "/assets/icon-category-tv.svg";
 function SerieSet() {
   const [movies, setMovies] = useState([]);
 
+  // In TV series variables named movies, need to fix it latter
+  const [error, setError] = useState(null);
+
   const getMovies = async () => {
-    const movies = await getAll("videos");
-    setMovies(movies);
+    try {
+      const movies = await getAll("videos");
+      setMovies(movies);
+    } catch (error) {
+      setError("Failed to fetch tvsies. Please try again later.");
+      console.error(error);
+    }
   };
+
   useEffect(() => {
     getMovies();
   }, []);
