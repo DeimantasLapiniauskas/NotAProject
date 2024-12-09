@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { postOne } from "../../helpers/CRUD";
 import { useState } from "react";
+import "./signup.css";
 
 function Signup({ setUser, users }) {
   const navigate = useNavigate();
