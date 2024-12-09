@@ -3,6 +3,7 @@ import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
 import movieLogo from "/assets/icon-category-movie.svg";
 import seriesLogo from "/assets/icon-category-tv.svg";
+
 function Recommended() {
   const [movies, setMovies] = useState([]);
   const getMovies = async () => {
@@ -39,4 +40,5 @@ function Recommended() {
     </>
   );
 }
+
 export default Recommended;

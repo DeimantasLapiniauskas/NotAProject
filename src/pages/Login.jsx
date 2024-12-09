@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { updateOne } from "../../helpers/CRUD";
 import "./login.css";
+import sitelogo from "../../public/assets/logo.svg"
 function Login({ users, setUser }) {
+
   let navigate = useNavigate();
   const [error, setError] = useState("");
   const {
@@ -39,9 +41,10 @@ function Login({ users, setUser }) {
   return (
     <>
       <header>
-        <h1>Login</h1>
+        <img src={sitelogo} alt="Site logo" />
       </header>
       <main>
+        <h1>Login</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input

@@ -1,16 +1,13 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes, Navigate } from "react-router";
 import "./App.css";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import TvSeries from "./pages/TvSeries";
 import Bookmarked from "./pages/Bookmarked";
 import Signup from "./pages/Signup";
-import Nav from "./components/Nav";
 import Login from "./pages/Login";
-
 import { useEffect, useState } from "react";
 import { getAll } from "./../helpers/CRUD";
-
 import PageTitle from "./components/PageTitle";
 
 function App() {
@@ -37,11 +34,10 @@ function App() {
 
   return (
     <>
-      <Nav />
-
       <main>
         {error && <div>OOPS</div>}
         <Routes>
+          route
           <Route
             path="/signup"
             element={
@@ -60,8 +56,9 @@ function App() {
               </>
             }
           />
+          <Route path="*" element={<Navigate to="/home" />} />
           <Route
-            path="*"
+            path="/home"
             element={
               <>
                 <PageTitle title="Home" />
@@ -74,7 +71,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Movies" />
-                <Movies user={user} />
+                <Movies user={user} setUser={setUser} />
               </>
             }
           />
@@ -83,7 +80,7 @@ function App() {
             element={
               <>
                 <PageTitle title="TV series" />
-                <TvSeries user={user} />
+                <TvSeries user={user} setUser={setUser} />
               </>
             }
           />
@@ -92,7 +89,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Bookmarks" />
-                <Bookmarked user={user} />
+                <Bookmarked user={user} setUser={setUser} />
               </>
             }
           />
