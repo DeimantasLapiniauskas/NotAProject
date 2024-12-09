@@ -8,10 +8,11 @@
   }
 
   #root {
-    main {
+    .pagecontent {
       @apply mt-10 sm:mt-20 lg:ml-40 lg:mt-10;
     }
   }
+
 }
 
 @layer components {
