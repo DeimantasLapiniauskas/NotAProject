@@ -3,9 +3,8 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { updateOne } from "../../helpers/CRUD";
 import "./login.css";
-import sitelogo from "../../public/assets/logo.svg"
+import sitelogo from "../../public/assets/logo.svg";
 function Login({ users, setUser }) {
-
   let navigate = useNavigate();
   const [error, setError] = useState("");
   const {
@@ -16,8 +15,6 @@ function Login({ users, setUser }) {
 
   // onSubmit function is left as is but without the server interaction.
   const onSubmit = async (values) => {
-    console.log(values);
-
     try {
       const user = users.find((user) => user.email === values.email);
 
