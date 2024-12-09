@@ -7,10 +7,8 @@ import Bookmarked from "./pages/Bookmarked";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
 import Login from "./pages/Login";
-
 import { useEffect, useState } from "react";
 import { getAll } from "./../helpers/CRUD";
-
 import PageTitle from "./components/PageTitle";
 
 function App() {
@@ -67,7 +65,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Home" />
-                <Home user={user} setUser={setUser} />
+                <Home user={user} />
               </>
             }
           />
