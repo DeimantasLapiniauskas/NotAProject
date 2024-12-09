@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { getAll } from "../../../helpers/CRUD";
 import { useState } from "react";
 import movieLogo from "/assets/icon-category-movie.svg";
+
 function Movie() {
   const [movies, setMovies] = useState([]);
 
@@ -37,4 +38,5 @@ function Movie() {
     </>
   );
 }
+
 export default Movie;
