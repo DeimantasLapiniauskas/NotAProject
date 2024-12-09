@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { postOne } from "../../helpers/CRUD";
 import { useState } from "react";
 import "./signup.css";
+import sitelogo from "/assets/logo.svg"
 function Signup({ setUser, users }) {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -39,9 +40,10 @@ function Signup({ setUser, users }) {
   return (
     <>
       <header>
-        <h1>Sign up</h1>
+        <img src={sitelogo} alt="Site logo" />
       </header>
       <main>
+        <h1>Sign up</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
