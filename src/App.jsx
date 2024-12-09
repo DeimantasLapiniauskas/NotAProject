@@ -5,7 +5,7 @@ import Movies from "./pages/Movies";
 import TvSeries from "./pages/TvSeries";
 import Bookmarked from "./pages/Bookmarked";
 import Signup from "./pages/Signup";
-import Nav from "./components/Nav";
+// import Nav from "./components/Nav";
 import Login from "./pages/Login";
 
 import { useEffect, useState } from "react";
@@ -37,7 +37,7 @@ function App() {
 
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
 
       <main>
         {error && <div>OOPS</div>}
