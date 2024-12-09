@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router";
+import { updateOne } from "./../../helpers/CRUD";
 import logo from "/assets/logo.svg";
 import home from "/assets/icon-nav-home.svg";
 import movies from "/assets/icon-nav-movies.svg";
@@ -8,8 +9,8 @@ import avatar from "/assets/image-avatar.png";
 
 const Nav = ({ user, setUser }) => {
   const navigate = useNavigate();
-  const logOut = () => {
-    // console.log("xxx");
+  const logOut = async () => {
+    await updateOne("users", user.id, { isLoggedIn: false });
 
     setUser({ ...user, isLoggedIn: false });
     navigate("/login");
