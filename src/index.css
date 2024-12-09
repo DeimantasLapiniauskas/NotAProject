@@ -15,6 +15,15 @@
 
 }
 
+display="grid"
+gridTemplateColumns="auto auto auto"
+gap={10}
+padding={10}
+backgroundColor="rgba(255, 255, 255, 0.8)"
+border="1 solid black"
+textAlign="center"
+fontSize={30}
+
 @layer components {
   .nav-bar {
     @apply sticky top-0 flex p-[1.6rem] bg-[#171e31] justify-between items-center sm:top-10 sm:mx-9 sm:rounded-md lg:flex-col lg:w-max lg:top-10 lg:h-[calc(100dvh-5rem)] lg:fixed lg:justify-start lg:gap-20;
