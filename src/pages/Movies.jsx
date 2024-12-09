@@ -6,7 +6,7 @@ const Movies = ({ user }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) navigate(`/login`);
+    if (!user?.isLoggedIn) navigate(`/login`);
   }, []);
   return (
     <>
