@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import { getAllData } from "./helpers/get";
+import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
-import movieLogo from "../assets/icon-category-movie.svg";
-import seriesLogo from "../assets/icon-category-tv.svg";
+import movieLogo from "/assets/icon-category-movie.svg";
+import seriesLogo from "/assets/icon-category-tv.svg";
 function Recommended() {
   const [movies, setMovies] = useState([]);
-  // console.log(movies);
   const getMovies = async () => {
-    const movies = await getAllData();
+    const movies = await getAll("videos");
     setMovies(movies);
   };
   useEffect(() => {
@@ -22,11 +21,10 @@ function Recommended() {
             <div key={index}>
               <p>{movie.isTrending && "trending"}</p>
               <img
-                src={"src" + movie.thumbnail.regular.small.substring(1)}
+                src={movie.thumbnail.regular.small.substring(1)}
                 alt={movie.title + "'s image"}
               />
               <p>{movie.year}</p>
-              {/* {console.log(movie.category)} */}
               <p style={{ backgroundColor: "#999999" }}>
                 <img src={movie.category == "Movie" ? movieLogo : seriesLogo} />
                 {movie.category}
