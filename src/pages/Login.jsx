@@ -4,17 +4,8 @@ import { useState } from "react";
 import "./login.css";
 import sitelogo from "../../public/assets/logo.svg"
 import { ErrorBoundary } from "react-error-boundary";
+import FallbackComponent from "../components/errorHandling/FallbackComponent";
 function Login({ users, setUser }) {
-
-  // Experimental feature
-  const FallbackComponent = ({ error, resetErrorBoundary }) => (
-    <div role="alert">
-      <h2>Something went wrong.</h2>
-      <p>{error.message}</p>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
-  )
-
   let navigate = useNavigate();
   const [error, setError] = useState("");
   const {
