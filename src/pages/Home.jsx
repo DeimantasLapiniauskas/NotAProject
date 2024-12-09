@@ -13,7 +13,7 @@ const Home = ({ user, setUser }) => {
     <>
       <Nav user={user} setUser={setUser} />
       <div className="pagecontent">
-        <h1>HOME</h1>
+        <h1>HOMEE</h1>
         <Recommended />
       </div>
     </>
