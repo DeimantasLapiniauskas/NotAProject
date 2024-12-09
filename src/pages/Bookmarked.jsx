@@ -1,4 +1,12 @@
-const Bookmarked = () => {
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+
+const Bookmarked = ({ user }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) navigate(`/login`);
+  }, []);
   return (
     <>
       <>
