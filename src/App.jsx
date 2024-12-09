@@ -7,12 +7,18 @@ import Bookmarked from "./pages/Bookmarked";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
 import Login from "./pages/Login";
+
 import { useEffect, useState } from "react";
-import { getAll } from "./helpers/CRUD";
+import { getAll } from "./../helpers/CRUD";
+
+import PageTitle from "./components/PageTitle";
 
 function App() {
-  const [users, setUsers] = useState();
-  const [user, setUser] = useState();
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState(() => {
+    const currentUser = sessionStorage.getItem(`user`);
+    return JSON.parse(currentUser) || null;
+  });
   const [error, setError] = useState();
   // const [update, setUpdate] = useState(true);
 
@@ -43,21 +49,64 @@ function App() {
   return (
     <>
       <Nav />
+
       <main>
         {error && <div>OOPS</div>}
         <Routes>
           <Route
             path="/signup"
-            element={<Signup setUser={setUser} users={users} />}
+            element={
+              <>
+                <PageTitle title="Sign up" />
+                <Signup setUser={setUser} users={users} />
+              </>
+            }
           />
           <Route
             path="/login"
-            element={<Login setUser={setUser} users={users} />}
+            element={
+              <>
+                <PageTitle title="Login" />
+                <Login users={users} setUser={setUser} />
+              </>
+            }
           />
-          <Route path="*" element={<Home user={user} />} />
-          <Route path="/movies" element={<Movies user={user} />} />
-          <Route path="/tvseries" element={<TvSeries user={user} />} />
-          <Route path="/bookmarked" element={<Bookmarked user={user} />} />
+          <Route
+            path="*"
+            element={
+              <>
+                <PageTitle title="Home" />
+                <Home user={user} setUser={setUser} />
+              </>
+            }
+          />
+          <Route
+            path="/movies"
+            element={
+              <>
+                <PageTitle title="Movies" />
+                <Movies />
+              </>
+            }
+          />
+          <Route
+            path="/tvseries"
+            element={
+              <>
+                <PageTitle title="TV series" />
+                <TvSeries />
+              </>
+            }
+          />
+          <Route
+            path="/bookmarked"
+            element={
+              <>
+                <PageTitle title="Bookmarks" />
+                <Bookmarked />
+              </>
+            }
+          />
         </Routes>
       </main>
     </>

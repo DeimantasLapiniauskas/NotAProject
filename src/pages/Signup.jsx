@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-
-import { postOne } from "../helpers/CRUD";
+import { postOne } from "../../helpers/CRUD";
 import { useState } from "react";
-import "./signup.css";
 
 function Signup({ setUser, users }) {
   const navigate = useNavigate();
@@ -15,12 +13,8 @@ function Signup({ setUser, users }) {
     formState: { errors },
   } = useForm();
 
-  console.log(users);
-
-  // onSubmit function is left as is but without the server interaction.
-  // If all good user go to login page
+  // If all good user gets navigated to home page (if this function in Home.jsx is enabled )
   const onSubmit = async (values) => {
-    console.log(values);
     try {
       if (users) {
         users.forEach((user) => {
@@ -28,13 +22,12 @@ function Signup({ setUser, users }) {
             throw new Error("User already exists");
         });
       }
-      // console.log(error);
-
-      // if (error) return;
 
       const user = await postOne(`users`, { ...values, isLoggedIn: true });
 
       setUser(user);
+
+      sessionStorage.setItem("user", JSON.stringify(user));
 
       navigate("/home");
     } catch (err) {

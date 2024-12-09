@@ -1,16 +1,11 @@
-import { useNavigate } from "react-router";
-import { useEffect } from "react";
+import MoviesList from "../components/Movies/MoviesList";
 
-const Movies = ({ user }) => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!user) navigate(`/login`);
-  }, []);
+const Movies = () => {
   return (
     <>
       <>
         <h1>MOVIES</h1>
+        <MoviesList />
       </>
     </>
   );
