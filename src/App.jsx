@@ -45,6 +45,7 @@ function App() {
         {/* Database erorrs */}
         {error && <div>OOPS</div>}
         {/* Components errors */}
+        {/* Check components and they childs, if get error show a toast */}
         <Toaster position="top-right" />
         <ErrorBoundary FallbackComponent={FallbackToasts}>
           <Suspense fallback={<div>Loading...</div>}>
