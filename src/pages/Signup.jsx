@@ -14,10 +14,8 @@ function Signup({ setUser, users }) {
     formState: { errors },
   } = useForm();
 
-  // onSubmit function is left as is but without the server interaction.
-  // If all good user go to login page
+  // If all good user gets navigated to home page (if this function in Home.jsx is enabled )
   const onSubmit = async (values) => {
-    console.log(values);
     try {
       if (users) {
         users.forEach((user) => {
