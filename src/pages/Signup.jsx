@@ -13,7 +13,7 @@ function Signup({ setUser, users }) {
     formState: { errors },
   } = useForm();
 
-  // If all good user go to home page (if this function in Home.jsx are enable )
+  // If all good user gets navigated to home page (if this function in Home.jsx is enabled )
   const onSubmit = async (values) => {
     try {
       if (users) {
