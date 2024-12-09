@@ -4,14 +4,6 @@ import SerieSet from "./SerieSet";
 export const SeriesList = () => {
   const [videos, setVideos] = useState([]);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/videos")
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((json) => setVideos(json));
-  // }, []);
-
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -26,8 +18,8 @@ export const SeriesList = () => {
         const data = await response.json();
         setVideos(data);
       } catch (error) {
-        setError(error.message); // Set error message if there's an issue
-        console.error("Failed to fetch videos:", error);
+        setError(error.message);
+        console.error(error);
       }
     };
 
