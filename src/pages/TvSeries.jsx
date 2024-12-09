@@ -1,6 +1,13 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import SeriesList from "../components/TvSeries/SeriesList";
 
-const TvSeries = () => {
+const TvSeries = ({ user }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) navigate(`/login`);
+  }, []);
   return (
     <>
       <>
