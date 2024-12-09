@@ -6,15 +6,12 @@ import movieLogo from "/assets/icon-category-movie.svg";
 function Movie() {
   const [movies, setMovies] = useState([]);
 
-  const [error, setError] = useState(null);
-
   const getMovies = async () => {
     try {
       const movies = await getAll("videos");
       setMovies(movies);
     } catch (error) {
-      setError("Failed to fetch movies. Please try again later.");
-      console.error(error);
+      console.error('Error in Movie component:', error);
     }
   };
 
