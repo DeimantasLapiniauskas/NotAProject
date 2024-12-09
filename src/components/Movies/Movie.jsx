@@ -7,9 +7,14 @@ function Movie() {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
-    const movies = await getAll("videos");
-    setMovies(movies);
+    try {
+      const movies = await getAll("videos");
+      setMovies(movies);
+    } catch (error) {
+      console.error('Error in Movie component:', error);
+    }
   };
+
   useEffect(() => {
     getMovies();
   }, []);

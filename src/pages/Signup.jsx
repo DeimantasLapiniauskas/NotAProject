@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import { postOne } from "../../helpers/CRUD";
 import { useState } from "react";
 import "./signup.css";
-import sitelogo from "../../public/assets/logo.svg"
+import sitelogo from "../../public/assets/logo.svg";
+import { ErrorBoundary } from "react-error-boundary";
+import FallbackComponent from "../components/errorHandling/FallbackComponent";
 function Signup({ setUser, users }) {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -38,7 +40,7 @@ function Signup({ setUser, users }) {
   };
 
   return (
-    <>
+    <ErrorBoundary FallbackComponent={FallbackComponent}>
       <header>
         <img src={sitelogo} alt="Site logo" />
       </header>
@@ -90,7 +92,7 @@ function Signup({ setUser, users }) {
       <footer id="SignupFooter">
         <span>Already have an account?</span> <a href="/login">Login</a>
       </footer>
-    </>
+    </ErrorBoundary>
   );
 }
 export default Signup;

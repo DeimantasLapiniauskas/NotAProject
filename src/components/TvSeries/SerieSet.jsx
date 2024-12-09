@@ -6,10 +6,17 @@ import seriesLogo from "/assets/icon-category-tv.svg";
 function SerieSet() {
   const [movies, setMovies] = useState([]);
 
+  // In TV series variables named movies, need to fix it latter
+
   const getMovies = async () => {
-    const movies = await getAll("videos");
-    setMovies(movies);
+    try {
+      const movies = await getAll("videos");
+      setMovies(movies);
+    } catch (error) {
+      console.error('Error in SerieSet component:', error);
+    }
   };
+
   useEffect(() => {
     getMovies();
   }, []);

@@ -7,9 +7,14 @@ import seriesLogo from "/assets/icon-category-tv.svg";
 function Recommended() {
   const [movies, setMovies] = useState([]);
   const getMovies = async () => {
-    const movies = await getAll("videos");
-    setMovies(movies);
+    try {
+      const movies = await getAll("videos");
+      setMovies(movies);
+    } catch (err) {
+      console.error("Error fetching movies:", err);
+    }
   };
+
   useEffect(() => {
     getMovies();
   }, []);

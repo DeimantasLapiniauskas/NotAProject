@@ -6,14 +6,17 @@ import movies from "/assets/icon-nav-movies.svg";
 import tvSeries from "/assets/icon-nav-tv-series.svg";
 import bookmark from "/assets/icon-nav-bookmark.svg";
 import avatar from "/assets/image-avatar.png";
-
 const Nav = ({ user, setUser }) => {
   const navigate = useNavigate();
   const logOut = async () => {
-    await updateOne("users", user.id, { isLoggedIn: false });
-
-    setUser({ ...user, isLoggedIn: false });
-    navigate("/login");
+    try {
+      await updateOne("users", user.id, { isLoggedIn: false });
+  
+      setUser({ ...user, isLoggedIn: false });
+      navigate("/login");
+    } catch (error) {
+      console.error("Error nav:", error);
+    }
   };
   return (
     <aside className="nav-bar">
