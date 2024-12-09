@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { postOne } from "../../helpers/CRUD";
 import { useState } from "react";
 import "./signup.css";
-
 function Signup({ setUser, users }) {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -28,7 +27,7 @@ function Signup({ setUser, users }) {
 
       setUser(user);
 
-      sessionStorage.setItem("user", JSON.stringify(user));
+      // sessionStorage.setItem("user", JSON.stringify(user));
 
       navigate("/home");
     } catch (err) {
