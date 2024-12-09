@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { postOne } from "../../helpers/CRUD";
 import { useState } from "react";
 import "./signup.css";
-import sitelogo from "/assets/logo.svg"
+import sitelogo from "../../public/assets/logo.svg"
 function Signup({ setUser, users }) {
   const navigate = useNavigate();
   const [error, setError] = useState("");

@@ -2,8 +2,7 @@ import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import "./login.css";
-import sitelogo from "/assets/logo.svg"
-
+import sitelogo from "../../public/assets/logo.svg"
 function Login({ users, setUser }) {
 
   let navigate = useNavigate();
