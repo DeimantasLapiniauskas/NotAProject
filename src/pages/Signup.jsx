@@ -29,7 +29,7 @@ function Signup({ setUser, users }) {
 
       // sessionStorage.setItem("user", JSON.stringify(user));
 
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       setError(err.message);
     }

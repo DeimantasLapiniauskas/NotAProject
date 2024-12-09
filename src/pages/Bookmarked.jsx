@@ -5,7 +5,7 @@ const Bookmarked = ({ user }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) navigate(`/login`);
+    // if (!user) navigate(`/login`);
   }, []);
   return (
     <>
