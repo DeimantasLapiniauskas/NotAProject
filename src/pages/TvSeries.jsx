@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import SeriesList from "../components/TvSeries/SeriesList";
 import Nav from "../components/Nav";
 
