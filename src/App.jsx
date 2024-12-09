@@ -20,7 +20,6 @@ function App() {
     return JSON.parse(currentUser) || null;
   });
   const [error, setError] = useState();
-  // const [update, setUpdate] = useState(true);
 
   const getUsers = async () => {
     try {
@@ -31,16 +30,6 @@ function App() {
       setError(err.message);
     }
   };
-
-  // const getCurrentUser = () => {
-  //   const currentUser = JSON.parse(localStorage.getItem("user"));
-
-  //   console.log(currentUser, Date.now());
-
-  //   if (currentUser.isLoggedIn) {
-  //     setUser(currentUser);
-  //   }
-  // };
 
   useEffect(() => {
     getUsers();
@@ -85,7 +74,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Movies" />
-                <Movies />
+                <Movies user={user} />
               </>
             }
           />
@@ -94,7 +83,7 @@ function App() {
             element={
               <>
                 <PageTitle title="TV series" />
-                <TvSeries />
+                <TvSeries user={user} />
               </>
             }
           />
@@ -103,7 +92,7 @@ function App() {
             element={
               <>
                 <PageTitle title="Bookmarks" />
-                <Bookmarked />
+                <Bookmarked user={user} />
               </>
             }
           />

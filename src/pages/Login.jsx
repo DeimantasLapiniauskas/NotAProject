@@ -25,8 +25,6 @@ function Login({ users, setUser }) {
 
       setUser(user);
 
-      localStorage.setItem("user", JSON.stringify(user));
-
       navigate("/home");
     } catch (err) {
       setError(err.message);
