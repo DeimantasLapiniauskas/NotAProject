@@ -37,7 +37,6 @@ function App() {
       <main>
         {error && <div>OOPS</div>}
         <Routes>
-          route
           <Route
             path="/signup"
             element={
