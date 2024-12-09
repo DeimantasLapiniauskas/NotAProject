@@ -1,11 +1,5 @@
 import { Route, Routes, Navigate } from "react-router";
 import "./App.css";
-// import Home from "./pages/Home";
-// import Movies from "./pages/Movies";
-// import TvSeries from "./pages/TvSeries";
-// import Bookmarked from "./pages/Bookmarked";
-// import Signup from "./pages/Signup";
-// import Login from "./pages/Login";
 import { useEffect, useState } from "react";
 import { getAll } from "./../helpers/CRUD";
 import PageTitle from "./components/PageTitle";
