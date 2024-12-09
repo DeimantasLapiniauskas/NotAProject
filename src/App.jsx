@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes, Navigate } from "react-router";
 import "./App.css";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
@@ -42,6 +42,7 @@ function App() {
       <main>
         {error && <div>OOPS</div>}
         <Routes>
+          route
           <Route
             path="/signup"
             element={
@@ -60,8 +61,9 @@ function App() {
               </>
             }
           />
+          <Route path="*" element={<Navigate to="/" />} />
           <Route
-            path="*"
+            path="/"
             element={
               <>
                 <PageTitle title="Home" />

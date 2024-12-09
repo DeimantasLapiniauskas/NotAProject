@@ -13,17 +13,17 @@ const Nav = () => {
         <img src={logo} alt="logo" />
       </div>
       <nav>
-        <NavLink to="/home">
-          <img src={home} alt="home icon" className="PageIcon"/>
+        <NavLink to="/">
+          <img src={home} alt="home icon" className="PageIcon" />
         </NavLink>
         <NavLink to="/movies">
           <img src={movies} alt="movies icon" className="PageIcon" />
         </NavLink>
         <NavLink to="/tvseries">
-          <img src={tvSeries} alt="tv series icon" className="PageIcon"/>
+          <img src={tvSeries} alt="tv series icon" className="PageIcon" />
         </NavLink>
         <NavLink to="/bookmarked">
-          <img src={bookmark} alt="bookmark icon" className="PageIcon"/>
+          <img src={bookmark} alt="bookmark icon" className="PageIcon" />
         </NavLink>
       </nav>
       <div className="avatar">
