@@ -1,10 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import MoviesList from "../components/Movies/MoviesList";
 import Nav from "../components/Nav";
+import SearchBar from "../components/SearchBar";
 
 const Movies = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
+
+  const [searching, setSearching] = useState(false)
 
   // useEffect(() => {
   //   if (!user?.isLoggedIn) navigate(`/login`);
@@ -13,8 +16,8 @@ const Movies = ({ user, setUser, entries }) => {
     <>
       <Nav user={user} setUser={setUser} />
       <div className="pagecontent">
-        <h1>MOVIES</h1>
-        <MoviesList entries={entries}/>
+        <SearchBar entries={entries} searching={searching} setSearching={setSearching} page="Movies"/>
+        {!searching&&<MoviesList entries={entries} searching={searching}/>}
       </div>
     </>
   );

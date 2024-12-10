@@ -1,21 +1,18 @@
 import movieLogo from "/assets/icon-category-movie.svg";
 import seriesLogo from "/assets/icon-category-tv.svg";
 
-function Recommended({entries, shows}) {
-
-
-
+function Recommended({ entries }) {
   return (
     <>
       <h1>Recommended</h1>
       {entries.map((movie, index) => {
         // console.log(shows);
         // console.log(movie);
-        
-        
-        if (!movie.isTrending
+
+        if (
+          !movie.isTrending
           //  && shows === movie
-          ) {
+        ) {
           return (
             <div key={index}>
               <p>{movie.isTrending && "trending"}</p>

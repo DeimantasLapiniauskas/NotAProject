@@ -6,7 +6,8 @@ import { useState } from "react";
 
 const Home = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
-  const [shows, setShows] = useState([]);
+
+  const [searching, setSearching] = useState(false)
 
   // useEffect(() => {
   //   if (!user?.isLoggedIn) navigate(`/login`);
@@ -15,9 +16,8 @@ const Home = ({ user, setUser, entries }) => {
     <>
       <Nav user={user} setUser={setUser} />
       <div className="pagecontent">
-        <SearchBar entries={entries} setShows= {setShows}/>
-        <h1>HOME</h1>
-        <Recommended entries={entries} shows={shows}/>
+        <SearchBar entries={entries}  searching={searching} setSearching={setSearching} page="Home"/>
+        {!searching&&<Recommended entries={entries}  searching={searching}/>}
       </div>
     </>
   );

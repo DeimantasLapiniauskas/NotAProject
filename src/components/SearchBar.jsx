@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react";
 import "./searchBar.css";
+import SearchResults from "./SearchResults";
 
-function SearchBar({ entries, setShows }) {
+function SearchBar({ entries, searching, setSearching, page }) {
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [hideSuggestions, setHideSuggestions] = useState(true);
-
+  const [searchEntries, setSearchEntries] = useState("");
   useEffect(() => {
     const suggestionData = async () => {
       setSuggestions(entries);
     };
     suggestionData();
   }, []);
-  function handleSubmit(e){
+  function handleSubmit(e) {
+    let Vals = e.target.querySelector("input").value;
     e.preventDefault();
-    setValue(e.target.querySelector('input').value)
-    console.log(e.target.querySelector('input').value);
-    return};
+    setValue(Vals);
+
+    setSearchEntries(entries.filter((entrie) => entrie.title.includes(Vals)));
+
+    setSearching(true);
+    return;
+  }
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -24,22 +30,23 @@ function SearchBar({ entries, setShows }) {
           onFocus={() => setHideSuggestions(false)}
           onBlur={() => setHideSuggestions(true)}
           type="text"
-          placeholder="Search for movies or TV series"
-          onChange={(e) => {
-            // e.preventDefault();
-            // setValue(e.target.value);
-          }}
+          placeholder={`Search for ${
+            page === "Home" ? "Movies and TV series" : page
+          }`}
         />
         <div className={`suggestion ${hideSuggestions && "suggestion-hidden"}`}>
-          {
+          {"found " +
             suggestions.filter((item) => {
               const result = Object.values(item)
                 .join("")
                 .toLowerCase()
                 .includes(value.toLowerCase());
+              if (page != "Home")
+                return result && item.category === page.slice(0, -1) || item.category === page;
               return result;
-            }).length
-          }
+            }).length +
+            " results for " +
+            value}
         </div>
         <div>
           {suggestions
@@ -56,12 +63,15 @@ function SearchBar({ entries, setShows }) {
                   hideSuggestions && "suggestion-hidden"
                 }`}
               >
-                {suggestion["title"]}
+                {page !== "Home" &&
+                  suggestion["category"] === "Movie" &&
+                  suggestion["title"]}
+                {page === "Home" && suggestion["title"]}
               </div>
             ))}
         </div>
-        
       </form>
+      {searching && <SearchResults searchEntries={searchEntries} />}
     </>
   );
 }
