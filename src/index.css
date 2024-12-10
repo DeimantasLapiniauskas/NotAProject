@@ -22,31 +22,39 @@
   }
 
   #root {
-    @apply bg-[var(--color-dark-blue)];
+    @apply bg-[var(--color-dark-blue)] font-[400];
 
     .pagecontent {
-      @apply pt-10 sm:pt-20 lg:pl-40 lg:pt-10;
+      @apply pt-10 sm:pt-20 lg:pl-40 lg:pt-10 px-[1.6rem];
     }
   }
 
   h1 {
-    @apply text-[3.2rem] font-light;
+    @apply text-[3.2rem];
   }
 
   h2 {
-    @apply text-[2.4rem] font-light;
+    @apply text-[2.4rem];
   }
 
   h3 {
-    @apply text-[2.4rem] font-medium;
+    @apply text-[2.4rem];
   }
 
   h4 {
-    @apply text-[1.8rem] font-medium;
+    @apply text-[2rem];
+  }
+
+  h5 {
+    @apply text-[1.8rem];
+  }
+
+  h6 {
+    @apply text-[1.4rem];
   }
 
   p {
-    @apply text-2xl font-light;
+    @apply text-2xl;
 
     .small-font {
       @apply text-[1.3rem];
@@ -56,7 +64,7 @@
 
 @layer components {
   .nav-bar {
-    @apply sticky top-0 flex p-[1.6rem] bg-[var(--color-semi-dark-blue)] justify-between items-center sm:top-10 sm:mx-9 sm:rounded-md lg:flex-col lg:w-max lg:top-10 lg:h-[calc(100dvh-5rem)] lg:fixed lg:justify-start lg:gap-20;
+    @apply sticky top-0 flex p-[1.6rem] bg-[var(--color-semi-dark-blue)] justify-between items-center sm:top-10 sm:mx-9 sm:rounded-md lg:flex-col lg:w-max lg:top-10 lg:h-[calc(100dvh-5rem)] lg:fixed lg:justify-start lg:gap-20  z-10;
 
     .logo {
       @apply w-10 h-8 md:w-[3.2] md:h-[2.56];
@@ -80,6 +88,40 @@
 
     .avatar {
       @apply w-10 h-10 border border-[var(--color-pure-white)] rounded-full sm:w-[3.2rem] sm:h-[3.2rem] lg:mt-auto;
+    }
+  }
+
+  .video-list {
+    @apply grid grid-cols-2 gap-6;
+
+    .video-list__title {
+      @apply tracking-[-0.31px] text-[2rem] leading-[2.5rem] mb-[.9rem] col-span-2;
+    }
+
+    .video-card {
+      & > img {
+        @apply rounded-[8px];
+      }
+
+      .video-card__details {
+        @apply flex items-center gap-[.6rem] opacity-75;
+      }
+
+      p {
+        @apply text-[1.1rem];
+
+        /* img {
+          @apply inline-block;
+        } */
+      }
+
+      .video-card__icon {
+        @apply flex items-center gap-2;
+
+        img {
+          @apply w-4 h-4;
+        }
+      }
     }
   }
 }
