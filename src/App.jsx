@@ -24,6 +24,7 @@ function App() {
     return JSON.parse(currentUser) || null;
   });
   const [error, setError] = useState();
+  const [movies, setMovies] = useState([]);
 
   const getUsers = async () => {
     try {
@@ -37,6 +38,19 @@ function App() {
 
   useEffect(() => {
     getUsers();
+  }, []);
+
+  const getMovies = async () => {
+    try {
+      const movies = await getAll("videos");
+      setMovies(movies);
+    } catch (err) {
+      console.error("Error fetching movies:", err);
+    }
+  };
+
+  useEffect(() => {
+    getMovies();
   }, []);
 
   return (
@@ -74,7 +88,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Home" />
-                    <Home user={user} setUser={setUser} />
+                    <Home user={user} setUser={setUser} entries={movies} />
                   </>
                 }
               />
@@ -83,7 +97,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Movies" />
-                    <Movies user={user} setUser={setUser} />
+                    <Movies user={user} setUser={setUser} entries={movies} />
                   </>
                 }
               />
@@ -92,7 +106,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="TV series" />
-                    <TvSeries user={user} setUser={setUser} />
+                    <TvSeries user={user} setUser={setUser} entries={movies}/>
                   </>
                 }
               />
@@ -101,7 +115,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Bookmarks" />
-                    <Bookmarked user={user} setUser={setUser} />
+                    <Bookmarked user={user} setUser={setUser} entries={movies} />
                   </>
                 }
               />

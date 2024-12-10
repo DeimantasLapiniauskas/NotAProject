@@ -2,12 +2,12 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import Nav from "../components/Nav";
 
-const Bookmarked = ({ user, setUser }) => {
+const Bookmarked = ({ user, setUser, movies }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user?.isLoggedIn) navigate(`/login`);
-  }, []);
+  // useEffect(() => {
+  //   if (!user?.isLoggedIn) navigate(`/login`);
+  // }, []);
   return (
     <>
       <Nav user={user} setUser={setUser} />
