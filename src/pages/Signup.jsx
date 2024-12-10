@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { postOne } from "../../helpers/CRUD";
 import { useState } from "react";
 import "./signup.css";
-import sitelogo from "../../public/assets/logo.svg";
 import { ErrorBoundary } from "react-error-boundary";
 import FallbackComponent from "../components/errorHandling/FallbackComponent";
 function Signup({ setUser, users }) {
@@ -42,7 +41,7 @@ function Signup({ setUser, users }) {
   return (
     <ErrorBoundary FallbackComponent={FallbackComponent}>
       <header>
-        <img src={sitelogo} alt="Site logo" />
+        <img src="/assets/logo.svg" alt="Site logo" />
       </header>
       <main>
         <h1>Sign up</h1>
