@@ -83,6 +83,7 @@
     color: #ffffff;
     cursor: pointer;
   }
+  
   #LoginButton:hover {
     background-color: #ffffff;
     color: #10141e;
