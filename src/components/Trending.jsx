@@ -1,8 +1,9 @@
 import { useRef, useEffect, useState } from "react";
-import { getAllData } from "./helpers/get";
+// import { getAllData } from "./helpers/get";
+import { getAll } from "../../helpers/CRUD";
 import "./../Trending.css";
-import movieLogo from "../assets/icon-category-movie.svg";
-import seriesLogo from "../assets/icon-category-tv.svg";
+import movieLogo from "/assets/icon-category-movie.svg";
+import seriesLogo from "/assets/icon-category-tv.svg";
 
 const Trending = () => {
   const carouselRef = useRef(null);
@@ -51,7 +52,7 @@ const Trending = () => {
   const [movies, setMovies] = useState([]);
   console.log(movies);
   const getMovies = async () => {
-    const movies = await getAllData();
+    const movies = await getAll("videos");
     setMovies(movies);
   };
   useEffect(() => {
