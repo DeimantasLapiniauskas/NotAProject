@@ -13,7 +13,6 @@ const Movies = ({ user, setUser }) => {
     <>
       <Nav user={user} setUser={setUser} />
       <div className="pagecontent">
-        <h1>MOVIES</h1>
         <MoviesList />
       </div>
     </>

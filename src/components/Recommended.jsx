@@ -34,7 +34,6 @@ function Recommended() {
                 <span>&#8226;</span>
                 <p className="video-card__icon">
                   <img
-                    className="inline-block"
                     src={
                       movie.category == "Movie"
                         ? "/assets/icon-category-movie.svg"
