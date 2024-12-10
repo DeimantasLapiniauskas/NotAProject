@@ -1,15 +1,21 @@
 import { useEffect } from "react";
 import { getAll } from "../../../helpers/CRUD";
 import { useState } from "react";
-import seriesLogo from "/assets/icon-category-tv.svg";
 
 function SerieSet() {
   const [movies, setMovies] = useState([]);
 
+  // In TV series variables named movies, need to fix it latter
+
   const getMovies = async () => {
-    const movies = await getAll("videos");
-    setMovies(movies);
+    try {
+      const movies = await getAll("videos");
+      setMovies(movies);
+    } catch (error) {
+      console.error("Error in SerieSet component:", error);
+    }
   };
+
   useEffect(() => {
     getMovies();
   }, []);
@@ -26,7 +32,7 @@ function SerieSet() {
               <p>{movie.year}</p>
 
               <p style={{ backgroundColor: "#999999" }}>
-                <img src={seriesLogo} />
+                <img src="/assets/icon-category-tv.svg" />
                 {movie.category}
               </p>
               <p>{movie.rating}</p>

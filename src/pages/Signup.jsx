@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { postOne } from "../../helpers/CRUD";
 import { useState } from "react";
 import "./signup.css";
+import { ErrorBoundary } from "react-error-boundary";
+import FallbackComponent from "../components/errorHandling/FallbackComponent";
 function Signup({ setUser, users }) {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -10,6 +12,7 @@ function Signup({ setUser, users }) {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -36,11 +39,12 @@ function Signup({ setUser, users }) {
   };
 
   return (
-    <>
+    <ErrorBoundary FallbackComponent={FallbackComponent}>
       <header>
-        <h1>Sign up</h1>
+        <img src="/assets/logo.svg" alt="Site logo" />
       </header>
       <main>
+        <h1>Sign up</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
@@ -53,7 +57,7 @@ function Signup({ setUser, users }) {
           </div>
           <div>
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               id="PasswdSignup"
               {...register("password", { required: "Can't be empty" })}
@@ -62,12 +66,21 @@ function Signup({ setUser, users }) {
           </div>
           <div>
             <input
-              type="text"
+              type="password"
               placeholder="Repeat Password"
               id="RepeatSignup"
-              {...register("password", { required: "Can't be empty" })}
+              {...register("password-repeat", {
+                required: "Can't be empty",
+                validate: (val) => {
+                  if (watch("password") != val) {
+                    return "Your passwords do no match";
+                  }
+                },
+              })}
             />
-            {errors.password && <span>{errors.password.message}</span>}
+            {errors["password-repeat"] && (
+              <p>{errors["password-repeat"].message}</p>
+            )}
           </div>
           <button type="submit" id="SignupButton">
             Create an account
@@ -78,7 +91,7 @@ function Signup({ setUser, users }) {
       <footer id="SignupFooter">
         <span>Already have an account?</span> <a href="/login">Login</a>
       </footer>
-    </>
+    </ErrorBoundary>
   );
 }
 export default Signup;
