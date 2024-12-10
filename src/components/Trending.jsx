@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { getAll } from "../../helpers/CRUD";
-import "./../Trending.css";
+import "./Trending.css";
 import movieLogo from "/assets/icon-category-movie.svg";
 import seriesLogo from "/assets/icon-category-tv.svg";
 
