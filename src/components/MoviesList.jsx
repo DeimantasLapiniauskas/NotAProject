@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function MoviesList() {
   const [movies, setMovies] = useState([]);
@@ -23,7 +24,7 @@ function MoviesList() {
         if (movie.category === "Movie") {
           return (
             <div key={index}>
-              <img
+              <LazyLoadImage
                 src={movie.thumbnail.regular.small.substring(1)}
                 alt={movie.title + "'s image"}
               />
