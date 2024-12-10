@@ -40,57 +40,59 @@ function Signup({ setUser, users }) {
 
   return (
     <ErrorBoundary FallbackComponent={FallbackComponent}>
-      <header>
-        <img src="/assets/logo.svg" alt="Site logo" />
-      </header>
-      <main>
-        <h1>Sign up</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <input
-              type="email"
-              placeholder="Email address"
-              id="EmailSignup"
-              {...register("email", { required: "Can't be empty" })}
-            />
-            {errors.email && <span>{errors.email.message}</span>}
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="Password"
-              id="PasswdSignup"
-              {...register("password", { required: "Can't be empty" })}
-            />
-            {errors.password && <span>{errors.password.message}</span>}
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="Repeat Password"
-              id="RepeatSignup"
-              {...register("password-repeat", {
-                required: "Can't be empty",
-                validate: (val) => {
-                  if (watch("password") != val) {
-                    return "Your passwords do no match";
-                  }
-                },
-              })}
-            />
-            {errors["password-repeat"] && (
-              <p>{errors["password-repeat"].message}</p>
-            )}
-          </div>
-          <button type="submit" id="SignupButton">
-            Create an account
-          </button>
-        </form>
-        {error && <p>{error}</p>}
-      </main>
-      <footer id="SignupFooter">
-        <span>Already have an account?</span> <a href="/login">Login</a>
-      </footer>
+      <section className="signup">
+        <header>
+          <img src="/assets/logo.svg" alt="Site logo" />
+        </header>
+        <main>
+          <h1>Sign up</h1>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <input
+                type="email"
+                placeholder="Email address"
+                id="EmailSignup"
+                {...register("email", { required: "Can't be empty" })}
+              />
+              {errors.email && <span>{errors.email.message}</span>}
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                id="PasswdSignup"
+                {...register("password", { required: "Can't be empty" })}
+              />
+              {errors.password && <span>{errors.password.message}</span>}
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Repeat Password"
+                id="RepeatSignup"
+                {...register("password-repeat", {
+                  required: "Can't be empty",
+                  validate: (val) => {
+                    if (watch("password") != val) {
+                      return "Your passwords do no match";
+                    }
+                  },
+                })}
+              />
+              {errors["password-repeat"] && (
+                <p>{errors["password-repeat"].message}</p>
+              )}
+            </div>
+            <button type="submit" id="SignupButton">
+              Create an account
+            </button>
+          </form>
+          {error && <p>{error}</p>}
+          <p id="SignupFooter">
+            <span>Already have an account?</span> <a href="/login">Login</a>
+          </p>
+        </main>
+      </section>
     </ErrorBoundary>
   );
 }
