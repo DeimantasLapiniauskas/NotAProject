@@ -78,16 +78,16 @@
   gap: 0.25rem;
   width: 7rem;
   margin-bottom: 0.5rem;
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap;
 }
 
 .trending__content--data .categories {
   font-size: 0.67rem;
   color: #aaa;
-  max-width: 100%; 
+  max-width: 100%;
   white-space: nowrap;
-  text-overflow: ellipsis; 
-  flex-shrink: 1; 
+  text-overflow: ellipsis;
+  flex-shrink: 1;
 }
 
 .trending__content--data span {
@@ -107,8 +107,6 @@
   margin: 0 2px;
 }
 
-
-
 .trending__content--data .movie,
 .trending__content--data .series {
   background-size: contain;
@@ -121,8 +119,8 @@
   height: 2rem;
   display: inline-block;
   object-fit: contain;
-  max-width: 100%; 
+  max-width: 100%;
   white-space: nowrap;
-  text-overflow: ellipsis; 
-  flex-shrink: 1; 
+  text-overflow: ellipsis;
+  flex-shrink: 1;
 }
