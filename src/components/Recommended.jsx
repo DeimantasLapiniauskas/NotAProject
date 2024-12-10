@@ -6,7 +6,7 @@ function Recommended({ entries }) {
   return (
     <section className="video-list">
       <h4 className="video-list__title">Recommended for you</h4>
-      {movies.map((movie, index) => {
+      {entries.map((movie, index) => {
         if (!movie.isTrending) {
           return (
             <div key={index} className="video-card">

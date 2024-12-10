@@ -7,25 +7,28 @@ function SearchBar({ entries, searching, setSearching, page }) {
   const [suggestions, setSuggestions] = useState([]);
   const [hideSuggestions, setHideSuggestions] = useState(true);
   const [searchEntries, setSearchEntries] = useState("");
+
   useEffect(() => {
-    const suggestionData = async () => {
+    const suggestionData = () => {
       setSuggestions(entries);
     };
     suggestionData();
   }, []);
+
   function handleSubmit(e) {
-    let Vals = e.target.querySelector("input").value;
     e.preventDefault();
+    let Vals = e.target.querySelector("input").value;
     setValue(Vals);
-
-    setSearchEntries(entries.filter((entrie) => entrie.title.includes(Vals)));
-
+    setSearchEntries(entries.filter((entry) => entry.title.includes(Vals)));
     setSearching(true);
     return;
   }
+
+  // THE DAMN COUNT AND SUGGESTION TITLES DON'T WORK ON TV SERIES??? also make it work on bookmarked.
   return (
     <>
       <form onSubmit={handleSubmit}>
+        {/* The input field */}
         <input
           onFocus={() => setHideSuggestions(false)}
           onBlur={() => setHideSuggestions(true)}
@@ -34,6 +37,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
             page === "Home" ? "Movies and TV series" : page
           }`}
         />
+        {/* Counts suggestions */}
         <div className={`suggestion ${hideSuggestions && "suggestion-hidden"}`}>
           {"found " +
             suggestions.filter((item) => {
@@ -42,19 +46,29 @@ function SearchBar({ entries, searching, setSearching, page }) {
                 .toLowerCase()
                 .includes(value.toLowerCase());
               if (page != "Home")
-                return result && item.category === page.slice(0, -1) || item.category === page;
+                return (
+                  (result && item.category === page.slice(0, -1)) ||
+                  item.category === page
+                );
               return result;
             }).length +
             " results for " +
             value}
         </div>
+        {/* Displays suggestion titles */}
         <div>
           {suggestions
             .filter((item) => {
-              return Object.values(item)
+              const result = Object.values(item)
                 .join("")
                 .toLowerCase()
                 .includes(value.toLowerCase());
+              if (page != "Home")
+                return (
+                  (result && item.category === page.slice(0, -1)) ||
+                  item.category === page
+                );
+                return result
             })
             .map((suggestion, index) => (
               <div
@@ -71,8 +85,10 @@ function SearchBar({ entries, searching, setSearching, page }) {
             ))}
         </div>
       </form>
-      {searching && <SearchResults searchEntries={searchEntries} />}
+      {/* Displays all results */}
+      {searching && <SearchResults searchEntries={searchEntries} page={page} />}
     </>
   );
 }
+
 export default SearchBar;

@@ -7,7 +7,7 @@ import MoviesList from "../components/MoviesList";
 const Movies = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
 
-  const [searching, setSearching] = useState(false)
+  const [searching, setSearching] = useState(false);
 
   // useEffect(() => {
   //   if (!user?.isLoggedIn) navigate(`/login`);
@@ -16,8 +16,13 @@ const Movies = ({ user, setUser, entries }) => {
     <>
       <Nav user={user} setUser={setUser} />
       <div className="pagecontent">
-        <SearchBar entries={entries} searching={searching} setSearching={setSearching} page="Movies"/>
-        {!searching&&<MoviesList entries={entries} searching={searching}/>}
+        <SearchBar
+          entries={entries}
+          searching={searching}
+          setSearching={setSearching}
+          page="Movies"
+        />
+        {!searching && <MoviesList entries={entries} searching={searching} />}
       </div>
     </>
   );
