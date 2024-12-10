@@ -54,23 +54,23 @@
   }
   #EmailSignup:focus,
   #PasswdSignup:focus,
-  #RepeatSignup:focus{
+  #RepeatSignup:focus {
     border-bottom: 1px solid #ffffff;
     outline: none;
   }
   form input::placeholder {
     color: #666;
   }
-/* Error messages */
-form span {
-  color: #ff4c4c;
-  font-size: 15px;
-  margin-top: -10px;
-  margin-bottom: 10px;
-  display: block;
-  text-align: right;
-}
-/* Error messages */
+  /* Error messages */
+  form span {
+    color: #ff4c4c;
+    font-size: 15px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: right;
+  }
+  /* Error messages */
   #SignupButton {
     width: 100%;
     padding: 14px;
