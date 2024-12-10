@@ -66,7 +66,7 @@ const Trending = () => {
         
         <div key={index} className="carousel">
           {console.log(item)}
-          <img src={"src" + item.thumbnail.trending.small.substring(1)} alt={item.title} />
+          <img src={item.thumbnail.trending.small.substring(1)} alt={item.title} />
           <div >
             <button className="trending__bookmark">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
