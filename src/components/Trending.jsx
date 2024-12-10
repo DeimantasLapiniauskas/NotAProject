@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-// import { getAllData } from "./helpers/get";
 import { getAll } from "../../helpers/CRUD";
 import "./../Trending.css";
 import movieLogo from "/assets/icon-category-movie.svg";
