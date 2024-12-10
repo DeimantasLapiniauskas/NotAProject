@@ -10,7 +10,7 @@ function Movies() {
       const movies = await getAll("videos");
       setMovies(movies);
     } catch (error) {
-      console.error("Error in Movie component:", error);
+      console.error("Error in Movies component:", error);
     }
   };
 
