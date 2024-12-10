@@ -9,23 +9,14 @@
     padding: 15px;
     width: 100%;
   }
-
-  header h1 {
-    font-size: 32px;
-  }
-
   form input {
-    font-size: 14px;
+    font-size: 15px;
     padding: 10px;
   }
 
   form button {
-    font-size: 14px;
+    font-size: 15px;
     padding: 12px;
-  }
-
-  #SignupFooter {
-    font-size: 12px;
   }
   body {
     font-family: "Arial", sans-serif;
@@ -41,7 +32,7 @@
   }
 
   header h1 {
-    font-size: 2rem;
+    font-size: 24px;
     color: #ffffff;
     text-align: center;
     margin-bottom: 20px;
@@ -49,15 +40,12 @@
 
   main {
     background-color: #161d2f;
-    /* border-radius: 8px; */
     padding: 20px 15px;
     width: 100%;
-    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box; */
   }
 
-  form input[type="email"],
-  form input[type="password"] {
+  #EmailLogin,
+  #PasswdLogin{
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -65,6 +53,11 @@
     background-color: #161d2f;
     color: #ffffff;
     font-size: 16px;
+  }
+  #EmailLogin:focus,
+  #PasswdLogin:focus{
+    border-bottom: 1px solid #ffffff;
+    outline: none;
   }
 
   form input::placeholder {
@@ -79,10 +72,11 @@ form span {
   display: block;
   text-align: right;
 }
-  form button {
+/* Error messages */
+  #LoginButton {
     width: 100%;
     padding: 14px;
-    font-size: 1.5rem;
+    font-size: 15px;
     border: none;
     border-radius: 4px;
     background-color: #ff4c4c;
@@ -90,24 +84,24 @@ form span {
     cursor: pointer;
   }
 
-  form button:hover {
+  #LoginButton:hover {
     background-color: #ffffff;
     color: #10141e;
   }
 
-  #SignupFooter {
+  #LoginFooter {
     margin-top: 15px;
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
   }
 
-  #SignupFooter a {
+  #SignUpLink {
     color: #ff4c4c;
     text-decoration: none;
     font-weight: bold;
   }
 
-  #SignupFooter a:hover {
+  #SignUpLink:hover {
     text-decoration: underline;
   }
 }
