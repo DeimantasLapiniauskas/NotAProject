@@ -2,15 +2,28 @@ import { useEffect } from "react";
 import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
 
-function Recommended({ entries }) {
+function MoviesList() {
+  const [movies, setMovies] = useState([]);
+
+  const getMovies = async () => {
+    try {
+      const movies = await getAll("videos");
+      setMovies(movies);
+    } catch (error) {
+      console.error("Error in Movies component:", error);
+    }
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, []);
   return (
     <section className="video-list">
-      <h4 className="video-list__title">Recommended for you</h4>
+      <h4 className="video-list__title">Movies</h4>
       {movies.map((movie, index) => {
-        if (!movie.isTrending) {
+        if (movie.category === "Movie") {
           return (
             <div key={index} className="video-card">
-              <p>{movie.isTrending && "trending"}</p>
               <img
                 src={movie.thumbnail.regular.small.substring(1)}
                 alt={movie.title + "'s image"}
@@ -20,13 +33,7 @@ function Recommended({ entries }) {
                 <p className="video-card__year">{movie.year}</p>
                 <span>&#8226;</span>
                 <p className="video-card__icon">
-                  <img
-                    src={
-                      movie.category == "Movie"
-                        ? "/assets/icon-category-movie.svg"
-                        : "/assets/icon-category-tv.svg"
-                    }
-                  />
+                  <img src="/assets/icon-category-movie.svg" />
                   {movie.category}
                 </p>
                 <span>&#8226;</span>
@@ -42,4 +49,4 @@ function Recommended({ entries }) {
   );
 }
 
-export default Recommended;
+export default MoviesList;

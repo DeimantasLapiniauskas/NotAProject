@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import Nav from "../components/Nav";
+import BookmarkedList from "./../components/BookmarkedList";
 
 const Bookmarked = ({ user, setUser, movies }) => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Bookmarked = ({ user, setUser, movies }) => {
     <>
       <Nav user={user} setUser={setUser} />
       <div className="pagecontent">
-        <h1>BOOKMARKED</h1>
+        <BookmarkedList />
       </div>
     </>
   );

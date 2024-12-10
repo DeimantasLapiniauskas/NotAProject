@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import SeriesList from "../components/TvSeries/SeriesList";
 import Nav from "../components/Nav";
-import SearchBar from "../components/SearchBar";
+import SeriesList from "../components/SeriesList";import SearchBar from "../components/SearchBar";
 
 const TvSeries = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
