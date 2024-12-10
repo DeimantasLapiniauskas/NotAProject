@@ -17,29 +17,34 @@ function SeriesList() {
     getSeries();
   }, []);
   return (
-    <>
+    <section className="video-list">
+      <h4 className="video-list__title">TV Series</h4>
       {series.map((series, index) => {
         if (series.category === "TV Series") {
           return (
-            <div key={index}>
+            <div key={index} className="video-card">
               <img
                 src={series.thumbnail.regular.small.substring(1)}
                 alt={series.title + "'s image"}
+                className="video-card__img"
               />
-              <p>{series.year}</p>
-
-              <p style={{ backgroundColor: "#999999" }}>
-                <img src="/assets/icon-category-tv.svg" />
-                {series.category}
-              </p>
-              <p>{series.rating}</p>
-              <h1>{series.title}</h1>
+              <div className="video-card__details">
+                <p className="video-card__year">{series.year}</p>
+                <span>&#8226;</span>
+                <p className="video-card__icon">
+                  <img src="/assets/icon-category-tv.svg" />
+                  {series.category}
+                </p>
+                <span>&#8226;</span>
+                <p className="video-card__rating">{series.rating}</p>
+              </div>
+              <h6 className="video-card__title">{series.title}</h6>
             </div>
           );
         }
         return;
       })}
-    </>
+    </section>
   );
 }
 
