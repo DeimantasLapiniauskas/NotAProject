@@ -1,5 +1,5 @@
 #LoginButton {
-    background-color: #fc4747;
+  background-color: #fc4747;
 }
 #LoginButton:hover {
   background-color: #ffffff;
@@ -45,7 +45,7 @@
   }
 
   #EmailLogin,
-  #PasswdLogin{
+  #PasswdLogin {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -55,7 +55,7 @@
     font-size: 16px;
   }
   #EmailLogin:focus,
-  #PasswdLogin:focus{
+  #PasswdLogin:focus {
     border-bottom: 1px solid #ffffff;
     outline: none;
   }
@@ -63,16 +63,16 @@
   form input::placeholder {
     color: #666;
   }
-/* Error messages */
-form span {
-  color: #ff4c4c;
-  font-size: 15px;
-  margin-top: -10px;
-  margin-bottom: 10px;
-  display: block;
-  text-align: right;
-}
-/* Error messages */
+  /* Error messages */
+  form span {
+    color: #ff4c4c;
+    font-size: 15px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: right;
+  }
+  /* Error messages */
   #LoginButton {
     width: 100%;
     padding: 14px;
