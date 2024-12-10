@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { getAll } from "../../../helpers/CRUD";
+import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
 
-function Movie() {
+function Movies() {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
@@ -43,4 +43,4 @@ function Movie() {
   );
 }
 
-export default Movie;
+export default Movies;
