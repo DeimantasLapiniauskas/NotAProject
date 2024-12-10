@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Recommended() {
   const [movies, setMovies] = useState([]);
@@ -24,7 +25,7 @@ function Recommended() {
           return (
             <div key={index} className="video-card">
               <p>{movie.isTrending && "trending"}</p>
-              <img
+              <LazyLoadImage
                 src={movie.thumbnail.regular.small.substring(1)}
                 alt={movie.title + "'s image"}
                 className="video-card__img"
