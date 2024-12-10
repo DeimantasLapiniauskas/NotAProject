@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { getAll } from "../../../helpers/CRUD";
+import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
 
-function Movie() {
+function MoviesList() {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
@@ -10,7 +10,7 @@ function Movie() {
       const movies = await getAll("videos");
       setMovies(movies);
     } catch (error) {
-      console.error("Error in Movie component:", error);
+      console.error("Error in Movies component:", error);
     }
   };
 
@@ -43,4 +43,4 @@ function Movie() {
   );
 }
 
-export default Movie;
+export default MoviesList;
