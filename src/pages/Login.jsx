@@ -1,8 +1,14 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-import "./login.css"
-function Login() {
+import { useState } from "react";
+import { updateOne } from "../../helpers/CRUD";
+import "./login.css";
+import sitelogo from "../../public/assets/logo.svg"
+import { ErrorBoundary } from "react-error-boundary";
+import FallbackComponent from "../components/errorHandling/FallbackComponent";
+function Login({ users, setUser }) {
   let navigate = useNavigate();
+  const [error, setError] = useState("");
   const {
     register,
     handleSubmit,
@@ -10,17 +16,34 @@ function Login() {
   } = useForm();
 
   // onSubmit function is left as is but without the server interaction.
-  const onSubmit = (values) => {
-    console.log(values);
-    navigate("/");
+  const onSubmit = async (values) => {
+    try {
+      const user = users.find((user) => user.email === values.email);
+
+      if (!user) throw new Error(`User doesn't exist. Please sign up`);
+
+      if (user.password !== values.password)
+        throw new Error("Wrong email or password");
+
+      const updatedUser = await updateOne(`users`, user.id, {
+        isLoggedIn: true,
+      });
+
+      setUser(updatedUser);
+
+      navigate("/home");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
-    <>
+    <ErrorBoundary FallbackComponent={FallbackComponent}>
       <header>
-        <h1>Login</h1>
+        <img src={sitelogo} alt="Site logo" />
       </header>
       <main>
+        <h1>Login</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
@@ -44,14 +67,15 @@ function Login() {
             Login to your account
           </button>
         </form>
+        {error && <p>{error}</p>}
       </main>
       <footer id="LoginFooter">
-        <span>Don't have an account?</span>
+        <span>{`Don't have an account?`}</span>
         <a href="/signup" id="SignUpLink">
           Sign Up
         </a>
       </footer>
-    </>
+      </ErrorBoundary>
   );
 }
 
