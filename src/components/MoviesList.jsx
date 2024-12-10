@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
 
-function Movies() {
+function MoviesList() {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
@@ -43,4 +43,4 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default MoviesList;

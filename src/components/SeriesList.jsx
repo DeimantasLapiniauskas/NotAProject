@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
 
-function Series() {
+function SeriesList() {
   const [series, setSeries] = useState([]);
   const getSeries = async () => {
     try {
@@ -43,4 +43,4 @@ function Series() {
   );
 }
 
-export default Series;
+export default SeriesList;
