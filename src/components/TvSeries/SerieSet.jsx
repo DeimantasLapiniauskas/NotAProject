@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { getAll } from "../../../helpers/CRUD";
 import { useState } from "react";
-import seriesLogo from "/assets/icon-category-tv.svg";
 
 function SerieSet() {
   const [movies, setMovies] = useState([]);
@@ -13,7 +12,7 @@ function SerieSet() {
       const movies = await getAll("videos");
       setMovies(movies);
     } catch (error) {
-      console.error('Error in SerieSet component:', error);
+      console.error("Error in SerieSet component:", error);
     }
   };
 
@@ -33,7 +32,7 @@ function SerieSet() {
               <p>{movie.year}</p>
 
               <p style={{ backgroundColor: "#999999" }}>
-                <img src={seriesLogo} />
+                <img src="/assets/icon-category-tv.svg" />
                 {movie.category}
               </p>
               <p>{movie.rating}</p>

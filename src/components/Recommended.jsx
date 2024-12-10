@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
-import movieLogo from "/assets/icon-category-movie.svg";
-import seriesLogo from "/assets/icon-category-tv.svg";
 
 function Recommended() {
   const [movies, setMovies] = useState([]);
@@ -32,7 +30,13 @@ function Recommended() {
               />
               <p>{movie.year}</p>
               <p style={{ backgroundColor: "#999999" }}>
-                <img src={movie.category == "Movie" ? movieLogo : seriesLogo} />
+                <img
+                  src={
+                    movie.category == "Movie"
+                      ? "/assets/icon-category-movie.svg"
+                      : "/assets/icon-category-tv.svg"
+                  }
+                />
                 {movie.category}
               </p>
               <p>{movie.rating}</p>
