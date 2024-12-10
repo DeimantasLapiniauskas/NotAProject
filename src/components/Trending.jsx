@@ -82,7 +82,11 @@ const Trending = () => {
               </svg></span>
               <span className="movie"> 
                 {/* KARTU NEVEIKIA CSS + SVG. SVG BALTAS */}
-                <img src={item.category == "Movie" ? movieLogo : seriesLogo} />
+                {item.category === 'Movie' ? (
+                <img src={movieLogo} alt="Movie Logo" className="movie" />
+              ) : (
+                <img src={seriesLogo} alt="Series Logo" className="series" />
+              )}
              </span>
             <span className="categories">{item.category}</span>
             <span className="dot"><svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 3 3" fill="none">

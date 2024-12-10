@@ -1,0 +1,44 @@
+.trending-carousel {
+  display: flex;
+  gap: 15px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  padding: 10px;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  cursor: grab; /* Default cursor */
+}
+
+.trending-carousel.dragging {
+  cursor: grabbing; /* Cursor while dragging */
+}
+
+.trending-carousel::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome/Safari */
+}
+
+.carousel-item {
+  flex: 0 0 auto; /* Prevent items from shrinking */
+  width: 250px;
+  position: relative;
+}
+
+.carousel-item img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.item-info {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.item-info h3 {
+  margin: 5px 0 0;
+}
