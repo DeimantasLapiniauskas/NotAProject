@@ -3,11 +3,14 @@ import "./searchBar.css";
 import SearchResults from "./SearchResults";
 
 function SearchBar({ entries, searching, setSearching, page }) {
+  // value = what's typed in the search bar.
+  // Suggestions = What in the entries fits the criteria
+  // hideSuggestions = used to hide everything except the bar itself onblur, and unhide it on focus.
+  // searchEntries = Array containing all suggestions that we pass over to SearchResults
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [hideSuggestions, setHideSuggestions] = useState(true);
   const [searchEntries, setSearchEntries] = useState("");
-
   useEffect(() => {
     const suggestionData = () => {
       setSuggestions(entries);
@@ -34,7 +37,11 @@ function SearchBar({ entries, searching, setSearching, page }) {
           onBlur={() => setHideSuggestions(true)}
           type="text"
           placeholder={`Search for ${
-            page === "Home" ? "Movies and TV series" : page
+            page === "Home"
+              ? "Movies and TV series"
+              : page !== "Bookmarked"
+              ? page
+              : "Bookmarked shows"
           }`}
         />
         {/* Counts suggestions */}
@@ -45,17 +52,22 @@ function SearchBar({ entries, searching, setSearching, page }) {
                 .join("")
                 .toLowerCase()
                 .includes(value.toLowerCase());
-              if (page != "Home")
+              // If page cares about category, check that. If it cares about being Bookmarked, check that. Otherwise, assume everything is correct
+              if (page !== "Home" && page !== "Bookmarked")
                 return (
                   (result && item.category === page.slice(0, -1)) ||
-                  item.category === page
+                  (result && item.category === page)
                 );
+              if (page === "Bookmarked") return result && item.isBookmarked;
               return result;
             }).length +
             " results for " +
             value}
         </div>
-        {/* Displays suggestion titles */}
+        {/* Displays suggestion titles directly under the search bar. Probably. 
+        I mean it worked when it was uncommented, but I changed a few things elsewhere afterwards 
+        so who knows.
+
         <div>
           {suggestions
             .filter((item) => {
@@ -83,7 +95,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
                 {page === "Home" && suggestion["title"]}
               </div>
             ))}
-        </div>
+        </div> */}
       </form>
       {/* Displays all results */}
       {searching && <SearchResults searchEntries={searchEntries} page={page} />}
