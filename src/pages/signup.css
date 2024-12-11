@@ -3,6 +3,7 @@
 }
 #SignupButton:hover {
   background-color: #ffffff;
+  color: #000000;
 }
 @media (max-width: 720px) {
   main {
