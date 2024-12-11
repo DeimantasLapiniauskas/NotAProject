@@ -9,9 +9,9 @@ const Movies = ({ user, setUser, entries }) => {
 
   const [searching, setSearching] = useState(false);
 
-  useEffect(() => {
-    if (!user?.isLoggedIn) navigate(`/login`);
-  }, []);
+  // useEffect(() => {
+  //   if (!user?.isLoggedIn) navigate(`/login`);
+  // }, []);
   return (
     <>
       <Nav user={user} setUser={setUser} />
