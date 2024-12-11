@@ -164,10 +164,6 @@
         }
       }
 
-      .error-span {
-        @apply text-[var(--color-red)];
-      }
-
       button {
         @apply w-full h-[4.8rem] mt-16 rounded-[6px];
       }
