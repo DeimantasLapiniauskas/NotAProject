@@ -47,25 +47,35 @@ function Signup({ setUser, users }) {
         <main>
           <h1>Sign up</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
+            <div className="input-div">
               <input
                 type="email"
                 placeholder="Email address"
                 id="EmailSignup"
                 {...register("email", { required: "Can't be empty" })}
+                className={errors.email && "error"}
               />
-              {errors.email && <span>{errors.email.message}</span>}
+              {errors.email && (
+                <span className="error-span small-font">
+                  {errors.email.message}
+                </span>
+              )}
             </div>
-            <div>
+            <div className="input-div">
               <input
                 type="password"
                 placeholder="Password"
                 id="PasswdSignup"
                 {...register("password", { required: "Can't be empty" })}
+                className={errors.password && "error"}
               />
-              {errors.password && <span>{errors.password.message}</span>}
+              {errors.password && (
+                <span className="error-span small-font">
+                  {errors.password.message}
+                </span>
+              )}
             </div>
-            <div>
+            <div className="input-div">
               <input
                 type="password"
                 placeholder="Repeat Password"
@@ -78,9 +88,12 @@ function Signup({ setUser, users }) {
                     }
                   },
                 })}
+                className={errors["password-repeat"] && "error"}
               />
               {errors["password-repeat"] && (
-                <p>{errors["password-repeat"].message}</p>
+                <span className="error-span small-font">
+                  {errors["password-repeat"].message}
+                </span>
               )}
             </div>
             <button type="submit" id="SignupButton">
