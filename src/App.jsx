@@ -16,7 +16,7 @@ const TvSeries = lazy(() => import("./pages/TvSeries"));
 const Bookmarked = lazy(() => import("./pages/Bookmarked"));
 const Signup = lazy(() => import("./pages/Signup"));
 const Login = lazy(() => import("./pages/Login"));
-
+import "./index.css"
 function App() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(() => {
@@ -62,7 +62,17 @@ function App() {
         {/* Check components and they childs, if get error show a toast */}
         <Toaster position="top-right" />
         <ErrorBoundary FallbackComponent={FallbackToasts}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <button type="button" className="bg-[var(--color-red)]" disabled>
+                <svg
+                  className="animate-spin h-50 w-50 mr-30 color-green]"
+                  viewBox="0 0 240 240"
+                ></svg>
+                Loading...
+              </button>
+            }
+          >
             <Routes>
               <Route
                 path="/signup"
@@ -106,7 +116,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="TV series" />
-                    <TvSeries user={user} setUser={setUser} entries={movies}/>
+                    <TvSeries user={user} setUser={setUser} entries={movies} />
                   </>
                 }
               />
@@ -115,7 +125,11 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Bookmarks" />
-                    <Bookmarked user={user} setUser={setUser} entries={movies} />
+                    <Bookmarked
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                    />
                   </>
                 }
               />
