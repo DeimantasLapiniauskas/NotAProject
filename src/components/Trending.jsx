@@ -1,7 +1,5 @@
 import { useRef, useEffect, useState } from "react";
 import "./Trending.css";
-import movieLogo from "../../public/assets/icon-category-movie.svg";
-import seriesLogo from "../../public/assets/icon-category-tv.svg";
 
 const Trending = ({entries}) => {
   const carouselRef = useRef(null);
@@ -102,13 +100,13 @@ setMovies(entries)
                   {item.category === "Movie" ? (
                     <img
                       className="movie"
-                      src={movieLogo}
+                      src="assets/icon-category-movie.svg"
                       alt="Movie Logo"
                     />
                   ) : (
                     <img
                       className="series"
-                      src={seriesLogo}
+                      src="assets/icon-category-tv.svg"
                       alt="Series Logo"
                     />
                   )}
