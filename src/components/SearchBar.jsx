@@ -17,22 +17,22 @@ function SearchBar({ entries, searching, setSearching, page }) {
     };
     suggestionData();
   }, []);
-
+// There's issues on submitting something that's lowercase
   function handleSubmit(e) {
     e.preventDefault();
     let Vals = e.target.querySelector("input").value;
-    setValue(Vals);
-    setSearchEntries(entries.filter((entry) => entry.title.includes(Vals)));
-    setSearching(true);
+    if(Vals.length>3){
+    setValue(Vals.toLowerCase());
+    setSearchEntries(entries.filter((entry) => entry.title.toLowerCase().includes(Vals.toLowerCase())));
+    setSearching(true);}
     return;
   }
-
-  // THE DAMN COUNT AND SUGGESTION TITLES DON'T WORK ON TV SERIES??? also make it work on bookmarked.
   return (
     <>
       <form onSubmit={handleSubmit}>
         {/* The input field */}
         <input
+        style={{"color":"#999999"}}
           onFocus={() => setHideSuggestions(false)}
           onBlur={() => setHideSuggestions(true)}
           type="text"
