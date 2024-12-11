@@ -127,7 +127,7 @@
 
   .login,
   .signup {
-    @apply px-[2.4rem] pt-[4.8rem] flex flex-col gap-[5.84rem];
+    @apply px-[2.4rem] md:px-[18.4rem] xl:px-[52rem] pt-[4.8rem] md:pt-[9.6rem] xl:pt-[9.6rem] flex flex-col gap-[5.84rem];
 
     header img {
       @apply w-[3.2rem] h-[2.56rem] mx-auto;
