@@ -8,9 +8,9 @@ import SearchBar from "../components/SearchBar";
 const Bookmarked = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
   const [searching, setSearching] = useState(false);
-  // useEffect(() => {
-  //   if (!user?.isLoggedIn) navigate(`/login`);
-  // }, []);
+  useEffect(() => {
+    if (!user?.isLoggedIn) navigate(`/login`);
+  }, []);
   return (
     <>
       <Nav user={user} setUser={setUser} />
