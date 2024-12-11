@@ -4,15 +4,16 @@ import { useNavigate } from "react-router";
 import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const Home = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
 
   const [searching, setSearching] = useState(false);
 
-  // useEffect(() => {
-  //   if (!user?.isLoggedIn) navigate(`/login`);
-  // }, []);
+  useEffect(() => {
+    if (!user?.isLoggedIn) navigate(`/login`);
+  }, []);
   return (
     <>
       <Nav user={user} setUser={setUser} />

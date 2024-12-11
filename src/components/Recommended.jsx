@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { getAll } from "../../helpers/CRUD";
-import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Recommended({ entries }) {
