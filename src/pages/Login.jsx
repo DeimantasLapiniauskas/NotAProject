@@ -38,42 +38,54 @@ function Login({ users, setUser }) {
 
   return (
     <ErrorBoundary FallbackComponent={FallbackComponent}>
-      <header>
-        <img src="/assets/logo.svg" alt="Site logo" />
-      </header>
-      <main>
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <input
-              type="email"
-              placeholder="Email address"
-              id="EmailLogin"
-              {...register("email", { required: "Email is required" })}
-            />
-            {errors.email && <span>{errors.email.message}</span>}
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="Password"
-              id="PasswdLogin"
-              {...register("password", { required: "Password is required" })}
-            />
-            {errors.password && <span>{errors.password.message}</span>}
-          </div>
-          <button type="submit" id="LoginButton">
-            Login to your account
-          </button>
-        </form>
-        {error && <p>{error}</p>}
-      </main>
-      <footer id="LoginFooter">
-        <span>{`Don't have an account?`}</span>
-        <a href="/signup" id="SignUpLink">
-          Sign Up
-        </a>
-      </footer>
+      <section className="login">
+        <header>
+          <img src="/assets/logo.svg" alt="Site logo" />
+        </header>
+        <main>
+          <h1>Login</h1>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="input-div">
+              <input
+                type="email"
+                placeholder="Email address"
+                id="EmailLogin"
+                {...register("email", { required: "Email is required" })}
+                className={errors.email && "error"}
+              />
+              {errors.email && (
+                <span className="error-span small-font">
+                  {errors.email.message}
+                </span>
+              )}
+            </div>
+            <div className="input-div">
+              <input
+                type="password"
+                placeholder="Password"
+                id="PasswdLogin"
+                {...register("password", { required: "Password is required" })}
+                className={errors.password && "error"}
+              />
+              {errors.password && (
+                <span className="error-span small-font">
+                  {errors.password.message}
+                </span>
+              )}
+            </div>
+            <button type="submit" id="LoginButton">
+              Login to your account
+            </button>
+          </form>
+          {error && <p>{error}</p>}
+          <p id="LoginFooter">
+            <span>{`Don't have an account?`}</span>
+            <a href="/signup" id="SignUpLink">
+              Sign Up
+            </a>
+          </p>
+        </main>
+      </section>
     </ErrorBoundary>
   );
 }

@@ -22,7 +22,7 @@
   }
 
   #root {
-    @apply bg-[var(--color-dark-blue)] font-[400];
+    @apply bg-[var(--color-dark-blue)] font-[400] min-h-[100dvh];
 
     .pagecontent {
       @apply pt-10 sm:pt-20 lg:pl-40 lg:pt-10 px-[1.6rem];
@@ -55,10 +55,10 @@
 
   p {
     @apply text-2xl;
+  }
 
-    .small-font {
-      @apply text-[1.3rem];
-    }
+  .small-font {
+    @apply text-[1.3rem];
   }
 }
 
@@ -120,6 +120,59 @@
 
         img {
           @apply w-4 h-4;
+        }
+      }
+    }
+  }
+
+  .login,
+  .signup {
+    @apply px-[2.4rem] pt-[4.8rem] flex flex-col gap-[5.84rem];
+
+    header img {
+      @apply w-[3.2rem] h-[2.56rem] mx-auto;
+    }
+
+    main {
+      @apply px-[2.4rem] pt-[2.4rem] pb-[3.2rem] bg-[var(--color-semi-dark-blue)] rounded-[10px] text-2xl;
+
+      h1 {
+        @apply tracking-[-0.5px] mb-16;
+      }
+
+      input {
+        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.4rem] pb-[1.7rem] mb-[2.4rem] hover:border-[var(--color-pure-white)] focus-visible:outline-none focus:border-[var(--color-pure-white)] caret-[var(--color-red)];
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: var(--color-pure-white);
+        }
+
+        &.error {
+          @apply border-[var(--color-red)];
+        }
+      }
+
+      .input-div {
+        @apply relative;
+
+        .error-span {
+          @apply text-[var(--color-red)] absolute top-[.2rem] right-[1.7rem];
+        }
+      }
+
+      button {
+        @apply w-full h-[4.8rem] mt-16 rounded-[6px];
+      }
+
+      p {
+        @apply w-max mx-auto mt-[2.4rem] flex gap-[0.9rem];
+
+        a {
+          @apply text-[var(--color-red)];
         }
       }
     }
