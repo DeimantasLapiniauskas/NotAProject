@@ -17,7 +17,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
     };
     suggestionData();
   }, []);
-// There's issues on submitting something that's lowercase
+
   function handleSubmit(e) {
     e.preventDefault();
     let Vals = e.target.querySelector("input").value;
@@ -25,8 +25,10 @@ function SearchBar({ entries, searching, setSearching, page }) {
     setValue(Vals.toLowerCase());
     setSearchEntries(entries.filter((entry) => entry.title.toLowerCase().includes(Vals.toLowerCase())));
     setSearching(true);}
+    else setSearching(false)
     return;
   }
+
   return (
     <>
       <form onSubmit={handleSubmit}>

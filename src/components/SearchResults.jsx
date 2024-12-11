@@ -1,4 +1,4 @@
-import Fuck from "./Fuck";
+import SearchVideoCard from "./SearchVideoCard";
 
 function SearchResults({ searchEntries, page }) {
   return (
@@ -8,7 +8,7 @@ function SearchResults({ searchEntries, page }) {
         if (movie.isBookmarked === true && page === "Bookmarked") {
           return (
             <>
-              <Fuck movie={movie} index={index} />
+              <SearchVideoCard movie={movie} index={index} />
             </>
           );
         }
@@ -19,7 +19,7 @@ function SearchResults({ searchEntries, page }) {
         ) {
           return (
             <>
-              <Fuck movie={movie} index={index} />
+              <SearchVideoCard movie={movie} index={index} />
             </>
           );
         }

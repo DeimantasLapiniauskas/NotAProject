@@ -1,4 +1,5 @@
 import Recommended from "../components/Recommended";
+import Trending from "../components/Trending";
 import { useNavigate } from "react-router";
 import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
@@ -22,7 +23,7 @@ const Home = ({ user, setUser, entries }) => {
           setSearching={setSearching}
           page="Home"
         />
-        {!searching && <Recommended entries={entries} searching={searching} />}
+        {!searching && <div><Trending /><Recommended entries={entries} /></div>}
       </div>
     </>
   );

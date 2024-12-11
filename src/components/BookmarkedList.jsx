@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { getAll } from "../../helpers/CRUD";
 import { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function MoviesList() {
   const [bookmarked, setBookmarked] = useState([]);
@@ -25,7 +26,7 @@ function MoviesList() {
           if (video.isBookmarked && video.category === "Movie") {
             return (
               <div key={index} className="video-card">
-                <img
+                <LazyLoadImage
                   src={video.thumbnail.regular.small.substring(1)}
                   alt={video.title + "'s image"}
                   className="video-card__img"

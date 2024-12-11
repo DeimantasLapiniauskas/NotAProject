@@ -22,7 +22,7 @@ const Movies = ({ user, setUser, entries }) => {
           setSearching={setSearching}
           page="Movies"
         />
-        {!searching && <MoviesList entries={entries} searching={searching} />}
+        {!searching && <MoviesList entries={entries} />}
       </div>
     </>
   );

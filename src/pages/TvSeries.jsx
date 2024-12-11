@@ -20,7 +20,7 @@ const TvSeries = ({ user, setUser, entries }) => {
           setSearching={setSearching}
           page="TV Series"
         />
-        {!searching && <SeriesList entries={entries} searching={searching}/>}
+        {!searching && <SeriesList entries={entries} />}
       </div>
     </>
   );

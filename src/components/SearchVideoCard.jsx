@@ -1,6 +1,6 @@
 import movieLogo from "/assets/icon-category-movie.svg";
 import seriesLogo from "/assets/icon-category-tv.svg";
-function Fuck({ movie, index }) {
+function SearchVideoCard({ movie, index }) {
   return (
     <section className="video-list">
       <div className="video-card" key={index}>
@@ -24,4 +24,4 @@ function Fuck({ movie, index }) {
     </section>
   );
 }
-export default Fuck;
+export default SearchVideoCard;
