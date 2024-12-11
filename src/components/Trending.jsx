@@ -60,70 +60,77 @@ const Trending = () => {
   const trendingMovie = movies.filter((item) => item.isTrending);
 
   return (
-    <div className="trending" ref={carouselRef}>
-      {trendingMovie.map((item, index) => (
-        <div key={index} className="carousel">
-          {console.log(item)}
-          <img
-            src={item.thumbnail.trending.small.substring(1)}
-            alt={item.title}
-          />
-          <div>
-            <button className="trending__bookmark"></button>
-          </div>
-          <div className="trending__content">
-            <div className="trending__content--data">
-              <span className="categories">{item.year}</span>
-              <span className="dot">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="3"
-                  height="3"
-                  viewBox="0 0 3 3"
-                  fill="none"
-                >
-                  <circle
-                    opacity="0.5"
-                    cx="1.5"
-                    cy="1.5"
-                    r="1.5"
-                    fill="white"
-                  />
-                </svg>
-              </span>
-              <span className="movie">
-                {/* KARTU NEVEIKIA CSS + SVG. SVG BALTAS */}
-                {item.category === "Movie" ? (
-                  <img src={movieLogo} alt="Movie Logo" className="movie" />
-                ) : (
-                  <img src={seriesLogo} alt="Series Logo" className="series" />
-                )}
-              </span>
-              <span className="categories">{item.category}</span>
-              <span className="dot">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="3"
-                  height="3"
-                  viewBox="0 0 3 3"
-                  fill="none"
-                >
-                  <circle
-                    opacity="0.5"
-                    cx="1.5"
-                    cy="1.5"
-                    r="1.5"
-                    fill="white"
-                  />
-                </svg>
-              </span>
-              <span className="categories">{item.rating}</span>
+    <>
+      <h4 className="video-list__title">Trending</h4>
+      <div className="trending" ref={carouselRef}>
+        {trendingMovie.map((item, index) => (
+          <div key={index} className="carousel">
+            {console.log(item)}
+            <img
+              src={item.thumbnail.trending.small.substring(1)}
+              alt={item.title}
+            />
+            <div>
+              <button className="trending__bookmark"></button>
             </div>
-            <h3>{item.title}</h3>
+            <div className="trending__content">
+              <div className="trending__content--data">
+                <span className="categories">{item.year}</span>
+                <span className="dot">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="3"
+                    height="3"
+                    viewBox="0 0 3 3"
+                    fill="none"
+                  >
+                    <circle
+                      opacity="0.5"
+                      cx="1.5"
+                      cy="1.5"
+                      r="1.5"
+                      fill="white"
+                    />
+                  </svg>
+                </span>
+                <span className="movie">
+                  {/* KARTU NEVEIKIA CSS + SVG. SVG BALTAS */}
+                  {item.category === "Movie" ? (
+                    <img src={movieLogo} alt="Movie Logo" className="movie" />
+                  ) : (
+                    <img
+                      src={seriesLogo}
+                      alt="Series Logo"
+                      className="series"
+                    />
+                  )}
+                </span>
+                <span className="categories">{item.category}</span>
+                <span className="dot">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="3"
+                    height="3"
+                    viewBox="0 0 3 3"
+                    fill="none"
+                  >
+                    <circle
+                      opacity="0.5"
+                      cx="1.5"
+                      cy="1.5"
+                      r="1.5"
+                      fill="white"
+                    />
+                  </svg>
+                </span>
+                <span className="categories">{item.rating}</span>
+              </div>
+              <h3>{item.title}</h3>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 };
 
