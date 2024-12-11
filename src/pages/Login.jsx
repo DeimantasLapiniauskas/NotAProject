@@ -30,7 +30,7 @@ function Login({ users, setUser }) {
 
       setUser(updatedUser);
 
-      sessionStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem("user", JSON.stringify(updatedUser));
 
       navigate("/home");
     } catch (err) {
