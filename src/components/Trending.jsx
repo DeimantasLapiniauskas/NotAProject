@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import "./Trending.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Trending = ({entries}) => {
   const carouselRef = useRef(null);
@@ -62,7 +63,7 @@ setMovies(entries)
       <div className="trending" ref={carouselRef}>
         {trendingMovie.map((item, index) => (
           <div key={index} className="carousel">
-            <img
+            <LazyLoadImage
               className="carousel__image"
               src={item.thumbnail.trending.small.substring(1)}
               srcSet={`${item.thumbnail.trending.large.substring(1)} 768w`}
