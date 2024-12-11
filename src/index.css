@@ -142,6 +142,14 @@
 
       input {
         @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.6rem]  mb-[2.4rem] focus-visible:outline-none;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: var(--color-pure-white);
+        }
       }
 
       button {
