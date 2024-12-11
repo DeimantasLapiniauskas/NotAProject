@@ -141,7 +141,7 @@
       }
 
       input {
-        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.6rem]  mb-[2.4rem] focus-visible:outline-none;
+        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.6rem]  mb-[2.4rem] hover:border-[var(--color-pure-white)] focus-visible:outline-none focus:border-[var(--color-pure-white)] caret-[var(--color-red)];
 
         &:-webkit-autofill,
         &:-webkit-autofill:hover,
