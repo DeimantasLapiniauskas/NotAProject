@@ -1,3 +1,4 @@
+// We write imports here because write it inside if else (line 17) is a crazy idea
 import movieLogo from "/assets/icon-category-movie.svg";
 import seriesLogo from "/assets/icon-category-tv.svg";
 function SearchVideoCard({ movie, index }) {
