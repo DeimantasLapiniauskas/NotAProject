@@ -20,8 +20,8 @@ function MoviesList() {
   }, []);
   return (
     <>
+      <h4 className="video-list__title">Bookmarked Movies</h4>
       <section className="video-list">
-        <h4 className="video-list__title">Bookmarked Movies</h4>
         {bookmarked.map((video, index) => {
           if (video.isBookmarked && video.category === "Movie") {
             return (
@@ -55,8 +55,8 @@ function MoviesList() {
         })}
       </section>
 
+      <h4 className="video-list__title">Bookmarked TV Series</h4>
       <section className="video-list mt-6">
-        <h4 className="video-list__title">Bookmarked TV Series</h4>
         {bookmarked.map((video, index) => {
           if (video.isBookmarked && video.category === "TV Series") {
             return (

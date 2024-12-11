@@ -19,34 +19,36 @@ function MoviesList() {
     getMovies();
   }, []);
   return (
-    <section className="video-list">
+    <>
       <h4 className="video-list__title">Movies</h4>
-      {movies.map((movie, index) => {
-        if (movie.category === "Movie") {
-          return (
-            <div key={index} className="video-card">
-              <LazyLoadImage
-                src={movie.thumbnail.regular.small.substring(1)}
-                alt={movie.title + "'s image"}
-                className="video-card__img"
-              />
-              <div className="video-card__details">
-                <p className="video-card__year">{movie.year}</p>
-                <span>&#8226;</span>
-                <p className="video-card__icon">
-                  <img src="/assets/icon-category-movie.svg" />
-                  {movie.category}
-                </p>
-                <span>&#8226;</span>
-                <p className="video-card__rating">{movie.rating}</p>
+      <section className="video-list">
+        {movies.map((movie, index) => {
+          if (movie.category === "Movie") {
+            return (
+              <div key={index} className="video-card">
+                <LazyLoadImage
+                  src={movie.thumbnail.regular.small.substring(1)}
+                  alt={movie.title + "'s image"}
+                  className="video-card__img"
+                />
+                <div className="video-card__details">
+                  <p className="video-card__year">{movie.year}</p>
+                  <span>&#8226;</span>
+                  <p className="video-card__icon">
+                    <img src="/assets/icon-category-movie.svg" />
+                    {movie.category}
+                  </p>
+                  <span>&#8226;</span>
+                  <p className="video-card__rating">{movie.rating}</p>
+                </div>
+                <h6 className="video-card__title">{movie.title}</h6>
               </div>
-              <h6 className="video-card__title">{movie.title}</h6>
-            </div>
-          );
-        }
-        return;
-      })}
-    </section>
+            );
+          }
+          return;
+        })}
+      </section>
+    </>
   );
 }
 
