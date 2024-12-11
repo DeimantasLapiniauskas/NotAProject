@@ -5,9 +5,14 @@ const Nav = ({ user, setUser }) => {
   const navigate = useNavigate();
   const logOut = async () => {
     try {
-      await updateOne("users", user.id, { isLoggedIn: false });
+      const updatedUser = await updateOne("users", user.id, {
+        isLoggedIn: false,
+      });
 
-      setUser({ ...user, isLoggedIn: false });
+      setUser(updatedUser);
+
+      sessionStorage.setItem("user", JSON.stringify(updatedUser));
+
       navigate("/login");
     } catch (error) {
       console.error("Error nav:", error);
