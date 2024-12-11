@@ -1,26 +1,10 @@
-import { useEffect } from "react";
-import { getAll } from "../../helpers/CRUD";
-import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-function Recommended() {
-  const [movies, setMovies] = useState([]);
-  const getMovies = async () => {
-    try {
-      const movies = await getAll("videos");
-      setMovies(movies);
-    } catch (err) {
-      console.error("Error fetching movies:", err);
-    }
-  };
-
-  useEffect(() => {
-    getMovies();
-  }, []);
+function Recommended({ entries }) {
   return (
     <section className="video-list">
       <h4 className="video-list__title">Recommended for you</h4>
-      {movies.map((movie, index) => {
+      {entries.map((movie, index) => {
         if (!movie.isTrending) {
           return (
             <div key={index} className="video-card">
