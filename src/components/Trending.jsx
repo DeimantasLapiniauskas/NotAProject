@@ -49,7 +49,7 @@ const Trending = ({entries}) => {
 
   const [movies, setMovies] = useState([]);
 
-  const getMovies = async () => {
+  const getMovies = () => {
 setMovies(entries)
   };
   useEffect(() => {
