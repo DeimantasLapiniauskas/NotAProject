@@ -150,6 +150,22 @@
           -webkit-background-clip: text;
           -webkit-text-fill-color: var(--color-pure-white);
         }
+
+        &.error {
+          @apply border-[var(--color-red)];
+        }
+      }
+
+      .input-div {
+        @apply relative;
+
+        .error-span {
+          @apply text-[var(--color-red)] absolute top-[.2rem] right-[1.7rem];
+        }
+      }
+
+      .error-span {
+        @apply text-[var(--color-red)];
       }
 
       button {
