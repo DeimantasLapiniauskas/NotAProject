@@ -25,16 +25,17 @@ function SearchBar({ entries, searching, setSearching, page }) {
     setValue(Vals.toLowerCase());
     setSearchEntries(entries.filter((entry) => entry.title.toLowerCase().includes(Vals.toLowerCase())));
     setSearching(true);}
-    else setSearching(false)
+    else {
+      setValue("")
+      setSearching(false)}
     return;
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="search__container">
         {/* The input field */}
         <input
-        style={{"color":"#999999"}}
           onFocus={() => setHideSuggestions(false)}
           onBlur={() => setHideSuggestions(true)}
           type="text"
@@ -47,6 +48,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
           }`}
         />
         {/* Counts suggestions */}
+        {value &&
         <div className={`suggestion ${hideSuggestions && "suggestion-hidden"}`}>
           {"found " +
             suggestions.filter((item) => {
@@ -65,7 +67,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
             }).length +
             " results for " +
             value}
-        </div>
+        </div>}
         {/* Displays suggestion titles directly under the search bar. Probably. 
         I mean it worked when it was uncommented, but I changed a few things elsewhere afterwards 
         so who knows.

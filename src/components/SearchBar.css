@@ -1,3 +1,29 @@
 .suggestion-hidden{
     visibility: hidden;
 }
+.search__container {
+    display: flex;
+    align-items: center;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+    width: 18.75;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .search__container input {
+    border: none;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .search__container input::placeholder {
+    opacity: 0.4979;
+  }
