@@ -93,7 +93,7 @@
   }
 
   .video-list {
-    @apply grid grid-cols-2 gap-6 md:grid-cols-3;
+    @apply grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4;
 
     .video-list__title {
       @apply tracking-[-0.31px] text-[2rem] leading-[2.5rem] mb-[.9rem] col-span-2;
