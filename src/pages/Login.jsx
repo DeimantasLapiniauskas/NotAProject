@@ -30,6 +30,8 @@ function Login({ users, setUser }) {
 
       setUser(updatedUser);
 
+      sessionStorage.setItem("user", JSON.stringify(user));
+
       navigate("/home");
     } catch (err) {
       setError(err.message);
