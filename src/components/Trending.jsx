@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState } from "react";
 import { getAll } from "../../helpers/CRUD";
 import "./Trending.css";
-import movieLogo from "/assets/icon-category-movie.svg";
-import seriesLogo from "/assets/icon-category-tv.svg";
+import movieLogo from "../../public/assets/icon-category-movie.svg";
+import seriesLogo from "../../public/assets/icon-category-tv.svg";
 
 const Trending = () => {
   const carouselRef = useRef(null);
@@ -26,7 +26,7 @@ const Trending = () => {
       if (!isDragging) return;
       e.preventDefault();
       const x = e.pageX - carousel.offsetLeft;
-      const walk = (x - startX) * 2.5;
+      const walk = (x - startX) * 3;
       carousel.scrollLeft = scrollLeft - walk;
     };
 
@@ -49,7 +49,7 @@ const Trending = () => {
   }, []);
 
   const [movies, setMovies] = useState([]);
-  console.log(movies);
+
   const getMovies = async () => {
     const movies = await getAll("videos");
     setMovies(movies);
@@ -57,6 +57,7 @@ const Trending = () => {
   useEffect(() => {
     getMovies();
   }, []);
+
   const trendingMovie = movies.filter((item) => item.isTrending);
 
   return (
@@ -67,12 +68,19 @@ const Trending = () => {
           <div key={index} className="carousel">
             {console.log(item)}
             <img
+              className="carousel__image"
               src={item.thumbnail.trending.small.substring(1)}
+              srcSet={`${item.thumbnail.trending.large.substring(1)} 768w`}
+              sizes="(min-width: 768) 768px, 100vw"
               alt={item.title}
             />
-            <div>
-              <button className="trending__bookmark"></button>
-            </div>
+            {/* IMG gali kilti bedu su pasikeitimu i mazesnius ekranus. */}
+            {/* Use bookmark as another component */}
+            {/* <div>
+              <button className="trending__bookmark">
+                
+              </button>
+            </div> */}
             <div className="trending__content">
               <div className="trending__content--data">
                 <span className="categories">{item.year}</span>
@@ -93,15 +101,18 @@ const Trending = () => {
                     />
                   </svg>
                 </span>
-                <span className="movie">
-                  {/* KARTU NEVEIKIA CSS + SVG. SVG BALTAS */}
+                <span>
                   {item.category === "Movie" ? (
-                    <img src={movieLogo} alt="Movie Logo" className="movie" />
+                    <img
+                      className="movie"
+                      src={movieLogo}
+                      alt="Movie Logo"
+                    />
                   ) : (
                     <img
+                      className="series"
                       src={seriesLogo}
                       alt="Series Logo"
-                      className="series"
                     />
                   )}
                 </span>
