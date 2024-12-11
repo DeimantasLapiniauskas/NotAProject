@@ -55,10 +55,10 @@
 
   p {
     @apply text-2xl;
+  }
 
-    .small-font {
-      @apply text-[1.3rem];
-    }
+  .small-font {
+    @apply text-[1.3rem];
   }
 }
 
@@ -141,7 +141,7 @@
       }
 
       input {
-        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.6rem]  mb-[2.4rem] hover:border-[var(--color-pure-white)] focus-visible:outline-none focus:border-[var(--color-pure-white)] caret-[var(--color-red)];
+        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.4rem] pb-[1.7rem] mb-[2.4rem] hover:border-[var(--color-pure-white)] focus-visible:outline-none focus:border-[var(--color-pure-white)] caret-[var(--color-red)];
 
         &:-webkit-autofill,
         &:-webkit-autofill:hover,

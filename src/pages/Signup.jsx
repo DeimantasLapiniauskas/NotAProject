@@ -56,7 +56,9 @@ function Signup({ setUser, users }) {
                 className={errors.email && "error"}
               />
               {errors.email && (
-                <span className="error-span">{errors.email.message}</span>
+                <span className="error-span small-font">
+                  {errors.email.message}
+                </span>
               )}
             </div>
             <div className="input-div">
@@ -68,7 +70,9 @@ function Signup({ setUser, users }) {
                 className={errors.password && "error"}
               />
               {errors.password && (
-                <span className="error-span">{errors.password.message}</span>
+                <span className="error-span small-font">
+                  {errors.password.message}
+                </span>
               )}
             </div>
             <div className="input-div">
@@ -87,7 +91,7 @@ function Signup({ setUser, users }) {
                 className={errors["password-repeat"] && "error"}
               />
               {errors["password-repeat"] && (
-                <span className="error-span">
+                <span className="error-span small-font">
                   {errors["password-repeat"].message}
                 </span>
               )}
