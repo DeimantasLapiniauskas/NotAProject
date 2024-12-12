@@ -1,7 +1,9 @@
 import SearchVideoCard from "./SearchVideoCard";
+
 function SearchResults({ searchEntries, page }) {
   return (
     <>
+        <section className="video-list">
       {searchEntries.map((movie, index) => {
         // if page is the attention whore known as "Bookmarked", make a special exception
         if (movie.isBookmarked === true && page === "Bookmarked") {
@@ -15,9 +17,9 @@ function SearchResults({ searchEntries, page }) {
           return <SearchVideoCard movie={movie} key={index} />;
         }
       })}
+      </section>
     </>
   );
 }
 
 export default SearchResults;
-// Search results returns entry if it's bookmarked, even if it doesn't fit the category.
