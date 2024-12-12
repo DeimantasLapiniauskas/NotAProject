@@ -30,6 +30,7 @@ function VideoCard({ movie, index }) {
                 ? "/assets/icon-category-movie.svg"
                 : "/assets/icon-category-tv.svg"
             }
+            alt="icon"
           />
           {movie.category}
         </p>
