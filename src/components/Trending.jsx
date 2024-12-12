@@ -3,7 +3,7 @@ import "./Trending.css";
 import movieLogo from "../../public/assets/icon-category-movie.svg";
 import seriesLogo from "../../public/assets/icon-category-tv.svg";
 
-const Trending = ({entries}) => {
+const Trending = ({ entries }) => {
   const carouselRef = useRef(null);
   let isDragging = false;
   let startX;
@@ -50,7 +50,7 @@ const Trending = ({entries}) => {
   const [movies, setMovies] = useState([]);
 
   const getMovies = () => {
-setMovies(entries)
+    setMovies(entries);
   };
   useEffect(() => {
     getMovies();
@@ -100,11 +100,7 @@ setMovies(entries)
                 </span>
                 <span>
                   {item.category === "Movie" ? (
-                    <img
-                      className="movie"
-                      src={movieLogo}
-                      alt="Movie Logo"
-                    />
+                    <img className="movie" src={movieLogo} alt="Movie Logo" />
                   ) : (
                     <img
                       className="series"
