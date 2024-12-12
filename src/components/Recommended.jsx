@@ -1,4 +1,5 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import playIcon from "./../../public/assets/icon-play.svg";
 
 function Recommended({ entries }) {
   return (
@@ -9,11 +10,16 @@ function Recommended({ entries }) {
           return (
             <div key={index} className="video-card">
               <p>{movie.isTrending && "trending"}</p>
-              <LazyLoadImage
+              <div className="video-card__main"><LazyLoadImage
                 src={movie.thumbnail.regular.small.substring(1)}
                 alt={movie.title + "'s image"}
                 className="video-card__img"
               />
+          <div className="video-card__overlay">
+            <div className="play">
+                <img src={playIcon} className="play-icon" />
+                <span className="play-text">Play</span>
+                </div></div></div>
               <div className="video-card__details">
                 <p className="video-card__year">{movie.year}</p>
                 <span>&#8226;</span>
