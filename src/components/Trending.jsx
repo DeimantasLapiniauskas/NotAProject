@@ -1,10 +1,9 @@
 import { useRef, useEffect, useState } from "react";
-import { getAll } from "../../helpers/CRUD";
 import "./Trending.css";
 import movieLogo from "../../public/assets/icon-category-movie.svg";
 import seriesLogo from "../../public/assets/icon-category-tv.svg";
 
-const Trending = () => {
+const Trending = ({entries}) => {
   const carouselRef = useRef(null);
   let isDragging = false;
   let startX;
@@ -50,9 +49,8 @@ const Trending = () => {
 
   const [movies, setMovies] = useState([]);
 
-  const getMovies = async () => {
-    const movies = await getAll("videos");
-    setMovies(movies);
+  const getMovies = () => {
+setMovies(entries)
   };
   useEffect(() => {
     getMovies();
@@ -66,7 +64,6 @@ const Trending = () => {
       <div className="trending" ref={carouselRef}>
         {trendingMovie.map((item, index) => (
           <div key={index} className="carousel">
-            {console.log(item)}
             <img
               className="carousel__image"
               src={item.thumbnail.trending.small.substring(1)}

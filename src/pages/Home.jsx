@@ -1,11 +1,14 @@
-import { useEffect } from "react";
 import Recommended from "../components/Recommended";
 import Trending from "../components/Trending";
 import { useNavigate } from "react-router";
 import Nav from "../components/Nav";
+import SearchBar from "../components/SearchBar";
+import { useState, useEffect } from "react";
 
-const Home = ({ user, setUser }) => {
+const Home = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
+
+  const [searching, setSearching] = useState(false);
 
   useEffect(() => {
     if (!user?.isLoggedIn) navigate(`/login`);
@@ -14,8 +17,18 @@ const Home = ({ user, setUser }) => {
     <>
       <Nav user={user} setUser={setUser} />
       <div className="pagecontent">
-        <Trending />
-        <Recommended />
+        <SearchBar
+          entries={entries}
+          searching={searching}
+          setSearching={setSearching}
+          page="Home"
+        />
+        {!searching && (
+          <div>
+            <Trending entries={entries}/>
+            <Recommended entries={entries} />
+          </div>
+        )}
       </div>
     </>
   );
