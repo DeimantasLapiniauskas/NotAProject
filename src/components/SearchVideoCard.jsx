@@ -1,5 +1,3 @@
-import movieLogo from "/assets/icon-category-movie.svg";
-import seriesLogo from "/assets/icon-category-tv.svg";
 function SearchVideoCard({ movie, index }) {
   return (
     <section className="video-list">
@@ -13,7 +11,13 @@ function SearchVideoCard({ movie, index }) {
           <p className="video-card__year">{movie.year}</p>
           <span>&#8226;</span>
           <p className="video-card__icon">
-            <img src={movie.category == "Movie" ? movieLogo : seriesLogo} />
+            <img
+              src={
+                movie.category == "Movie"
+                  ? "assets/icon-category-movie.svg"
+                  : "assets/icon-category-tv.svg"
+              }
+            />
             {movie.category}
           </p>
           <span>&#8226;</span>
