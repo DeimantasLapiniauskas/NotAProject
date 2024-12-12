@@ -111,9 +111,9 @@
       p {
         @apply text-[1.1rem];
 
-        /* img {
+        img {
           @apply inline-block;
-        } */
+        }
       }
 
       .video-card__icon {
@@ -165,9 +165,6 @@
         }
       }
 
-      button {
-        @apply w-full h-[4.8rem] mt-16 rounded-[6px];
-      }
 
       p {
         @apply w-max mx-auto mt-[2.4rem] flex gap-[0.9rem];
@@ -182,12 +179,25 @@
   .login {
     main {
       @apply pb-[3.2rem];
+      button {
+        @apply w-full h-[4.8rem] mt-16 rounded-[6px];
+      }
     }
   }
 
   .signup {
+    @apply md:mt-[0.8rem] lg:mt-[0.2rem];
+    header img {
+      @apply max-md:mb-[1.26rem];
+    }
     main {
       @apply pb-[2.4rem];
+      button {
+        @apply w-full h-[4.8rem] max-sm:mt-16 md:mt-[2.3rem] rounded-[6px];
+      }
+    }
+    #SignupFooter {
+      @apply md:pb-[0.8rem]
     }
   }
 }
