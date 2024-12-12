@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import "./Trending.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-const Trending = ({entries}) => {
+const Trending = ({ entries }) => {
   const carouselRef = useRef(null);
   let isDragging = false;
   let startX;
@@ -49,7 +49,7 @@ const Trending = ({entries}) => {
   const [movies, setMovies] = useState([]);
 
   const getMovies = () => {
-setMovies(entries)
+    setMovies(entries);
   };
   useEffect(() => {
     getMovies();
