@@ -1,4 +1,4 @@
-import SearchVideoCard from "./SearchVideoCard";
+import SearchVideoCard from "./VideoCard";
 
 function SearchResults({ searchEntries, page }) {
   return (

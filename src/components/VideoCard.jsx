@@ -1,7 +1,7 @@
 import movieLogo from "/assets/icon-category-movie.svg";
 import seriesLogo from "/assets/icon-category-tv.svg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-function SearchVideoCard({ movie, index }) {
+function VideoCard({ movie, index }) {
   return (
 
       <div className="video-card" key={index}>
@@ -25,4 +25,4 @@ function SearchVideoCard({ movie, index }) {
 
   );
 }
-export default SearchVideoCard;
+export default VideoCard;

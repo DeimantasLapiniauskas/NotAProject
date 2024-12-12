@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import SearchVideoCard from "./SearchVideoCard";
+import VideoCard from "./VideoCard";
 
 function MoviesList({ entries }) {
   const [bookmarked, setBookmarked] = useState([]);
@@ -22,7 +22,7 @@ function MoviesList({ entries }) {
         <h4 className="video-list__title">Bookmarked Movies</h4>
         {bookmarked.map((video, index) => {
           if (video.isBookmarked && video.category === "Movie") {
-            return <SearchVideoCard key={index} movie={video} />;
+            return <VideoCard key={index} movie={video} />;
           }
           return;
         })}
@@ -32,7 +32,7 @@ function MoviesList({ entries }) {
         <h4 className="video-list__title">Bookmarked TV Series</h4>
         {bookmarked.map((video, index) => {
           if (video.isBookmarked && video.category === "TV Series") {
-            return <SearchVideoCard key={index} movie={video} />;
+            return <VideoCard key={index} movie={video} />;
           }
           return;
         })}

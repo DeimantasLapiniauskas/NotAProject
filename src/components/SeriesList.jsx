@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import SearchVideoCard from "./SearchVideoCard";
+import VideoCard from "./VideoCard";
 
 function SeriesList({ entries }) {
   const [series, setSeries] = useState([]);
@@ -20,7 +20,7 @@ function SeriesList({ entries }) {
       <h4 className="video-list__title">TV Series</h4>
       {series.map((series, index) => {
         if (series.category === "TV Series") {
-          return <SearchVideoCard key={index} movie={series} />;
+          return <VideoCard key={index} movie={series} />;
         }
         return;
       })}

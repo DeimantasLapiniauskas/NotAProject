@@ -1,4 +1,4 @@
-import SearchVideoCard from "./SearchVideoCard";
+import VideoCard from "./VideoCard";
 import { useState, useEffect } from "react";
 
 function Recommended({ entries }) {
@@ -20,7 +20,7 @@ function Recommended({ entries }) {
       <h4 className="video-list__title">Recommended for you</h4>
       {recc.map((video, index) => {
         if (video.isTrending) return;
-        return <SearchVideoCard key={index} movie={video} />;
+        return <VideoCard key={index} movie={video} />;
       })}
     </section>
   );
