@@ -3,8 +3,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 function Recommended({ entries }) {
   return (
     <>
-      <h4 className="video-list__title">Recommended for you</h4>
       <section className="video-list">
+        <h4 className="video-list__title">Recommended for you</h4>
         {entries.map((movie, index) => {
           if (!movie.isTrending) {
             return (

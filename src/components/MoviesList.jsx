@@ -20,8 +20,8 @@ function MoviesList() {
   }, []);
   return (
     <>
-      <h4 className="video-list__title">Movies</h4>
       <section className="video-list">
+        <h4 className="video-list__title">Movies</h4>
         {movies.map((movie, index) => {
           if (movie.category === "Movie") {
             return (
