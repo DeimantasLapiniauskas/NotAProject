@@ -2,7 +2,7 @@ import VideoCard from "./VideoCard";
 import { useState, useEffect } from "react";
 
 function Recommended({ entries }) {
-  const [ recc, setRecc ] = useState([]);
+  const [recc, setRecc] = useState([]);
   const getRecc = async () => {
     try {
       setRecc(entries);
