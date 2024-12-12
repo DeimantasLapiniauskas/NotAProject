@@ -1,45 +1,26 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import VideoCard from "./VideoCard";
+import { useState, useEffect } from "react";
 
 function Recommended({ entries }) {
+  const [recc, setRecc] = useState([]);
+  const getRecc = async () => {
+    try {
+      setRecc(entries);
+    } catch (error) {
+      console.error("Error in Recommended component:", error);
+    }
+  };
+
+  useEffect(() => {
+    getRecc();
+  }, []);
+
   return (
     <section className="video-list">
       <h4 className="video-list__title">Recommended for you</h4>
-      {entries.map((movie, index) => {
-        if (!movie.isTrending) {
-          return (
-            <div key={index} className="video-card">
-              <p>{movie.isTrending && "trending"}</p>
-              <LazyLoadImage
-                src={movie.thumbnail.regular.small.substring(1)}
-                alt={movie.title + "'s image"}
-                className="video-card__img"
-              />
-              <div className="video-card__details">
-                <p className="video-card__year">{movie.year}</p>
-                <span>&#8226;</span>
-                <p className="video-card__icon">
-                  <img
-                    src={
-                      movie.category == "Movie"
-                        ? "/assets/icon-category-movie.svg"
-                        : "/assets/icon-category-tv.svg"
-                    }
-                    alt={
-                      movie.category == "Movie"
-                        ? "Movie icon"
-                        : "Tv series icon"
-                    }
-                  />
-                  {movie.category}
-                </p>
-                <span>&#8226;</span>
-                <p className="video-card__rating">{movie.rating}</p>
-              </div>
-              <h6 className="video-card__title">{movie.title}</h6>
-            </div>
-          );
-        }
-        return;
+      {recc.map((video, index) => {
+        if (video.isTrending) return;
+        return <VideoCard key={index} movie={video} />;
       })}
     </section>
   );
