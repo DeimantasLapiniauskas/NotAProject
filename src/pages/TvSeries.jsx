@@ -20,7 +20,7 @@ const TvSeries = ({ user, setUser, entries }) => {
           setSearching={setSearching}
           page="TV Series"
         />
-        {!searching && <EntryList entries={entries.filter((entry) => {
+        {!searching && <EntryList title="TV Series" entries={entries.filter((entry) => {
               return entry.category === "TV Series";
             })} />}
       </div>

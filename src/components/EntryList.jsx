@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
 
-function EntryList({ entries }) {
+function EntryList({ entries, title }) {
   const [video, setVideo] = useState([]);
   const getVideo = async () => {
       setVideo(entries);
@@ -12,7 +12,7 @@ function EntryList({ entries }) {
   }, []);
   return (
     <section className="video-list">
-      <h4 className="video-list__title">TV Series</h4>
+      <h4 className="video-list__title">{title}</h4>
       {video.map((series, index) => {
           return <VideoCard key={index} movie={series} />;
       })}

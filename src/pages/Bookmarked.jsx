@@ -21,10 +21,10 @@ const Bookmarked = ({ user, setUser, entries }) => {
           setSearching={setSearching}
           page="Bookmarked"
         />
-        {!searching && <EntryList entries={entries.filter((entry) => {
+        {!searching && <EntryList title="Movies" entries={entries.filter((entry) => {
               return entry.isBookmarked && entry.category === "Movie"
             })} />}
-                    {!searching && <EntryList entries={entries.filter((entry) => {
+                    {!searching && <EntryList title="TV series" entries={entries.filter((entry) => {
               return entry.isBookmarked && entry.category === "TV Series"
             })} />}
       </div>

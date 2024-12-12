@@ -23,7 +23,7 @@ const Movies = ({ user, setUser, entries }) => {
           page="Movies"
         />
         {!searching && (
-          <EntryList
+          <EntryList title="Movies"
             entries={entries.filter((entry) => {
               return entry.category === "Movie";
             })}
