@@ -128,14 +128,14 @@
 
   .login,
   .signup {
-    @apply px-[2.4rem] pt-[4.8rem] flex flex-col gap-[5.84rem];
+    @apply px-[2.4rem] pt-[4.8rem] md:pt-[9.6rem] lg:pt-[9.6rem] flex flex-col gap-[5.84rem];
 
     header img {
       @apply w-[3.2rem] h-[2.56rem] mx-auto;
     }
 
     main {
-      @apply px-[2.4rem] pt-[2.4rem] pb-[3.2rem] bg-[var(--color-semi-dark-blue)] rounded-[10px] text-2xl;
+      @apply px-[2.4rem] pt-[2.4rem] pb-[3.2rem] bg-[var(--color-semi-dark-blue)] rounded-[10px] text-2xl sm:mx-auto sm:w-[40rem];
 
       h1 {
         @apply tracking-[-0.5px] mb-16;
