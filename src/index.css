@@ -135,14 +135,14 @@
     }
 
     main {
-      @apply px-[2.4rem] pt-[2.4rem] pb-[3.2rem] bg-[var(--color-semi-dark-blue)] rounded-[10px] text-2xl sm:mx-auto sm:w-[40rem];
+      @apply px-[2.4rem] pt-[2.2rem] bg-[var(--color-semi-dark-blue)] rounded-[10px] text-2xl sm:mx-auto sm:w-[40rem];
 
       h1 {
-        @apply tracking-[-0.5px] mb-16;
+        @apply tracking-[-0.5px] mb-14 leading-normal;
       }
 
       input {
-        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.4rem] pb-[1.7rem] mb-[2.4rem] hover:border-[var(--color-pure-white)] focus-visible:outline-none focus:border-[var(--color-pure-white)] caret-[var(--color-red)];
+        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.4rem] pb-[1.7rem]  hover:border-[var(--color-pure-white)] focus-visible:outline-none focus:border-[var(--color-pure-white)] caret-[var(--color-red)];
 
         &:-webkit-autofill,
         &:-webkit-autofill:hover,
@@ -158,7 +158,7 @@
       }
 
       .input-div {
-        @apply relative;
+        @apply relative mt-[2.4rem];
 
         .error-span {
           @apply text-[var(--color-red)] absolute top-[.2rem] right-[1.7rem];
@@ -176,6 +176,18 @@
           @apply text-[var(--color-red)];
         }
       }
+    }
+  }
+
+  .login {
+    main {
+      @apply pb-[3.2rem];
+    }
+  }
+
+  .signup {
+    main {
+      @apply pb-[2.4rem];
     }
   }
 }
