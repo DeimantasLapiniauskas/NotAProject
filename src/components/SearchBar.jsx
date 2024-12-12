@@ -11,6 +11,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
   const [suggestions, setSuggestions] = useState([]);
   const [hideSuggestions, setHideSuggestions] = useState(true);
   const [searchEntries, setSearchEntries] = useState("");
+  const [error, setError] = useState("");
   useEffect(() => {
     const suggestionData = () => {
       setSuggestions(entries);
@@ -21,13 +22,16 @@ function SearchBar({ entries, searching, setSearching, page }) {
   function handleSubmit(e) {
     e.preventDefault();
     let Vals = e.target.querySelector("input").value.trim();
-    if (Vals.length > 2) {
+    if (Vals.length > 3 && Vals.length < 100) {
       setValue(Vals.toLowerCase());
       setSearchEntries(
         entries.filter((entry) =>
           entry.title.toLowerCase().includes(Vals.toLowerCase())
         )
       );
+      setSearching(true);
+    } else if (Vals.length >= 100) {
+      setError("Search query too long!");
       setSearching(true);
     } else {
       setValue("");
@@ -62,6 +66,8 @@ function SearchBar({ entries, searching, setSearching, page }) {
             }`}
           />
         </div>
+        <p className="error">{error}</p>
+
         {/* Counts suggestions */}
         {value && (
           <div
@@ -120,7 +126,9 @@ function SearchBar({ entries, searching, setSearching, page }) {
         </div> */}
       </form>
       {/* Displays all results */}
-      {searching && <SearchResults searchEntries={searchEntries} page={page} />}
+      {searching && !error && (
+        <SearchResults searchEntries={searchEntries} page={page} />
+      )}
     </>
   );
 }
