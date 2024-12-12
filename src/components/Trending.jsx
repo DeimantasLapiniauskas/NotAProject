@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import "./Trending.css";
-import movieLogo from "../../public/assets/icon-category-movie.svg";
-import seriesLogo from "../../public/assets/icon-category-tv.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Trending = ({ entries }) => {
   const carouselRef = useRef(null);
@@ -64,7 +63,7 @@ const Trending = ({ entries }) => {
       <div className="trending" ref={carouselRef}>
         {trendingMovie.map((item, index) => (
           <div key={index} className="carousel">
-            <img
+            <LazyLoadImage
               className="carousel__image"
               src={item.thumbnail.trending.small.substring(1)}
               srcSet={`${item.thumbnail.trending.large.substring(1)} 768w`}
@@ -100,11 +99,15 @@ const Trending = ({ entries }) => {
                 </span>
                 <span>
                   {item.category === "Movie" ? (
-                    <img className="movie" src={movieLogo} alt="Movie Logo" />
+                    <img
+                      className="movie"
+                      src="assets/icon-category-movie.svg"
+                      alt="Movie Logo"
+                    />
                   ) : (
                     <img
                       className="series"
-                      src={seriesLogo}
+                      src="assets/icon-category-tv.svg"
                       alt="Series Logo"
                     />
                   )}
