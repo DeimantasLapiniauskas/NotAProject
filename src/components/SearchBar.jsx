@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./searchBar.css";
+import "./SearchBar.css";
 import SearchResults from "./SearchResults";
 
 function SearchBar({ entries, searching, setSearching, page }) {
@@ -41,10 +41,10 @@ function SearchBar({ entries, searching, setSearching, page }) {
       <form onSubmit={handleSubmit} className="search__container">
         {/* The input field */}
         <div className="search__bar">
-          <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
             <path
-              d="M27.613 25.72 23.08 21.2a10.56 10.56 0 0 0 2.253-6.533C25.333 8.776 20.558 4 14.667 4S4 8.776 4 14.667c0 5.89 4.776 10.666 10.667 10.666A10.56 10.56 0 0 0 21.2 23.08l4.52 4.533a1.333 1.333 0 0 0 1.893 0 1.333 1.333 0 0 0 0-1.893ZM6.667 14.667a8 8 0 1 1 16 0 8 8 0 0 1-16 0Z"
-              fill="#FFF"
+              d="m 21.711198,20.291333 -3.400025,-3.390279 a 7.9206496,7.9206485 0 0 0 1.689885,-4.900156 C 20.001058,7.5822924 16.419526,4 12.000912,4 7.582293,4 4,7.5822924 4,12.000898 c 0,4.417862 3.582293,8.000161 8.000912,8.000161 a 7.9206496,7.9206485 0 0 0 4.900141,-1.68989 l 3.390279,3.40003 a 0.99983134,0.99983125 0 0 0 1.419866,0 0.99983134,0.99983125 0 0 0 0,-1.419866 z M 6.0004141,12.000898 a 6.0004929,6.000491 0 1 1 12.0009849,0 6.0004929,6.0004909 0 0 1 -12.0009849,0 z"
+              fill="#ffffff"
             />
           </svg>
           <input
