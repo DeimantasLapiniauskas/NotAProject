@@ -24,6 +24,11 @@ function Recommended({ entries }) {
                         ? "/assets/icon-category-movie.svg"
                         : "/assets/icon-category-tv.svg"
                     }
+                    alt={
+                      movie.category == "Movie"
+                        ? "Movie icon"
+                        : "Tv series icon"
+                    }
                   />
                   {movie.category}
                 </p>
