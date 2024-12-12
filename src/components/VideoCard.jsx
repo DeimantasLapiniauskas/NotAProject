@@ -6,9 +6,9 @@ function VideoCard({ movie, index }) {
 
   useEffect(() => {
     setScreenWidth(window.visualViewport.width);
-    screenWidth <= 425
+    screenWidth < 640
       ? setImgSize("small")
-      : screenWidth <= 768
+      : screenWidth < 1024
       ? setImgSize("medium")
       : setImgSize("large");
   }, []);
