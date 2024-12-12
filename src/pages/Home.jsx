@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
 import { useState, useEffect } from "react";
+import EntryList from "../components/EntryList";
 
 const Home = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
@@ -26,7 +27,9 @@ const Home = ({ user, setUser, entries }) => {
         {!searching && (
           <div>
             <Trending entries={entries}/>
-            <Recommended entries={entries} />
+            <EntryList entries={entries.filter((entry) => {
+              return !entry.isTrending;
+            })} />
           </div>
         )}
       </div>

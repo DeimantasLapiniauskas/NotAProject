@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
-import MoviesList from "../components/MoviesList";
+import EntryList from "../components/EntryList";
 
 const Movies = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
@@ -22,7 +22,13 @@ const Movies = ({ user, setUser, entries }) => {
           setSearching={setSearching}
           page="Movies"
         />
-        {!searching && <MoviesList entries={entries} />}
+        {!searching && (
+          <EntryList
+            entries={entries.filter((entry) => {
+              return entry.category === "Movie";
+            })}
+          />
+        )}
       </div>
     </>
   );
