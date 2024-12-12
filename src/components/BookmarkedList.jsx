@@ -41,6 +41,7 @@ function MoviesList() {
                           ? "/assets/icon-category-movie.svg"
                           : "/assets/icon-category-tv.svg"
                       }
+                      alt=" "
                     />
                     {video.category}
                   </p>
@@ -76,6 +77,7 @@ function MoviesList() {
                           ? "/assets/icon-category-movie.svg"
                           : "/assets/icon-category-tv.svg"
                       }
+                      alt=" "
                     />
                     {video.category}
                   </p>
