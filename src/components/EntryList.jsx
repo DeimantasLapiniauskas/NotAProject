@@ -13,8 +13,8 @@ function EntryList({ entries, title }) {
   return (
     <section className="video-list">
       <h4 className="video-list__title">{title}</h4>
-      {video.map((series, index) => {
-          return <VideoCard key={index} movie={series} />;
+      {video.map((entry, index) => {
+          return <VideoCard key={index} movie={entry} />;
       })}
     </section>
   );
