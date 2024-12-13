@@ -8,8 +8,15 @@ const Trending = ({ entries }) => {
   let isDragging = false;
   let startX;
   let scrollLeft;
-
+  const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
+  const [imgSize, setImgSize] = useState("");
   useEffect(() => {
+
+    setScreenWidth(window.visualViewport.width);
+    screenWidth < 640
+      ? setImgSize("small")
+      : setImgSize("large");
+
     const carousel = carouselRef.current;
 
     const onMouseDown = (e) => {
@@ -67,21 +74,20 @@ const Trending = ({ entries }) => {
    <div className="carousel__image-change">
     <LazyLoadImage
       className="carousel__image"
-      src={item.thumbnail.trending.small.substring(1)}
-      srcSet={`${item.thumbnail.trending.large.substring(1)} 768w`}
-      sizes="(min-width: 768) 768px, 100vw"
+      src={item.thumbnail.trending[`${imgSize}`]?.substring(1)}
       alt={item.title}
     />
 
-    <div className="carousel__play-button">
+    <div className="trending__overlay">
+      <div className="play">
       <img
         src={playIcon} 
         alt="Play Icon"
-        className="carousel__play-button-icon"
+        className="play-icon"
       />
-      <span className="carousel__play-text">Play</span>
+      <span className="play-text">Play</span>
     </div>
-  </div>
+  </div></div>
             {/* IMG gali kilti bedu su pasikeitimu i mazesnius ekranus. */}
             {/* Use bookmark as another component */}
             {/* <div>

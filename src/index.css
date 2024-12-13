@@ -108,7 +108,7 @@
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), lightgray;
       }
       .video-card__main {
-        @apply relative w-[28rem] overflow-hidden cursor-pointer;
+        @apply relative overflow-hidden cursor-pointer max-w-[28rem];
       }
        .video-card__overlay {
         @apply absolute inset-0 rounded-lg bg-black bg-opacity-50 flex justify-center items-center  opacity-0 transition-opacity duration-300 ease-in-out;
@@ -117,7 +117,7 @@
         @apply opacity-100;
        }
        .play {
-        @apply  bg-white bg-opacity-25 w-40 h-20 rounded-full flex justify-center items-center gap-3;
+        @apply  bg-white bg-opacity-25 w-[11.7rem] h-[4.8rem] rounded-full flex justify-center items-center gap-3;
        }
        .play-icon {
         @apply w-12 h-12 mb-2 z-40;

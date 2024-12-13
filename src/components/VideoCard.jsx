@@ -19,7 +19,8 @@ function VideoCard({ video, index }) {
 
 
 <div key={index} className="video-card">
-              <div className="video-card__main"><LazyLoadImage
+              <div className="video-card__main">
+                <LazyLoadImage
         src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
         alt={video.title + "'s image"}
                 className="video-card__img"
