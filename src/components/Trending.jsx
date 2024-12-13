@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import "./Trending.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import playIcon from "./../../public/assets/icon-play.svg";
+// import playIcon from "./../../public/assets/icon-play.svg";
 
 const Trending = ({ entries }) => {
   const carouselRef = useRef(null);
