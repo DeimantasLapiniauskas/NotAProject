@@ -23,12 +23,18 @@ function SearchBar({ entries, searching, setSearching, page }) {
     e.preventDefault();
     let Vals = e.target.querySelector("input").value.trim();
     if (Vals.length > 3 && Vals.length < 100) {
+      setError('')
       setValue(Vals.toLowerCase());
+      // console.log(entries);
+      // console.log(Vals);
+      
       setSearchEntries(
         entries.filter((entry) =>
           entry.title.toLowerCase().includes(Vals.toLowerCase())
         )
       );
+      console.log(searchEntries);
+      
       setSearching(true);
     } else if (Vals.length >= 100) {
       setError("Search query too long!");
@@ -125,8 +131,10 @@ function SearchBar({ entries, searching, setSearching, page }) {
             ))}
         </div> */}
       </form>
+      {console.log(searchEntries)
+      }
       {/* Displays all results */}
-      {searching && !error && (
+        {searching && !error && (
         <SearchResults searchEntries={searchEntries} page={page} />
       )}
     </>
