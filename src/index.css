@@ -128,17 +128,17 @@
 
   .login,
   .signup {
-    @apply px-[2.4rem] pt-[4.8rem] md:pt-[9.6rem] lg:pt-[9.6rem] flex flex-col gap-[5.84rem];
+    @apply px-[2.4rem] pt-[4.8rem] md:pt-[8rem] lg:pt-[7.8rem] flex flex-col gap-[5.84rem];
 
     header img {
-      @apply w-[3.2rem] h-[2.56rem] mx-auto;
+      @apply w-[3.2rem] h-[2.56rem] md:mb-[1.26rem] lg:mb-[2.3rem] mx-auto;
     }
 
     main {
-      @apply px-[2.4rem] pt-[2.2rem] bg-[var(--color-semi-dark-blue)] rounded-[10px] text-2xl sm:mx-auto sm:w-[40rem];
+      @apply max-sm:px-[2.4rem] md:px-[3.2rem] pt-[2.2rem] bg-[var(--color-semi-dark-blue)] max-sm:rounded-[10px] md:rounded-[20px] text-2xl sm:mx-auto sm:w-[40rem];
 
       h1 {
-        @apply tracking-[-0.5px] mb-14 leading-normal;
+        @apply tracking-[-0.5px] md:mt-[0.8rem] mb-14 leading-normal;
       }
 
       input {
@@ -165,10 +165,6 @@
         }
       }
 
-      button {
-        @apply w-full h-[4.8rem] mt-16 rounded-[6px];
-      }
-
       p {
         @apply w-max mx-auto mt-[2.4rem] flex gap-[0.9rem];
 
@@ -182,12 +178,25 @@
   .login {
     main {
       @apply pb-[3.2rem];
+      button {
+        @apply w-full h-[4.8rem] mt-16 rounded-[6px];
+      }
     }
   }
 
   .signup {
+    @apply md:mt-[0.8rem] lg:mt-[0.2rem];
+    header img {
+      @apply max-md:mb-[1.26rem];
+    }
     main {
       @apply pb-[2.4rem];
+      button {
+        @apply w-full h-[4.8rem] max-sm:mt-16 md:mt-[2.3rem] rounded-[6px];
+      }
+    }
+    #SignupFooter {
+      @apply md:pb-[0.8rem]
     }
   }
 }
