@@ -491,6 +491,13 @@
       "email": "ahr@ss.com",
       "password": "ss",
       "isLoggedIn": false
+    },
+    {
+      "id": "3d85",
+      "email": "USER@USER.COM",
+      "password": "user",
+      "password-repeat": "user",
+      "isLoggedIn": true
     }
   ]
 }

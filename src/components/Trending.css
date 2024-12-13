@@ -135,6 +135,60 @@
   }
 }
 
+
+.carousel__image-change {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.carousel__image-change:hover .carousel__image {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  ), lightgray 50%;
+  transition: background 0.3s ease;
+}
+
+
+.carousel__play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px; 
+  height: 57px; 
+  border-radius: 28.5px;
+  background: var(--Pure-White, #FFF);
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+
+
+.carousel__image-change:hover .carousel__play-button {
+  opacity: 0.25;
+}
+
+
+.carousel__play-button-icon {
+  width: 20px; 
+  height: 20px;
+  margin-right: 8px;
+}
+
+
+.carousel__play-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+
+
 /* Mazesniu ekranu CSS */
 
 @media only screen and (max-device-width: 768px) {
