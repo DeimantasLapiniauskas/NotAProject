@@ -93,10 +93,10 @@
   }
 
   .video-list {
-    @apply grid grid-cols-2 gap-6;
+    @apply grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4;
 
     .video-list__title {
-      @apply tracking-[-0.31px] text-[2rem] leading-[2.5rem] mb-[.9rem] col-span-2;
+      @apply tracking-[-0.31px] text-[2rem] leading-[2.5rem] mb-[.9rem] col-span-full;
     }
 
     .video-card {
@@ -128,21 +128,21 @@
 
   .login,
   .signup {
-    @apply px-[2.4rem] pt-[4.8rem] md:pt-[9.6rem] lg:pt-[9.6rem] flex flex-col gap-[5.84rem];
+    @apply px-[2.4rem] pt-[4.8rem] md:pt-[8rem] lg:pt-[7.8rem] flex flex-col gap-[5.84rem];
 
     header img {
-      @apply w-[3.2rem] h-[2.56rem] mx-auto;
+      @apply w-[3.2rem] h-[2.56rem] md:mb-[1.26rem] lg:mb-[2.3rem] mx-auto;
     }
 
     main {
-      @apply px-[2.4rem] pt-[2.4rem] pb-[3.2rem] bg-[var(--color-semi-dark-blue)] rounded-[10px] text-2xl sm:mx-auto sm:w-[40rem];
+      @apply max-sm:px-[2.4rem] md:px-[3.2rem] pt-[2.2rem] bg-[var(--color-semi-dark-blue)] max-sm:rounded-[10px] md:rounded-[20px] text-2xl sm:mx-auto sm:w-[40rem];
 
       h1 {
-        @apply tracking-[-0.5px] mb-16;
+        @apply tracking-[-0.5px] md:mt-[0.8rem] mb-14 leading-normal;
       }
 
       input {
-        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.4rem] pb-[1.7rem] mb-[2.4rem] hover:border-[var(--color-pure-white)] focus-visible:outline-none focus:border-[var(--color-pure-white)] caret-[var(--color-red)];
+        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.4rem] pb-[1.7rem]  hover:border-[var(--color-pure-white)] focus-visible:outline-none focus:border-[var(--color-pure-white)] caret-[var(--color-red)];
 
         &:-webkit-autofill,
         &:-webkit-autofill:hover,
@@ -158,15 +158,11 @@
       }
 
       .input-div {
-        @apply relative;
+        @apply relative mt-[2.4rem];
 
         .error-span {
           @apply text-[var(--color-red)] absolute top-[.2rem] right-[1.7rem];
         }
-      }
-
-      button {
-        @apply w-full h-[4.8rem] mt-16 rounded-[6px];
       }
 
       p {
@@ -176,6 +172,31 @@
           @apply text-[var(--color-red)];
         }
       }
+    }
+  }
+
+  .login {
+    main {
+      @apply pb-[3.2rem];
+      button {
+        @apply w-full h-[4.8rem] mt-16 rounded-[6px];
+      }
+    }
+  }
+
+  .signup {
+    @apply md:mt-[0.8rem] lg:mt-[0.2rem];
+    header img {
+      @apply max-md:mb-[1.26rem];
+    }
+    main {
+      @apply pb-[2.4rem];
+      button {
+        @apply w-full h-[4.8rem] max-sm:mt-16 md:mt-[2.3rem] rounded-[6px];
+      }
+    }
+    #SignupFooter {
+      @apply md:pb-[0.8rem]
     }
   }
 }

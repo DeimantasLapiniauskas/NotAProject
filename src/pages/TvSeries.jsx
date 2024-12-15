@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Nav from "../components/Nav";
-import SeriesList from "../components/SeriesList";
+import EntryList from "../components/EntryList";
 import SearchBar from "../components/SearchBar";
 
 const TvSeries = ({ user, setUser, entries }) => {
@@ -20,7 +20,9 @@ const TvSeries = ({ user, setUser, entries }) => {
           setSearching={setSearching}
           page="TV Series"
         />
-        {!searching && <SeriesList entries={entries} />}
+        {!searching && <EntryList title="TV Series" entries={entries.filter((entry) => {
+              return entry.category === "TV Series";
+            })} />}
       </div>
     </>
   );

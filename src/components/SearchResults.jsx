@@ -1,23 +1,32 @@
-import SearchVideoCard from "./SearchVideoCard";
+import VideoCard from "./VideoCard";
+
 function SearchResults({ searchEntries, page }) {
+  // console.log(searchEntries);
+  // console.log(page);
+  
   return (
     <>
-      {searchEntries.map((movie, index) => {
-        // if page is the attention whore known as "Bookmarked", make a special exception
-        if (movie.isBookmarked === true && page === "Bookmarked") {
-          return <SearchVideoCard movie={movie} key={index} />;
-        }
-        if (
-          movie.category === page ||
-          movie.category === page.slice(0, -1) ||
-          page === "Home"
-        ) {
-          return <SearchVideoCard movie={movie} key={index} />;
-        }
-      })}
+      <section className="video-list">
+        {searchEntries.map((video, index) => {
+          // console.log(movie);
+          
+          // if page is the attention whore known as "Bookmarked", make a special exception
+          if (video.isBookmarked === true && page === "Bookmarked") {
+            
+            return <VideoCard video={video} key={index} />;
+          }
+          if (
+            video.category === page ||
+            video.category === page.slice(0, -1) ||
+            page === "Home"
+          ) {
+            console.log(video);
+            return <VideoCard video={video} key={index} />;
+          }
+        })}
+      </section>
     </>
   );
 }
 
 export default SearchResults;
-// Search results returns entry if it's bookmarked, even if it doesn't fit the category.
