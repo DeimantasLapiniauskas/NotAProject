@@ -1,14 +1,22 @@
 import { useRef, useEffect, useState } from "react";
 import "./Trending.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+// import playIcon from "./../../public/assets/icon-play.svg";
 
 const Trending = ({ entries }) => {
   const carouselRef = useRef(null);
   let isDragging = false;
   let startX;
   let scrollLeft;
-
+  const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
+  const [imgSize, setImgSize] = useState("");
   useEffect(() => {
+
+    setScreenWidth(window.visualViewport.width);
+    screenWidth < 640
+      ? setImgSize("small")
+      : setImgSize("large");
+
     const carousel = carouselRef.current;
 
     const onMouseDown = (e) => {
@@ -63,13 +71,11 @@ const Trending = ({ entries }) => {
       <div className="trending" ref={carouselRef}>
         {trendingMovie.map((item, index) => (
           <div key={index} className="carousel">
-            <LazyLoadImage
-              className="carousel__image"
-              src={item.thumbnail.trending.small.substring(1)}
-              srcSet={`${item.thumbnail.trending.large.substring(1)} 768w`}
-              sizes="(min-width: 768) 768px, 100vw"
-              alt={item.title}
-            />
+    <LazyLoadImage
+      className="carousel__image"
+      src={item.thumbnail.trending[`${imgSize}`]?.substring(1)}
+      alt={item.title}
+    />
             {/* IMG gali kilti bedu su pasikeitimu i mazesnius ekranus. */}
             {/* Use bookmark as another component */}
             {/* <div>
