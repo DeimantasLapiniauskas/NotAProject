@@ -1,5 +1,6 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useEffect, useState } from "react";
+import BookmarkButton from "./BookmarkButton";
 function VideoCard({ video, key }) {
   const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
   const [imgSize, setImgSize] = useState("");
@@ -21,6 +22,13 @@ function VideoCard({ video, key }) {
         className="video-card__img"
       />
       <div className="video-card__details">
+      <BookmarkButton
+      id={video.id} // Pass video ID to BookmarkButton
+      initialIsBookmarked={video.isBookmarked}
+      onToggle={(newBookmarkState) =>
+        handleBookmarkToggle(video.id, newBookmarkState)
+      }
+    />
         <p className="video-card__year">{video.year}</p>
         <span>&#8226;</span>
         <p className="video-card__icon">
