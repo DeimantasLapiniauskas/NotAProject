@@ -45,7 +45,7 @@ function Signup({ setUser, users }) {
           <img src="/assets/logo.svg" alt="Site logo" />
         </header>
         <main>
-          <h1>Sign up</h1>
+          <h1>Sign Up</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="input-div">
               <input
