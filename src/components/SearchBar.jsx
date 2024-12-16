@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./SearchBar.css";
 import SearchResults from "./SearchResults";
+import { useSearchParams } from "react-router";
 
 function SearchBar({ entries, searching, setSearching, page }) {
   // value = what's typed in the search bar.
@@ -13,6 +14,8 @@ function SearchBar({ entries, searching, setSearching, page }) {
   const [hideSuggestions, setHideSuggestions] = useState(true);
   const [searchEntries, setSearchEntries] = useState("");
   const [error, setError] = useState("");
+  const [SearchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     const suggestionData = () => {
       setSuggestions(entries);
@@ -28,7 +31,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
     if (Vals.length > 2 && Vals.length < 100) {
       setError("");
       setValue(Vals.toLowerCase());
-
+      setSearchParams({search: Vals})
       setSearchEntries(
         entries.filter((entry) => {
           return (
@@ -43,9 +46,12 @@ function SearchBar({ entries, searching, setSearching, page }) {
 
       setSearching(true);
     } else if (Vals.length >= 100) {
+      setSearchParams({})
       setError("Search query too long!");
+      setValue("")
       setSearching(true);
     } else {
+      setSearchParams({})
       setValue("");
       setSearching(false);
     }
