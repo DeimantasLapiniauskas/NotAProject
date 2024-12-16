@@ -13,7 +13,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
   const [hideSuggestions, setHideSuggestions] = useState(true);
   const [searchEntries, setSearchEntries] = useState("");
   const [error, setError] = useState("");
-  const [, setSearchParams] = useSearchParams();
+  const [SearchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const suggestionData = () => {
