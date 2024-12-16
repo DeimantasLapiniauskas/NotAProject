@@ -1,9 +1,8 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useEffect, useState } from "react";
-function VideoCard({ video, index }) {
+function VideoCard({ video, key }) {
   const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
   const [imgSize, setImgSize] = useState("");
-  
 
   useEffect(() => {
     setScreenWidth(window.visualViewport.width);
@@ -15,21 +14,24 @@ function VideoCard({ video, index }) {
   }, []);
 
   return (
-
-
-<div key={index} className="video-card">
-              <div className="video-card__main">
-                <LazyLoadImage
-        src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
-        alt={video.title + "'s image"}
-                className="video-card__img"
-              />
-          <div className="video-card__overlay">
-            <div className="play">
-                <img alt="Play button" src="assets/icon-play.svg" className="play-icon" />
-                <span className="play-text">Play</span>
-                </div></div></div>
-
+    <div key={key} className="video-card">
+      <div className="video-card__main">
+        <LazyLoadImage
+          src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
+          alt={video.title + "'s image"}
+          className="video-card__img"
+        />
+        <div className="video-card__overlay">
+          <div className="play">
+            <img
+              alt="Play button"
+              src="assets/icon-play.svg"
+              className="play-icon"
+            />
+            <span className="play-text">Play</span>
+          </div>
+        </div>
+      </div>
 
       <div className="video-card__details">
         <p className="video-card__year">{video.year}</p>

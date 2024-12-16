@@ -26,7 +26,7 @@ const Home = ({ user, setUser, entries }) => {
         {!searching && (
           <div>
             <Trending entries={entries}/>
-            <EntryList entries={entries.filter((entry) => {
+            <EntryList title="Recommended for you" entries={entries.filter((entry) => {
               return !entry.isTrending;
             })} />
           </div>
