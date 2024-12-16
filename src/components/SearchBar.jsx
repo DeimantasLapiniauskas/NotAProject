@@ -8,6 +8,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
   // hideSuggestions = used to hide everything except the bar itself onblur, and unhide it on focus.
   // searchEntries = Array containing all suggestions that we pass over to SearchResults
   const [value, setValue] = useState("");
+  const [ageValue, setAgeValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [hideSuggestions, setHideSuggestions] = useState(true);
   const [searchEntries, setSearchEntries] = useState("");
@@ -22,17 +23,24 @@ function SearchBar({ entries, searching, setSearching, page }) {
   function handleSubmit(e) {
     e.preventDefault();
     let Vals = e.target.querySelector("input").value.trim();
-    if (Vals.length > 3 && Vals.length < 100) {
-      setError('')
+    let AgeVals = e.target.querySelector("select").value;
+    setAgeValue(AgeVals);
+    if (Vals.length > 2 && Vals.length < 100) {
+      setError("");
       setValue(Vals.toLowerCase());
 
       setSearchEntries(
-        entries.filter((entry) =>
-          entry.title.toLowerCase().includes(Vals.toLowerCase())
-        )
+        entries.filter((entry) => {
+          return (
+            // filters based on if the show matches the requested age rating, and if it either includes the search query as a title or as its release year.
+            (entry.title.toLowerCase().includes(Vals.toLowerCase()) &&
+              entry.rating.includes(AgeVals)) ||
+            (JSON.stringify(entry.year).includes(Vals) &&
+              entry.rating.includes(AgeVals))
+          );
+        })
       );
 
-      
       setSearching(true);
     } else if (Vals.length >= 100) {
       setError("Search query too long!");
@@ -69,6 +77,17 @@ function SearchBar({ entries, searching, setSearching, page }) {
                 : "TV series"
             }`}
           />
+          <label htmlFor="ageRating"></label>
+          <select
+            name="ageRating"
+            id="ageRating"
+            style={{ backgroundColor: "#999999" }}
+          >
+            <option value="">Any</option>
+            <option value="E">E</option>
+            <option value="PG">PG</option>
+            <option value="18+">18+</option>
+          </select>
         </div>
         <p className="error">{error}</p>
 
@@ -83,54 +102,34 @@ function SearchBar({ entries, searching, setSearching, page }) {
                   .join("")
                   .toLowerCase()
                   .includes(value.toLowerCase());
+
                 // If page cares about category, check that. If it cares about being Bookmarked, check that. Otherwise, assume everything is correct
+                // Update: Now also checks if age rating matches.
+
                 if (page !== "Home" && page !== "Bookmarked")
                   return (
-                    (result && item.category === page.slice(0, -1)) ||
-                    (result && item.category === page)
+                    (result &&
+                      item.category === page.slice(0, -1) &&
+                      item.rating.includes(ageValue)) ||
+                    (result &&
+                      item.category === page &&
+                      item.rating.includes(ageValue))
                   );
-                if (page === "Bookmarked") return result && item.isBookmarked;
-                return result;
+                if (page === "Bookmarked")
+                  return (
+                    result &&
+                    item.isBookmarked &&
+                    item.rating.includes(ageValue)
+                  );
+                return result && item.rating.includes(ageValue);
               }).length +
               " results for " +
               value}
           </div>
         )}
-        {/* Displays suggestion titles directly under the search bar. Probably. 
-        I mean it worked when it was uncommented, but I changed a few things elsewhere afterwards 
-        so who knows.
-
-        <div>
-          {suggestions
-            .filter((item) => {
-              const result = Object.values(item)
-                .join("")
-                .toLowerCase()
-                .includes(value.toLowerCase());
-              if (page != "Home")
-                return (
-                  (result && item.category === page.slice(0, -1)) ||
-                  item.category === page
-                );
-                return result
-            })
-            .map((suggestion, index) => (
-              <div
-                key={index}
-                className={`suggestion ${
-                  hideSuggestions && "suggestion-hidden"
-                }`}
-              >
-                {page !== "Home" &&
-                  suggestion["category"] === "Movie" &&
-                  suggestion["title"]}
-                {page === "Home" && suggestion["title"]}
-              </div>
-            ))}
-        </div> */}
       </form>
       {/* Displays all results */}
-        {searching && !error && (
+      {searching && !error && (
         <SearchResults searchEntries={searchEntries} page={page} />
       )}
     </>
