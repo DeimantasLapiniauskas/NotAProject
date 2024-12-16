@@ -1,6 +1,5 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useEffect, useState } from "react";
-import playIcon from "./../../public/assets/icon-play.svg";
 function VideoCard({ video, index }) {
   const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
   const [imgSize, setImgSize] = useState("");
@@ -27,7 +26,7 @@ function VideoCard({ video, index }) {
               />
           <div className="video-card__overlay">
             <div className="play">
-                <img src={playIcon} className="play-icon" />
+                <img alt="Play button" src="assets/icon-play.svg" className="play-icon" />
                 <span className="play-text">Play</span>
                 </div></div></div>
 

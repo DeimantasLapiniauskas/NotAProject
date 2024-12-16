@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import "./Trending.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import playIcon from "./../../public/assets/icon-play.svg";
 
 const Trending = ({ entries }) => {
   const carouselRef = useRef(null);
@@ -11,11 +10,8 @@ const Trending = ({ entries }) => {
   const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
   const [imgSize, setImgSize] = useState("");
   useEffect(() => {
-
     setScreenWidth(window.visualViewport.width);
-    screenWidth < 640
-      ? setImgSize("small")
-      : setImgSize("large");
+    screenWidth < 640 ? setImgSize("small") : setImgSize("large");
 
     const carousel = carouselRef.current;
 
@@ -71,30 +67,25 @@ const Trending = ({ entries }) => {
       <div className="trending" ref={carouselRef}>
         {trendingMovie.map((item, index) => (
           <div key={index} className="carousel">
-   <div className="carousel__image-change">
-    <LazyLoadImage
-      className="carousel__image"
-      src={item.thumbnail.trending[`${imgSize}`]?.substring(1)}
-      alt={item.title}
-    />
+            <div className="carousel__image-change">
+              <LazyLoadImage
+                className="carousel__image"
+                src={item.thumbnail.trending[`${imgSize}`]?.substring(1)}
+                alt={item.title}
+              />
 
-    <div className="trending__overlay">
-    <div className="plays">
-      <img
-        src={playIcon} 
-        alt="Play Icon"
-        className="play-icons"
-      />
-      <span className="play-texts">Play</span>
-    </div>
-  </div></div>
-            {/* IMG gali kilti bedu su pasikeitimu i mazesnius ekranus. */}
-            {/* Use bookmark as another component */}
-            {/* <div>
-              <button className="trending__bookmark">
-                
-              </button>
-            </div> */}
+              <div className="trending__overlay">
+                <div className="plays">
+                  <img
+                    src="assets/icon-play.svg"
+                    alt="Play Button"
+                    className="play-icons"
+                  />
+                  <span className="play-texts">Play</span>
+                </div>
+              </div>
+            </div>
+
             <div className="trending__content">
               <div className="trending__content--data">
                 <span className="categories">{item.year}</span>

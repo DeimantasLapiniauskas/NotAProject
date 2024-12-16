@@ -60,35 +60,6 @@
     line-height: normal;
   }
 
-  /* .trending__bookmark {
-    position: absolute;
-    top: 1.6rem;
-    right: 2.4rem;
-    width: 3.2rem;
-    height: 3.2rem;
-    border-radius: 50%;
-  }
-  
-  .trending__bookmark::before {
-    width: 1rem;
-    height: 1rem;
-    fill: #fff;
-  } */
-   /* Second variant */
-  /* .trending__bookmark {
-    background: url(/public/assets/icon-bookmark-empty.svg) no-repeat;
-    background-position: center;
-    background-size: 0.8rem 1rem;
-    background-color: #161d2f80;
-    position: absolute;
-    top: 1.6rem;
-    right: 2.4rem;
-    width: 3.2rem;
-    height: 3.2rem;
-    border-radius: 50%;
-    display: flex;
-  } */
-
   .trending__content--data {
     display: flex;
     align-items: center;
@@ -135,86 +106,33 @@
   }
 }
 
-
-/* .carousel__image-change {
-  position: relative;
-  overflow: hidden;
-  max-width: 47rem;
-  cursor: pointer;
-}
-
-
-.carousel__image-change:hover .carousel__image {
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  ), lightgray 50%;
-  transition: background 0.3s ease;
-}
-
-
-.carousel__play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 11.7rem; 
-  height: 4.7rem; 
-  border-radius: 28.5px;
-  background: var(--Pure-White, #FFF);
-  opacity: 0;
-  transition: opacity 0.3s ease, background 0.3s ease;
-}
-
-
-.carousel__image-change:hover .carousel__play-button {
-  opacity: 0.25;
-}
-
-
-.carousel__play-button-icon {
-  width: 3rem; 
-  height: 3rem;
-  margin-right: 8px;
-}
-
-
-.carousel__play-text {
-  font-size: 1.8rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  color: var(--Pure-White, #FFF);
-  opacity: 100 !important;
-} */
-
-
 .carousel__image-change {
   @apply relative overflow-hidden cursor-pointer max-w-[47rem] rounded-[8px];
 }
 .carousel__image:hover {
   @apply bg-cover bg-no-repeat bg-neutral-300 opacity-50 group-hover:opacity-0 transition duration-300 ease-in-out;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), lightgray;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    lightgray;
 }
- .trending__overlay {
+.trending__overlay {
   @apply absolute inset-0 rounded-lg bg-black bg-opacity-50 flex justify-center items-center  opacity-0 transition-opacity duration-300 ease-in-out;
- }
- .carousel__image-change:hover .trending__overlay {
+}
+.carousel__image-change:hover .trending__overlay {
   @apply opacity-100;
- }
- .plays {
-  @apply  bg-white bg-opacity-25 w-[11.7rem] h-[4.8rem] rounded-full flex justify-center items-center gap-3;
- }
- .play-icons {
+}
+.plays {
+  @apply bg-white bg-opacity-25 w-[11.7rem] h-[4.8rem] rounded-full flex justify-center items-center gap-3;
+}
+.play-icons {
   @apply w-12 h-12 mb-2 z-40;
- }
- .play-texts {
+}
+.play-texts {
   @apply text-white text-lg;
- }
+}
 
 /* Mazesniu ekranu CSS */
 
