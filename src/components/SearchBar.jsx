@@ -15,6 +15,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
   const [error, setError] = useState("");
   const [SearchParams, setSearchParams] = useSearchParams();
 
+  const searchRegex = /^[A-Za-z0-9 ]*$/g;
   useEffect(() => {
     const suggestionData = () => {
       setSuggestions(entries);
@@ -25,25 +26,25 @@ function SearchBar({ entries, searching, setSearching, page }) {
   function handleSubmit(e) {
     e.preventDefault();
     let Vals = e.target.querySelector("input").value.trim();
-    if (Vals.length > 3 && Vals.length < 100) {
-      setError('')
+    if (!Vals.match(searchRegex)) {
+      setError("Search query contains invalid characters!");
+      setSearching(true);
+    } else if (Vals.length >= 100) {
+      setError("Search query too long!");
+      setSearching(true);
+    } else if (Vals.length > 3) {
+      setError();
       setValue(Vals.toLowerCase());
-      setSearchParams({search: Vals})
+      setSearchParams({ search: Vals });
       setSearchEntries(
         entries.filter((entry) =>
           entry.title.toLowerCase().includes(Vals.toLowerCase())
         )
       );
 
-      
-      setSearching(true);
-    } else if (Vals.length >= 100) {
-      setSearchParams({})
-      setError("Search query too long!");
-      setValue("")
       setSearching(true);
     } else {
-      setSearchParams({})
+      setSearchParams({});
       setValue("");
       setSearching(false);
     }
@@ -136,7 +137,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
         </div> */}
       </form>
       {/* Displays all results */}
-        {searching && !error && (
+      {searching && !error && (
         <SearchResults searchEntries={searchEntries} page={page} />
       )}
     </>
