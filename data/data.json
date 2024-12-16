@@ -497,7 +497,7 @@
       "email": "user@user.com",
       "password": "user",
       "password-repeat": "user",
-      "isLoggedIn": true
+      "isLoggedIn": false
     }
   ]
 }
