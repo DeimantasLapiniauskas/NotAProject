@@ -16,6 +16,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
   const [error, setError] = useState("");
   const [SearchParams, setSearchParams] = useSearchParams();
 
+  const searchRegex = /^[A-Za-z0-9 ]*$/g;
   useEffect(() => {
     const suggestionData = () => {
       setSuggestions(entries);
@@ -26,12 +27,19 @@ function SearchBar({ entries, searching, setSearching, page }) {
   function handleSubmit(e) {
     e.preventDefault();
     let Vals = e.target.querySelector("input").value.trim();
+
     let AgeVals = e.target.querySelector("select").value;
     setAgeValue(AgeVals);
-    if (Vals.length > 2 && Vals.length < 100) {
-      setError("");
+    if (!Vals.match(searchRegex)) {
+      setError("Search query contains invalid characters!");
+      setSearching(true);
+    } else if (Vals.length >= 100) {
+      setError("Search query too long!");
+      setSearching(true);
+    } else if (Vals.length > 3) {
+      setError();
       setValue(Vals.toLowerCase());
-      setSearchParams({search: Vals})
+      setSearchParams({ search: Vals });
       setSearchEntries(
         entries.filter((entry) => {
           return (
@@ -45,13 +53,8 @@ function SearchBar({ entries, searching, setSearching, page }) {
       );
 
       setSearching(true);
-    } else if (Vals.length >= 100) {
-      setSearchParams({})
-      setError("Search query too long!");
-      setValue("")
-      setSearching(true);
     } else {
-      setSearchParams({})
+      setSearchParams({});
       setValue("");
       setSearching(false);
     }
