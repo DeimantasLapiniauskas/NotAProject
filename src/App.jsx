@@ -17,8 +17,6 @@ const Bookmarked = lazy(() => import("./pages/Bookmarked"));
 const Signup = lazy(() => import("./pages/Signup"));
 const Login = lazy(() => import("./pages/Login"));
 
-
-
 function App() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(() => {
@@ -71,7 +69,11 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Sign up" />
-                    <Signup setUser={setUser} users={users} />
+                    <Signup
+                      setUser={setUser}
+                      setUsers={setUsers}
+                      users={users}
+                    />
                   </>
                 }
               />
@@ -108,7 +110,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="TV series" />
-                    <TvSeries user={user} setUser={setUser} entries={movies}/>
+                    <TvSeries user={user} setUser={setUser} entries={movies} />
                   </>
                 }
               />
@@ -117,7 +119,11 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Bookmarks" />
-                    <Bookmarked user={user} setUser={setUser} entries={movies} />
+                    <Bookmarked
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                    />
                   </>
                 }
               />

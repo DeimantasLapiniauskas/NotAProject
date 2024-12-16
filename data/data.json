@@ -504,6 +504,13 @@
       "id": "17b8",
       "email": "ahr@ss.com",
       "password": "$2a$08$RVdKIeq/17sh72eyvJj0I.adB9X5yaUryCrzQyhRcci2XaGCYFWcG",
+      "isLoggedIn": false,
+      "isAdmin": false
+    },
+    {
+      "id": "aae1",
+      "email": "xxx@xxx.com",
+      "password": "$2a$08$vQxXXmUJvZsjoizvzuXj5ur7Q42GaEWQxTP5dSvYW8iZlOEHPsohW",
       "isLoggedIn": true,
       "isAdmin": false
     }

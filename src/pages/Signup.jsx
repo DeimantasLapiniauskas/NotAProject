@@ -7,7 +7,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import FallbackComponent from "../components/errorHandling/FallbackComponent";
 import bcrypt from "bcryptjs";
 
-function Signup({ setUser, users }) {
+function Signup({ setUser, setUsers, users }) {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -45,6 +45,8 @@ function Signup({ setUser, users }) {
         "user",
         JSON.stringify({ id: user.id, isLoggedIn: user.isLoggedIn })
       );
+
+      setUsers((prev) => [...prev, user]);
 
       navigate("/");
     } catch (err) {
