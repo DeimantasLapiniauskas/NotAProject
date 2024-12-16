@@ -117,14 +117,14 @@
         @apply opacity-100;
        }
        .play {
-        @apply  bg-white bg-opacity-25 w-[11.7rem] h-[4.8rem] rounded-full flex justify-center items-center gap-3;
-       }
-       .play-icon {
-        @apply w-12 h-12 mb-2 z-40;
-       }
-       .play-text {
-        @apply text-white text-lg;
-       }
+        @apply  bg-white bg-opacity-25 w-[11.7rem] h-[4.8rem] rounded-full flex items-center gap-[2.2rem];
+      }
+      .play-icon {
+        @apply w-12 h-12 mb-2 z-40 ml-[1rem] mt-[0.5rem];
+      }
+      .play-text {
+        @apply text-white text-[1.8rem];
+      }
 
 
       .video-card__details {
