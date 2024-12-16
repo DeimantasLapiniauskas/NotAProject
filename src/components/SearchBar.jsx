@@ -14,21 +14,27 @@ function SearchBar({ entries, searching, setSearching, page }) {
   const [hideSuggestions, setHideSuggestions] = useState(true);
   const [searchEntries, setSearchEntries] = useState("");
   const [error, setError] = useState("");
-  const [SearchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const searchRegex = /^[A-Za-z0-9 ]*$/g;
   useEffect(() => {
     const suggestionData = () => {
       setSuggestions(entries);
+      if (searchParams.get("search")) handleSubmit();
     };
     suggestionData();
   }, []);
 
   function handleSubmit(e) {
-    e.preventDefault();
-    let Vals = e.target.querySelector("input").value.trim();
+    if (!searchParams.get("search")) e.preventDefault();
 
-    let AgeVals = e.target.querySelector("select").value;
+    let Vals =
+      searchParams.get("search") ||
+      e.target.querySelector("input").value.trim();
+
+    let AgeVals = searchParams.get("search")
+      ? ""
+      : e?.target.querySelector("select").value;
     setAgeValue(AgeVals);
     if (!Vals.match(searchRegex)) {
       setError("Search query contains invalid characters!");
@@ -36,31 +42,34 @@ function SearchBar({ entries, searching, setSearching, page }) {
     } else if (Vals.length >= 100) {
       setError("Search query too long!");
       setSearching(true);
-    } else if (Vals.length > 3) {
-      setError();
+    } else if (Vals.length > 2) {
+      setError("");
+      setSearchParams(
+        e
+          ? { search: e.target.querySelector("input").value.trim() }
+          : { search: Vals }
+      );
       setValue(Vals.toLowerCase());
-      setSearchParams({ search: Vals });
       setSearchEntries(
         entries.filter((entry) => {
           return (
             // filters based on if the show matches the requested age rating, and if it either includes the search query as a title or as its release year.
             (entry.title.toLowerCase().includes(Vals.toLowerCase()) &&
               entry.rating.includes(AgeVals)) ||
-            (JSON.stringify(entry.year).includes(Vals) &&
+            (entry.year.toString().includes(Vals) &&
               entry.rating.includes(AgeVals))
           );
         })
       );
-
       setSearching(true);
     } else {
       setSearchParams({});
       setValue("");
       setSearching(false);
+      setError("")
     }
     return;
   }
-
   return (
     <>
       <form onSubmit={handleSubmit} className="search__container">
