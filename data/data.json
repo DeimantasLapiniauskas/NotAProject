@@ -490,7 +490,14 @@
       "id": "e0bc",
       "email": "ahr@ss.com",
       "password": "ss",
-      "isLoggedIn": true
+      "isLoggedIn": false
+    },
+    {
+      "id": "b84e",
+      "email": "user@user.com",
+      "password": "user",
+      "password-repeat": "user",
+      "isLoggedIn": false
     }
   ]
 }
