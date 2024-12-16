@@ -100,9 +100,32 @@
     }
 
     .video-card {
-      & > img {
-        @apply rounded-[8px];
+      .video-card__img {
+        @apply rounded-[8px] duration-300 ease-in-out;
       }
+      .video-card__img:hover {
+        @apply bg-cover bg-no-repeat bg-neutral-300 opacity-50 group-hover:opacity-100 transition duration-300 ease-in-out ;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), lightgray;
+      }
+      .video-card__main {
+        @apply relative overflow-hidden cursor-pointer max-w-[28rem];
+      }
+       .video-card__overlay {
+        @apply absolute inset-0 rounded-lg bg-black bg-opacity-50 flex justify-center items-center  opacity-0 transition-opacity duration-300 ease-in-out;
+       }
+       .video-card__main:hover .video-card__overlay {
+        @apply opacity-100;
+       }
+       .play {
+        @apply  bg-white bg-opacity-25 w-[11.7rem] h-[4.8rem] rounded-full flex justify-center items-center gap-3;
+       }
+       .play-icon {
+        @apply w-12 h-12 mb-2 z-40;
+       }
+       .play-text {
+        @apply text-white text-lg;
+       }
+
 
       .video-card__details {
         @apply flex items-center gap-[.6rem] opacity-75;

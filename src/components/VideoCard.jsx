@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 function VideoCard({ video, index }) {
   const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
   const [imgSize, setImgSize] = useState("");
-  // console.log(key);
 
   useEffect(() => {
     setScreenWidth(window.visualViewport.width);
@@ -15,12 +14,25 @@ function VideoCard({ video, index }) {
   }, []);
 
   return (
-    <div className="video-card" key={index}>
-      <LazyLoadImage
-        src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
-        alt={video.title + "'s image"}
-        className="video-card__img"
-      />
+    <div key={index} className="video-card">
+      <div className="video-card__main">
+        <LazyLoadImage
+          src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
+          alt={video.title + "'s image"}
+          className="video-card__img"
+        />
+        <div className="video-card__overlay">
+          <div className="play">
+            <img
+              alt="Play button"
+              src="assets/icon-play.svg"
+              className="play-icon"
+            />
+            <span className="play-text">Play</span>
+          </div>
+        </div>
+      </div>
+
       <div className="video-card__details">
         <p className="video-card__year">{video.year}</p>
         <span>&#8226;</span>
