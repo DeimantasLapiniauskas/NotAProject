@@ -97,7 +97,7 @@ const Trending = ({ entries, onBookmarkToggle }) => {
               <div className="trending__content--data">
 
                 <span className="categories">{item.year}</span>
-                <span className="dot">
+                {/* <span className="dot">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="3"
@@ -113,24 +113,28 @@ const Trending = ({ entries, onBookmarkToggle }) => {
                       fill="white"
                     />
                   </svg>
-                </span>
-                <span>
-                  {item.category === "Movie" ? (
-                    <img
-                      className="movie"
-                      src="assets/icon-category-movie.svg"
-                      alt="Movie Logo"
-                    />
-                  ) : (
-                    <img
-                      className="series"
-                      src="assets/icon-category-tv.svg"
-                      alt="Series Logo"
-                    />
-                  )}
-                </span>
-                <span className="categories">{item.category}</span>
-                <span className="dot">
+                  
+                </span> */}
+                <span>&#8226;</span>
+                <div>
+                  <span>
+                    {item.category === "Movie" ? (
+                      <img
+                        className="movie"
+                        src="assets/icon-category-movie.svg"
+                        alt="Movie Logo"
+                      />
+                    ) : (
+                      <img
+                        className="series"
+                        src="assets/icon-category-tv.svg"
+                        alt="Series Logo"
+                      />
+                    )}
+                  </span>
+                  <span className="categories">{item.category}</span>
+                </div>
+                {/* <span className="dot">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="3"
@@ -146,7 +150,8 @@ const Trending = ({ entries, onBookmarkToggle }) => {
                       fill="white"
                     />
                   </svg>
-                </span>
+                </span> */}
+                <span>&#8226;</span>
                 <span className="categories">{item.rating}</span>
               </div>
               <h3>{item.title}</h3>
