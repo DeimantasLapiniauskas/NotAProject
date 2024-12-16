@@ -487,17 +487,25 @@
   ],
   "users": [
     {
-      "id": "e0bc",
-      "email": "ahr@ss.com",
-      "password": "ss",
-      "isLoggedIn": false
+      "id": "5bd7",
+      "email": "admin@admin.com",
+      "password": "$2a$08$4/PbN3.Kz1ZOmQqvlEbbAOSVXRkSEnEv6sNuNxFKSvthkljZ7V9d6",
+      "isLoggedIn": false,
+      "isAdmin": false
     },
     {
-      "id": "b84e",
+      "id": "73a8",
       "email": "user@user.com",
-      "password": "user",
-      "password-repeat": "user",
-      "isLoggedIn": false
+      "password": "$2a$08$OP8N9ncLum/JOxLNmBf5u.W/BLNhqA2YX84iXEFOwf5zlCYn.i0L2",
+      "isLoggedIn": false,
+      "isAdmin": false
+    },
+    {
+      "id": "17b8",
+      "email": "ahr@ss.com",
+      "password": "$2a$08$RVdKIeq/17sh72eyvJj0I.adB9X5yaUryCrzQyhRcci2XaGCYFWcG",
+      "isLoggedIn": true,
+      "isAdmin": false
     }
   ]
 }

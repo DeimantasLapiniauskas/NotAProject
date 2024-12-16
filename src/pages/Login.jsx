@@ -5,6 +5,8 @@ import { updateOne } from "../../helpers/CRUD";
 import "./login.css";
 import { ErrorBoundary } from "react-error-boundary";
 import FallbackComponent from "../components/errorHandling/FallbackComponent";
+import bcrypt from "bcryptjs";
+
 function Login({ users, setUser }) {
   let navigate = useNavigate();
   const [error, setError] = useState("");
@@ -21,16 +23,22 @@ function Login({ users, setUser }) {
 
       if (!user) throw new Error(`User doesn't exist. Please sign up`);
 
-      if (user.password !== values.password)
+      if (!(await bcrypt.compare(values.password, user.password)))
         throw new Error("Wrong email or password");
 
       const updatedUser = await updateOne(`users`, user.id, {
         isLoggedIn: true,
       });
 
-      setUser(updatedUser);
+      setUser({ id: updatedUser.id, isLoggedIn: updatedUser.isLoggedIn });
 
-      sessionStorage.setItem("user", JSON.stringify(updatedUser));
+      sessionStorage.setItem(
+        "user",
+        JSON.stringify({
+          id: updatedUser.id,
+          isLoggedIn: updatedUser.isLoggedIn,
+        })
+      );
 
       navigate("/home");
     } catch (err) {
