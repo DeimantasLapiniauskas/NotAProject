@@ -88,7 +88,7 @@
     }
 
     .avatar {
-      @apply w-10 h-10 border border-[var(--color-pure-white)] rounded-full sm:w-[3.2rem] sm:h-[3.2rem] lg:mt-auto;
+      @apply relative w-10 h-10 border border-[var(--color-pure-white)] rounded-full sm:w-[3.2rem] sm:h-[3.2rem] lg:mt-auto cursor-pointer hover:after:content-['Logout'] hover:after:absolute hover:after:top-[2rem] hover:after:left-[-6rem] hover:after:text-xl hover:after:bg-[var(--color-pure-white)] hover:after:text-[var(--color-red)] hover:after:px-4 hover:after:py-2 hover:after:rounded-xl lg:hover:after:top-[-3rem] lg:hover:after:left-[3rem];
     }
   }
 
@@ -196,7 +196,7 @@
       }
     }
     #SignupFooter {
-      @apply md:pb-[0.8rem]
+      @apply md:pb-[0.8rem];
     }
   }
 }
