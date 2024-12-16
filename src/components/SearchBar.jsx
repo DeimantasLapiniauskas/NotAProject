@@ -62,6 +62,8 @@ function SearchBar({ entries, searching, setSearching, page }) {
     <>
       <form onSubmit={handleSubmit} className="search__container">
         {/* The input field */}
+        <div className="search__params">
+
         <div className="search__bar">
           <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -82,19 +84,20 @@ function SearchBar({ entries, searching, setSearching, page }) {
                 ? "movies"
                 : "TV series"
             }`}
-          />
+            />
+        </div>
           <label htmlFor="ageRating"></label>
+          {/* The age rating field */}
           <select
             name="ageRating"
             id="ageRating"
-            style={{ backgroundColor: "#999999" }}
-          >
-            <option value="">Any</option>
+            >
+            <option value="">Age rating</option>
             <option value="E">E</option>
             <option value="PG">PG</option>
             <option value="18+">18+</option>
           </select>
-        </div>
+            </div>
         <p className="error">{error}</p>
 
         {/* Counts suggestions */}
