@@ -15,12 +15,24 @@ function VideoCard({ video, key }) {
   }, []);
 
   return (
-    <div className="video-card" key={key}>
-      <LazyLoadImage
-        src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
-        alt={video.title + "'s image"}
-        className="video-card__img"
-      />
+    <div key={index} className="video-card">
+      <div className="video-card__main">
+        <LazyLoadImage
+          src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
+          alt={video.title + "'s image"}
+          className="video-card__img"
+        />
+        <div className="video-card__overlay">
+          <div className="play">
+            <img
+              alt="Play button"
+              src="assets/icon-play.svg"
+              className="play-icon"
+            />
+            <span className="play-text">Play</span>
+          </div>
+        </div>
+      </div>
       <div className="video-card__details">
       <BookmarkButton
           id={video.id}

@@ -53,9 +53,9 @@ const Nav = ({ user, setUser }) => {
           />
         </NavLink>
       </nav>
-      <div className="avatar" onClick={logOut}>
+      <button className="avatar" onClick={logOut}>
         <img src="/assets/image-avatar.png" alt="avatar" />
-      </div>
+      </button>
     </aside>
   );
 };
