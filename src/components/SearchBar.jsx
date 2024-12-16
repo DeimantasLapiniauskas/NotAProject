@@ -40,6 +40,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
     } else if (Vals.length >= 100) {
       setSearchParams({})
       setError("Search query too long!");
+      setValue("")
       setSearching(true);
     } else {
       setSearchParams({})
