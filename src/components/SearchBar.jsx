@@ -100,7 +100,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
           <label htmlFor="ageRating"></label>
           {/* The age rating field */}
           <select name="ageRating" id="ageRating">
-            <option value="">Age rating</option>
+            <option value="">Rating</option>
             <option value="E">E</option>
             <option value="PG">PG</option>
             <option value="18+">18+</option>

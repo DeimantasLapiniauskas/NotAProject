@@ -4,7 +4,7 @@ import VideoCard from "./VideoCard";
 function EntryList({ entries, title }) {
   const [video, setVideo] = useState([]);
   const getVideo = async () => {
-      setVideo(entries);
+    setVideo(entries);
   };
 
   useEffect(() => {

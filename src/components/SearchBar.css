@@ -2,7 +2,7 @@
   visibility: hidden;
 }
 .search__container {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.3rem;
   display: flex;
   align-items: center;
   border-radius: 1.5rem;
@@ -37,14 +37,12 @@
   color: #fff;
   outline: none;
   flex-grow: 1;
-  font-size: 1rem;
-  margin-left: 0.5rem;
+  margin-left: 1.6rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: 75vw;
+  width: max-content;
   font-size: 1.6rem;
-  padding-left: 1.6rem;
 }
 
 .search__container input::placeholder {
