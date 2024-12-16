@@ -186,11 +186,11 @@
 
   .signup {
     @apply md:mt-[0.8rem] lg:mt-[0.2rem];
-    header img {
-      @apply max-md:mb-[1.26rem];
-    }
     main {
       @apply pb-[2.4rem];
+      /* p {
+        @apply mx-[0.1rem]
+      } */
       button {
         @apply w-full h-[4.8rem] max-sm:mt-16 md:mt-[2.3rem] rounded-[6px];
       }
