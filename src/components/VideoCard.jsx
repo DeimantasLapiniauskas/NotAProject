@@ -2,7 +2,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useEffect, useState } from "react";
 function VideoCard({ video, key }) {
   const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
-  const [imgSize, setImgSize] = useState("");
+  const [imgSize, setImgSize] = useState("");  
+console.log(key);
 
   useEffect(() => {
     setScreenWidth(window.visualViewport.width);
