@@ -14,7 +14,9 @@ function EntryList({ entries, title }) {
     <section className="video-list">
       <h4 className="video-list__title">{title}</h4>
       {video.map((entry, index) => {
-          return <VideoCard key={index} video={entry} />;
+        // console.log(index + "From entrylist");
+        
+          return <VideoCard video={entry} key={index} />;
       })}
     </section>
   );
