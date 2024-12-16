@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { updateOne } from "../../helpers/CRUD";
 import "./BookmarkButton.css";
 
 function BookmarkButton({ id, initialIsBookmarked, onToggle }) {
@@ -8,24 +9,12 @@ function BookmarkButton({ id, initialIsBookmarked, onToggle }) {
     const newBookmarkState = !isBookmarked;
 
     try {
-      const response = await fetch(`http://localhost:5000/videos/${id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          isBookmarked: newBookmarkState,
-        }),
-      });
+      await updateOne("videos", id, { isBookmarked: newBookmarkState });
 
-      if (response.ok) {
-        setIsBookmarked(newBookmarkState);
-        onToggle(newBookmarkState);
-      } else {
-        console.error("Failed to update bookmark status on the server.");
-      }
+      setIsBookmarked(newBookmarkState);
+      onToggle(newBookmarkState);
     } catch (error) {
-      console.error("Error updating bookmark:", error);
+      console.error("Error updating bookmark status:", error);
     }
   };
 
@@ -38,8 +27,8 @@ function BookmarkButton({ id, initialIsBookmarked, onToggle }) {
       <img
         src={
           isBookmarked
-            ? "/assets/icon-bookmark-full.svg" // Active 
-            : "/assets/icon-bookmark-empty.svg" // Inactive 
+            ? "/assets/icon-bookmark-full.svg" // Active
+            : "/assets/icon-bookmark-empty.svg" // Inactive
         }
         alt={isBookmarked ? "Bookmarked" : "Not Bookmarked"}
         className="bookmark-icon"

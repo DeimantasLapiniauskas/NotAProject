@@ -23,12 +23,11 @@ function VideoCard({ video, key }) {
       />
       <div className="video-card__details">
       <BookmarkButton
-      id={video.id}
-      initialIsBookmarked={video.isBookmarked}
-      onToggle={(newBookmarkState) =>
-        handleBookmarkToggle(video.id, newBookmarkState)
-      }
-    />
+          id={video.id}
+          initialIsBookmarked={video.isBookmarked}
+          onToggle={(newBookmarkState) =>
+            onBookmarkToggle(video.id, newBookmarkState)  }
+        />
         <p className="video-card__year">{video.year}</p>
         <span>&#8226;</span>
         <p className="video-card__icon">
