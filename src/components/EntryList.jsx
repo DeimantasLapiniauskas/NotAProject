@@ -13,10 +13,11 @@ function EntryList({ entries, title }) {
   return (
     <section className="video-list">
       <h4 className="video-list__title">{title}</h4>
-      {video.map((entry, index) => {
+      {video.map((entry, key) => {
         // console.log(index + "From entrylist");
+        // console.log(key);
 
-        return <VideoCard video={entry} index={index} key={index} />;
+        return <VideoCard video={entry} index={key} key={key} />;
       })}
     </section>
   );

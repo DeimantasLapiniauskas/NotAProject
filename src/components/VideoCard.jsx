@@ -32,7 +32,6 @@ function VideoCard({ video, index }) {
           </div>
         </div>
       </div>
-
       <div className="video-card__details">
         <p className="video-card__year">{video.year}</p>
         <span>&#8226;</span>
