@@ -66,7 +66,15 @@ function Signup({ setUser, users }) {
                 type="password"
                 placeholder="Password"
                 id="PasswdSignup"
-                {...register("password", { required: "Can't be empty" })}
+                {...register("password", {
+                  required: "Can't be empty",
+                  pattern: {
+                    value:
+                      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+                      // Bigger message just doesn't fit
+                      message: "Password must include uppercase, lowercase, number, and 8+ characters."
+                  },
+                })}
                 className={errors.password && "error"}
               />
               {errors.password && (
