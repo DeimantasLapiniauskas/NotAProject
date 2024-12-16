@@ -27,20 +27,29 @@ function SearchBar({ entries, searching, setSearching, page }) {
   function handleSubmit(e) {
     e.preventDefault();
     let Vals = e.target.querySelector("input").value.trim();
+
+    let AgeVals = e.target.querySelector("select").value;
+    setAgeValue(AgeVals);
     if (!Vals.match(searchRegex)) {
       setError("Search query contains invalid characters!");
       setSearching(true);
     } else if (Vals.length >= 100) {
       setError("Search query too long!");
       setSearching(true);
-    } else if (Vals.length > 3) {
+    } else if (Vals.length > 2) {
       setError();
       setValue(Vals.toLowerCase());
       setSearchParams({ search: Vals });
       setSearchEntries(
-        entries.filter((entry) =>
-          entry.title.toLowerCase().includes(Vals.toLowerCase())
-        )
+        entries.filter((entry) => {
+          return (
+            // filters based on if the show matches the requested age rating, and if it either includes the search query as a title or as its release year.
+            (entry.title.toLowerCase().includes(Vals.toLowerCase()) &&
+              entry.rating.includes(AgeVals)) ||
+            (JSON.stringify(entry.year).includes(Vals) &&
+              entry.rating.includes(AgeVals))
+          );
+        })
       );
 
       setSearching(true);

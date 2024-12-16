@@ -1,8 +1,7 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useEffect, useState } from "react";
 function VideoCard({ video, index }) {
-
-  // console.log(index); 
+  // console.log(index);
   const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
   const [imgSize, setImgSize] = useState("");
 
@@ -34,7 +33,6 @@ function VideoCard({ video, index }) {
           </div>
         </div>
       </div>
-
       <div className="video-card__details">
         <p className="video-card__year">{video.year}</p>
         <span>&#8226;</span>
