@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { updateOne } from "../../helpers/CRUD";
 import "./BookmarkButton.css";
 
 function BookmarkButton({ id, initialIsBookmarked, onToggle }) {
   const [isBookmarked, setIsBookmarked] = useState(initialIsBookmarked);
+
+  useEffect(() => {
+    setIsBookmarked(initialIsBookmarked);
+  }, [initialIsBookmarked]);
 
   const handleToggle = async () => {
     const newBookmarkState = !isBookmarked;
