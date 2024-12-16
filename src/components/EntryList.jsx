@@ -4,7 +4,7 @@ import VideoCard from "./VideoCard";
 function EntryList({ entries, title }) {
   const [video, setVideo] = useState([]);
   const getVideo = async () => {
-      setVideo(entries);
+    setVideo(entries);
   };
 
   useEffect(() => {
@@ -13,10 +13,11 @@ function EntryList({ entries, title }) {
   return (
     <section className="video-list">
       <h4 className="video-list__title">{title}</h4>
-      {video.map((entry, index) => {
+      {video.map((entry, key) => {
         // console.log(index + "From entrylist");
-        
-          return <VideoCard video={entry} key={index} />;
+        // console.log(key);
+
+        return <VideoCard video={entry} index={key} key={key} />;
       })}
     </section>
   );
