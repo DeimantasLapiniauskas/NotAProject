@@ -79,13 +79,13 @@ const Trending = ({ entries }) => {
     />
 
     <div className="trending__overlay">
-      <div className="play">
+    <div className="plays">
       <img
         src={playIcon} 
         alt="Play Icon"
-        className="play-icon"
+        className="play-icons"
       />
-      <span className="play-text">Play</span>
+      <span className="play-texts">Play</span>
     </div>
   </div></div>
             {/* IMG gali kilti bedu su pasikeitimu i mazesnius ekranus. */}
