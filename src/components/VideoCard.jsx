@@ -1,7 +1,8 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useEffect, useState } from "react";
 import BookmarkButton from "./BookmarkButton";
-function VideoCard({ video, key }) {
+function VideoCard({ video, index }) {
+  // console.log(index);
   const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
   const [imgSize, setImgSize] = useState("");
 
