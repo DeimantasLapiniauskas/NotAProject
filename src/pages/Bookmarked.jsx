@@ -4,7 +4,7 @@ import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
 import EntryList from "../components/EntryList";
 
-const Bookmarked = ({ user, setUser, entries }) => {
+const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
   const navigate = useNavigate();
   const [searching, setSearching] = useState(false);
   useEffect(() => {
@@ -26,6 +26,7 @@ const Bookmarked = ({ user, setUser, entries }) => {
             entries={entries.filter((entry) => {
               return entry.isBookmarked && entry.category === "Movie";
             })}
+            onBookmarkToggle={onBookmarkToggle}
           />
         )}
         {!searching && (
@@ -34,6 +35,7 @@ const Bookmarked = ({ user, setUser, entries }) => {
             entries={entries.filter((entry) => {
               return entry.isBookmarked && entry.category === "TV Series";
             })}
+            onBookmarkToggle={onBookmarkToggle}
           />
         )}
       </div>

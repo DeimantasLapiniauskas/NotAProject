@@ -54,6 +54,14 @@ function App() {
     getMovies();
   }, []);
 
+  const handleBookmarkToggle = (id, newBookmarkState) => {
+    setMovies((prevMovies) =>
+      prevMovies.map((movie) =>
+        movie.id === id ? { ...movie, isBookmarked: newBookmarkState } : movie
+      )
+    );
+  };
+  
   return (
     <>
       <main>
@@ -110,7 +118,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Home" />
-                    <Home user={user} setUser={setUser} entries={movies} />
+                    <Home user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
                   </>
                 }
               />
@@ -119,7 +127,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Movies" />
-                    <Movies user={user} setUser={setUser} entries={movies} />
+                    <Movies user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
                   </>
                 }
               />
@@ -128,7 +136,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="TV series" />
-                    <TvSeries user={user} setUser={setUser} entries={movies} />
+                    <TvSeries user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
                   </>
                 }
               />
@@ -141,6 +149,7 @@ function App() {
                       user={user}
                       setUser={setUser}
                       entries={movies}
+                      onBookmarkToggle={handleBookmarkToggle}
                     />
                   </>
                 }

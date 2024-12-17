@@ -4,7 +4,7 @@ import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
 import EntryList from "../components/EntryList";
 
-const Movies = ({ user, setUser, entries }) => {
+const Movies = ({ user, setUser, entries, onBookmarkToggle }) => {
   const navigate = useNavigate();
 
   const [searching, setSearching] = useState(false);
@@ -27,6 +27,7 @@ const Movies = ({ user, setUser, entries }) => {
             entries={entries.filter((entry) => {
               return entry.category === "Movie";
             })}
+            onBookmarkToggle={onBookmarkToggle}
           />
         )}
       </div>
