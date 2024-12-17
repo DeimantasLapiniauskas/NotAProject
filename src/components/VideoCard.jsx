@@ -1,23 +1,65 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
-function VideoCard({ movie, index }) {
+import { useEffect, useState } from "react";
+function VideoCard({ video, index, search }) {
+  // console.log(index);
+  const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
+  const [imgSize, setImgSize] = useState("");
+
+  useEffect(() => {
+    setScreenWidth(window.visualViewport.width);
+    screenWidth < 640
+      ? setImgSize("small")
+      : screenWidth < 1024
+      ? setImgSize("medium")
+      : setImgSize("large");
+  }, []);
+
   return (
-    <div className="video-card" key={index}>
-      <LazyLoadImage
-        src={movie.thumbnail.regular.small.substring(1)}
-        alt={movie.title + "'s image"}
-        className="video-card__img"
-      />
+    <div key={index} className="video-card">
+      <div className="video-card__main">
+        {search ? (
+          <img
+            src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
+            alt={video.title + "'s image"}
+            className="video-card__img"
+          />
+        ) : (
+          <LazyLoadImage
+            src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
+            alt={video.title + "'s image"}
+            className="video-card__img"
+          />
+        )}
+
+        <div className="video-card__overlay">
+          <div className="play">
+            <img
+              alt="Play button"
+              src="assets/icon-play.svg"
+              className="play-icon"
+            />
+            <span className="play-text">Play</span>
+          </div>
+        </div>
+      </div>
       <div className="video-card__details">
-        <p className="video-card__year">{movie.year}</p>
+        <p className="video-card__year">{video.year}</p>
         <span>&#8226;</span>
         <p className="video-card__icon">
-          <img src={movie.category == "Movie" ? "/assets/icon-category-movie.svg" : "/assets/icon-category-tv.svg"} />
-          {movie.category}
+          <img
+            src={
+              video.category == "Movie"
+                ? "/assets/icon-category-movie.svg"
+                : "/assets/icon-category-tv.svg"
+            }
+            alt="icon"
+          />
+          {video.category}
         </p>
         <span>&#8226;</span>
-        <p className="video-card__rating">{movie.rating}</p>
+        <p className="video-card__rating">{video.rating}</p>
       </div>
-      <h6 className="video-card__title">{movie.title}</h6>
+      <h6 className="video-card__title">{video.title}</h6>
     </div>
   );
 }

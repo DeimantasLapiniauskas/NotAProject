@@ -1,20 +1,26 @@
 import VideoCard from "./VideoCard";
 
 function SearchResults({ searchEntries, page }) {
+  // console.log(searchEntries);
+  // console.log(page);
+  
   return (
     <>
       <section className="video-list">
-        {searchEntries.map((movie, index) => {
+        {searchEntries.map((video, index) => {
+          // console.log(movie);
+          
           // if page is the attention whore known as "Bookmarked", make a special exception
-          if (movie.isBookmarked === true && page === "Bookmarked") {
-            return <VideoCard movie={movie} key={index} />;
+          if (video.isBookmarked === true && page === "Bookmarked") {
+            
+            return <VideoCard video={video} key={index} />;
           }
           if (
-            movie.category === page ||
-            movie.category === page.slice(0, -1) ||
+            video.category === page ||
+            video.category === page.slice(0, -1) ||
             page === "Home"
           ) {
-            return <VideoCard movie={movie} key={index} />;
+            return <VideoCard video={video} key={index} search="search" />;
           }
         })}
       </section>

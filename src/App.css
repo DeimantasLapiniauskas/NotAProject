@@ -2,3 +2,9 @@
   filter: invert(12%) sepia(95%) saturate(5564%) hue-rotate(0deg)
     brightness(99%) contrast(117%);
 }
+.loadingCircle{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+}

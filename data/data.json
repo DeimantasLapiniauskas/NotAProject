@@ -487,10 +487,32 @@
   ],
   "users": [
     {
-      "id": "e0bc",
+      "id": "5bd7",
+      "email": "admin@admin.com",
+      "password": "$2a$08$4/PbN3.Kz1ZOmQqvlEbbAOSVXRkSEnEv6sNuNxFKSvthkljZ7V9d6",
+      "isLoggedIn": false,
+      "isAdmin": false
+    },
+    {
+      "id": "73a8",
+      "email": "user@user.com",
+      "password": "$2a$08$OP8N9ncLum/JOxLNmBf5u.W/BLNhqA2YX84iXEFOwf5zlCYn.i0L2",
+      "isLoggedIn": false,
+      "isAdmin": false
+    },
+    {
+      "id": "17b8",
       "email": "ahr@ss.com",
-      "password": "ss",
-      "isLoggedIn": true
+      "password": "$2a$08$RVdKIeq/17sh72eyvJj0I.adB9X5yaUryCrzQyhRcci2XaGCYFWcG",
+      "isLoggedIn": false,
+      "isAdmin": false
+    },
+    {
+      "id": "aae1",
+      "email": "xxx@xxx.com",
+      "password": "$2a$08$vQxXXmUJvZsjoizvzuXj5ur7Q42GaEWQxTP5dSvYW8iZlOEHPsohW",
+      "isLoggedIn": true,
+      "isAdmin": false
     }
   ]
 }

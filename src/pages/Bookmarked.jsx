@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import Nav from "../components/Nav";
-import BookmarkedList from "./../components/BookmarkedList";
 import SearchBar from "../components/SearchBar";
-
+import EntryList from "../components/EntryList";
 
 const Bookmarked = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
@@ -21,7 +20,22 @@ const Bookmarked = ({ user, setUser, entries }) => {
           setSearching={setSearching}
           page="Bookmarked"
         />
-        {!searching&&<BookmarkedList entries={entries}/>}
+        {!searching && (
+          <EntryList
+            title="Bookmarked Movies"
+            entries={entries.filter((entry) => {
+              return entry.isBookmarked && entry.category === "Movie";
+            })}
+          />
+        )}
+        {!searching && (
+          <EntryList
+            title="Bookmarked TV Series"
+            entries={entries.filter((entry) => {
+              return entry.isBookmarked && entry.category === "TV Series";
+            })}
+          />
+        )}
       </div>
     </>
   );

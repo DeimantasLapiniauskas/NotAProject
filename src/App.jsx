@@ -8,6 +8,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import FallbackToasts from "./components/errorHandling/FallbackToasts";
 import { Suspense, lazy } from "react";
 import { Toaster } from "react-hot-toast";
+import { Circles } from "react-loader-spinner";
 
 // Lazy-loaded components
 const Home = lazy(() => import("./pages/Home"));
@@ -62,14 +63,35 @@ function App() {
         {/* Check components and they childs, if get error show a toast */}
         <Toaster position="top-right" />
         <ErrorBoundary FallbackComponent={FallbackToasts}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <div>
+                {" "}
+                <div id="loadingCircle" className="loadingCircle">
+                  <Circles
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="circles-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                </div>
+              </div>
+            }
+          >
             <Routes>
               <Route
                 path="/signup"
                 element={
                   <>
                     <PageTitle title="Sign up" />
-                    <Signup setUser={setUser} users={users} />
+                    <Signup
+                      setUser={setUser}
+                      setUsers={setUsers}
+                      users={users}
+                    />
                   </>
                 }
               />
@@ -106,7 +128,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="TV series" />
-                    <TvSeries user={user} setUser={setUser} entries={movies}/>
+                    <TvSeries user={user} setUser={setUser} entries={movies} />
                   </>
                 }
               />
@@ -115,7 +137,11 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Bookmarks" />
-                    <Bookmarked user={user} setUser={setUser} entries={movies} />
+                    <Bookmarked
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                    />
                   </>
                 }
               />

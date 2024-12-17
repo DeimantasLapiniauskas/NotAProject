@@ -23,7 +23,7 @@
   }
 
   #root {
-    @apply bg-[var(--color-dark-blue)] font-[400] min-h-[100dvh];
+    @apply bg-[var(--color-dark-blue)] font-[400] min-h-[100dvh] pb-[2rem];
 
     .pagecontent {
       @apply pt-10 sm:pt-20 lg:pl-40 lg:pt-10 px-[1.6rem] sm:px-10;
@@ -88,24 +88,52 @@
     }
 
     .avatar {
-      @apply w-10 h-10 border border-[var(--color-pure-white)] rounded-full sm:w-[3.2rem] sm:h-[3.2rem] lg:mt-auto;
+      @apply relative w-10 h-10 border border-[var(--color-pure-white)] rounded-full sm:w-[3.2rem] sm:h-[3.2rem] lg:mt-auto cursor-pointer hover:after:content-['Logout'] hover:after:absolute hover:after:top-[2rem] hover:after:left-[-6rem] hover:after:text-xl hover:after:bg-[var(--color-pure-white)] hover:after:text-[var(--color-red)] hover:after:px-4 hover:after:py-2 hover:after:rounded-xl lg:hover:after:top-[-3rem] lg:hover:after:left-[3rem];
     }
   }
 
   .video-list {
-    @apply grid grid-cols-2 gap-y-[1.6rem] gap-x-[1.5rem] sm:gap-x-[2.9rem] sm:gap-y-[2.1rem] md:grid-cols-3 lg:grid-cols-4;
+    @apply grid grid-cols-2 gap-x-6 gap-y-[1.6rem] sm:gap-x-[2.9rem] sm:gap-y-[2.1rem] md:grid-cols-3 lg:grid-cols-4 pb-[2rem];
 
     .video-list__title {
-      @apply tracking-[-0.31px] sm:tracking-[-0.5px] text-[2rem] sm:text-[3.2rem] leading-[2.5rem]  col-span-full mb-3;
+      @apply tracking-[-0.31px] sm:tracking-[-0.5px] text-[2rem] sm:text-[3.2rem] leading-[2.5rem] mb-3 col-span-full;
     }
 
     .video-card {
-      & > img {
-        @apply rounded-[8px] sm:w-[22rem] sm:h-[14rem];
+      @apply flex flex-col;
+      .video-card__img {
+        @apply rounded-[8px] duration-300 ease-in-out sm:w-[22rem] sm:h-[14rem];
+      }
+      .video-card__img:hover {
+        @apply bg-cover bg-no-repeat bg-neutral-300 opacity-50 group-hover:opacity-100 transition duration-300 ease-in-out;
+        background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.5) 100%
+          ),
+          lightgray;
+      }
+      .video-card__main {
+        @apply relative overflow-hidden cursor-pointer max-w-[28rem];
+      }
+      .video-card__overlay {
+        @apply absolute inset-0 rounded-lg bg-black bg-opacity-50 flex justify-center items-center  opacity-0 transition-opacity duration-300 ease-in-out;
+      }
+      .video-card__main:hover .video-card__overlay {
+        @apply opacity-100;
+      }
+      .play {
+        @apply bg-white bg-opacity-25 w-[11.7rem] h-[4.8rem] rounded-full flex items-center gap-[2.2rem];
+      }
+      .play-icon {
+        @apply w-12 h-12 mb-2 z-40 ml-[1rem] mt-[0.5rem];
+      }
+      .play-text {
+        @apply text-white text-[1.8rem];
       }
 
       .video-card__details {
-        @apply flex items-center gap-[.6rem] sm:gap-[.8rem] opacity-75 sm:mt-[.8rem];
+        @apply flex items-center gap-[.6rem] sm:gap-[.8rem] opacity-75 mt-[.4rem] sm:mt-[.8rem];
       }
 
       p {
@@ -132,21 +160,21 @@
 
   .login,
   .signup {
-    @apply px-[2.4rem] pt-[4.8rem] md:pt-[9.6rem] lg:pt-[9.6rem] flex flex-col gap-[5.84rem];
+    @apply px-[2.4rem] pt-[4.8rem] md:pt-[8rem] lg:pt-[7.8rem] flex flex-col gap-[5.84rem];
 
     header img {
-      @apply w-[3.2rem] h-[2.56rem] mx-auto;
+      @apply w-[3.2rem] h-[2.56rem] md:mb-[1.26rem] lg:mb-[2.3rem] mx-auto;
     }
 
     main {
-      @apply px-[2.4rem] pt-[2.4rem] pb-[3.2rem] bg-[var(--color-semi-dark-blue)] rounded-[10px] text-2xl sm:mx-auto sm:w-[40rem];
+      @apply max-md:px-[2.4rem] md:px-[3.2rem] pt-[2.2rem] bg-[var(--color-semi-dark-blue)] max-md:rounded-[10px] md:rounded-[20px] text-2xl sm:mx-auto sm:w-[40rem];
 
       h1 {
-        @apply tracking-[-0.5px] mb-16;
+        @apply tracking-[-0.5px] md:mt-[0.8rem] mb-14 leading-normal;
       }
 
       input {
-        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.4rem] pb-[1.7rem] mb-[2.4rem] hover:border-[var(--color-pure-white)] focus-visible:outline-none focus:border-[var(--color-pure-white)] caret-[var(--color-red)];
+        @apply border-b-[1px] border-[var(--color-greyish-blue)] w-full h-[3.7rem] bg-[var(--color-semi-dark-blue)] text-[var(--color-pure-white)] pl-[1.4rem] pb-[1.7rem]  hover:border-[var(--color-pure-white)] focus-visible:outline-none focus:border-[var(--color-pure-white)] caret-[var(--color-red)];
 
         &:-webkit-autofill,
         &:-webkit-autofill:hover,
@@ -162,15 +190,11 @@
       }
 
       .input-div {
-        @apply relative;
+        @apply relative mt-[2.4rem];
 
         .error-span {
           @apply text-[var(--color-red)] absolute top-[.2rem] right-[1.7rem];
         }
-      }
-
-      button {
-        @apply w-full h-[4.8rem] mt-16 rounded-[6px];
       }
 
       p {
@@ -180,6 +204,28 @@
           @apply text-[var(--color-red)];
         }
       }
+    }
+  }
+
+  .login {
+    main {
+      @apply pb-[3.2rem];
+      button {
+        @apply w-full h-[4.8rem] mt-16 rounded-[6px];
+      }
+    }
+  }
+
+  .signup {
+    @apply md:mt-[0.8rem] lg:mt-[0.2rem];
+    main {
+      @apply pb-[2.4rem];
+      button {
+        @apply w-full h-[4.8rem] max-sm:mt-16 md:mt-[2.3rem] rounded-[6px];
+      }
+    }
+    #SignupFooter {
+      @apply md:pb-[0.8rem];
     }
   }
 }
