@@ -213,9 +213,6 @@
 
   .signup {
     @apply md:mt-[0.8rem] lg:mt-[0.2rem];
-    header img {
-      @apply max-md:mb-[1.26rem];
-    }
     main {
       @apply pb-[2.4rem];
       button {
