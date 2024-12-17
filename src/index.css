@@ -93,7 +93,7 @@
   }
 
   .video-list {
-    @apply grid grid-cols-2 gap-x-6 gap-y-[1.6rem] sm:gap-x-[2.9rem] sm:gap-y-[2.1rem] md:grid-cols-3 lg:grid-cols-4 pb-[5.6rem] pr-[1.6rem] sm:pr-10;
+    @apply grid grid-cols-2 gap-x-6 gap-y-[1.6rem] sm:gap-x-[2.9rem] sm:gap-y-[2.1rem] md:grid-cols-3 lg:grid-cols-4 pb-[2.4rem] sm:pb-[5.6rem] pr-[1.6rem] sm:pr-10;
 
     .video-list__title {
       @apply tracking-[-0.31px] sm:tracking-[-0.5px] text-[2rem] sm:text-[3.2rem] leading-[2.5rem] mb-[.9rem] col-span-full;
