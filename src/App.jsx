@@ -87,7 +87,11 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Sign up" />
-                    <Signup setUser={setUser} users={users} />
+                    <Signup
+                      setUser={setUser}
+                      setUsers={setUsers}
+                      users={users}
+                    />
                   </>
                 }
               />

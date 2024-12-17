@@ -16,8 +16,8 @@ function EntryList({ entries, title }) {
       {video.map((entry, key) => {
         // console.log(index + "From entrylist");
         // console.log(key);
-        
-          return <VideoCard video={entry} index={key} key={key}/>;
+
+        return <VideoCard video={entry} index={key} key={key} />;
       })}
     </section>
   );

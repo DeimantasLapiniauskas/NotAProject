@@ -5,7 +5,9 @@ import { useState } from "react";
 import "./signup.css";
 import { ErrorBoundary } from "react-error-boundary";
 import FallbackComponent from "../components/errorHandling/FallbackComponent";
-function Signup({ setUser, users }) {
+import bcrypt from "bcryptjs";
+
+function Signup({ setUser, setUsers, users }) {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -26,11 +28,25 @@ function Signup({ setUser, users }) {
         });
       }
 
-      const user = await postOne(`users`, { ...values, isLoggedIn: true });
+      const hashedPwd = await bcrypt.hash(values.password, 8);
 
-      setUser(user);
+      // console.log(hashedPwd);
 
-      sessionStorage.setItem("user", JSON.stringify(user));
+      const user = await postOne(`users`, {
+        email: values.email,
+        password: hashedPwd,
+        isLoggedIn: true,
+        isAdmin: false,
+      });
+
+      setUser({ id: user.id, isLoggedIn: user.isLoggedIn });
+
+      sessionStorage.setItem(
+        "user",
+        JSON.stringify({ id: user.id, isLoggedIn: user.isLoggedIn })
+      );
+
+      setUsers((prev) => [...prev, user]);
 
       navigate("/");
     } catch (err) {
