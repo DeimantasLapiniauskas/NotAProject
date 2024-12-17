@@ -108,8 +108,9 @@ const Trending = ({ entries }) => {
                   </svg>
                   
                 </span> */}
-                <span>&#8226;</span>
+                <span className="dot__color">&#8226;</span>
                 <div>
+
                   <span>
                     {item.category === "Movie" ? (
                       <img
@@ -125,6 +126,8 @@ const Trending = ({ entries }) => {
                       />
                     )}
                   </span>
+                </div>
+                <div>
                   <span className="categories">{item.category}</span>
                 </div>
                 {/* <span className="dot">
@@ -144,7 +147,7 @@ const Trending = ({ entries }) => {
                     />
                   </svg>
                 </span> */}
-                <span>&#8226;</span>
+                <span className="dot__color">&#8226;</span>
                 <span className="categories">{item.rating}</span>
               </div>
               <h3>{item.title}</h3>
