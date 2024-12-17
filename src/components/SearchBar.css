@@ -56,7 +56,7 @@
   width: max-content;
   font-size: 1.6rem;
 
-  @apply sm:text-[2.4rem] sm:pl-[2.1rem];
+  @apply sm:text-[2.4rem] sm:ml-[2.2rem];
 }
 
 .search__container input::placeholder {

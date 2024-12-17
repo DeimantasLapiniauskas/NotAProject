@@ -26,7 +26,7 @@
     @apply bg-[var(--color-dark-blue)] font-[400] min-h-[100dvh] pb-[2rem];
 
     .pagecontent {
-      @apply pt-10 sm:pt-20 lg:pl-40 lg:pt-10 px-[1.6rem] sm:px-10;
+      @apply pt-10 sm:pt-20 lg:pl-40 lg:pt-10 pl-[1.6rem] sm:pl-10;
     }
   }
 
@@ -93,10 +93,10 @@
   }
 
   .video-list {
-    @apply grid grid-cols-2 gap-x-6 gap-y-[1.6rem] sm:gap-x-[2.9rem] sm:gap-y-[2.1rem] md:grid-cols-3 lg:grid-cols-4 pb-[2rem];
+    @apply grid grid-cols-2 gap-x-6 gap-y-[1.6rem] sm:gap-x-[2.9rem] sm:gap-y-[2.1rem] md:grid-cols-3 lg:grid-cols-4 pb-[2rem] last:pb-[3.4rem] pr-[1.6rem] sm:pr-10;
 
     .video-list__title {
-      @apply tracking-[-0.31px] sm:tracking-[-0.5px] text-[2rem] sm:text-[3.2rem] leading-[2.5rem] mb-3 col-span-full;
+      @apply tracking-[-0.31px] sm:tracking-[-0.5px] text-[2rem] sm:text-[3.2rem] leading-[2.5rem] mb-[.9rem] col-span-full;
     }
 
     .video-card {
@@ -155,7 +155,7 @@
   }
 
   .trending-list {
-    @apply block sm:mt-[4rem];
+    @apply block sm:mt-[4rem] pb-0 pr-0;
   }
 
   .login,
