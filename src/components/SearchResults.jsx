@@ -20,7 +20,7 @@ function SearchResults({ searchEntries, page }) {
             video.category === page.slice(0, -1) ||
             page === "Home"
           ) {
-            return <VideoCard video={video} key={index} />;
+            return <VideoCard video={video} key={index} search="search" />;
           }
         })}
       </section>

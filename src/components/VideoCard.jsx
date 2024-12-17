@@ -1,6 +1,7 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useEffect, useState } from "react";
-function VideoCard({ video, index }) {
+function VideoCard({ video, index, search }) {
+  // console.log(index);
   const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
   const [imgSize, setImgSize] = useState("");
 
@@ -16,11 +17,20 @@ function VideoCard({ video, index }) {
   return (
     <div key={index} className="video-card">
       <div className="video-card__main">
-        <LazyLoadImage
-          src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
-          alt={video.title + "'s image"}
-          className="video-card__img"
-        />
+        {search ? (
+          <img
+            src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
+            alt={video.title + "'s image"}
+            className="video-card__img"
+          />
+        ) : (
+          <LazyLoadImage
+            src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
+            alt={video.title + "'s image"}
+            className="video-card__img"
+          />
+        )}
+
         <div className="video-card__overlay">
           <div className="play">
             <img
