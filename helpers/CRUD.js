@@ -1,7 +1,5 @@
 import axios from "axios";
 const url = import.meta.env.VITE_API_URL;
-console.log("API URL:", url);
-
 if (!url) {
   console.error("API URL is not defined! Check your .env file.");
 }
