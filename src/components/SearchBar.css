@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: start;
 
-  @apply sm:mt-3;
+  @apply sm:mt-3 sm:mb-[3.8rem];
 }
 .search__params {
   width: 100%;
