@@ -1,14 +1,16 @@
 /* CSS Didesniems ekranams */
 
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-device-width: 641px) {
   .trending {
     display: flex;
-    gap: 1rem;
+    gap: 4rem;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    padding: 10px;
+    /* padding: 10px; */
     scrollbar-width: none; /* Paslepia scroll juosta */
     cursor: grab;
+
+    @apply mt-[3.2rem] mb-[4.7rem];
   }
 
   .trending.dragging {
@@ -74,7 +76,7 @@
     height: 1rem;
     fill: #fff;
   } */
-   /* Second variant */
+  /* Second variant */
   /* .trending__bookmark {
     background: url(/public/assets/icon-bookmark-empty.svg) no-repeat;
     background-position: center;
@@ -137,13 +139,13 @@
 
 /* Mazesniu ekranu CSS */
 
-@media only screen and (max-device-width: 768px) {
+@media only screen and (max-device-width: 640px) {
   .trending {
     display: flex;
     gap: 1rem;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    padding: 10px;
+    /* padding: 10px; */
     scrollbar-width: none;
     cursor: grab;
   }
