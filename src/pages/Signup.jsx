@@ -94,7 +94,8 @@ function Signup({ setUser, setUsers, users }) {
                 className={errors.password && "error"}
               />
               {errors.password && (
-                <span className="error-span small-font">
+                <span className="error-span small-font"
+                style={{"white-space": "pre-wrap", "position":"absolute", "height":"1ex", "top":"1.6rem"}}>
                   {errors.password.message}
                 </span>
               )}
