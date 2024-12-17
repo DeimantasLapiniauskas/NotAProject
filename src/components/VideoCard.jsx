@@ -1,34 +1,60 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useEffect, useState } from "react";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+// import { useEffect, useState } from 'react';
 function VideoCard({ video, index, search }) {
   // console.log(index);
-  const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
-  const [imgSize, setImgSize] = useState("");
+  // const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
+  // const [imgSize, setImgSize] = useState('');
 
-  useEffect(() => {
-    setScreenWidth(window.visualViewport.width);
-    screenWidth < 640
-      ? setImgSize("small")
-      : screenWidth < 1024
-      ? setImgSize("medium")
-      : setImgSize("large");
-  }, []);
+  // useEffect(() => {
+  //   setScreenWidth(window.visualViewport.width);
+  //   screenWidth < 640
+  //     ? setImgSize('small')
+  //     : screenWidth < 1024
+  //     ? setImgSize('medium')
+  //     : setImgSize('large');
+  // }, []);
 
   return (
     <div key={index} className="video-card">
       <div className="video-card__main">
         {search ? (
-          <img
-            src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
-            alt={video.title + "'s image"}
-            className="video-card__img"
-          />
+          <picture>
+            <source
+              srcSet={video.thumbnail.regular.small?.substring(1)}
+              media="(max-width: 640px)"
+            />
+            <source
+              srcSet={video.thumbnail.regular.medium?.substring(1)}
+              media="(max-width: 1024px)"
+            />
+            <LazyLoadImage
+              className="video-card__img"
+              src={video.thumbnail.regular.large?.substring(1)}
+              alt={video.title + "'s image"}
+            />
+          </picture>
         ) : (
-          <LazyLoadImage
-            src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
-            alt={video.title + "'s image"}
-            className="video-card__img"
-          />
+          <picture>
+            <source
+              srcSet={video.thumbnail.regular.small?.substring(1)}
+              media="(max-width: 640px)"
+            />
+            <source
+              srcSet={video.thumbnail.regular.medium?.substring(1)}
+              media="(max-width: 1024px)"
+            />
+            <LazyLoadImage
+              className="video-card__img"
+              src={video.thumbnail.regular.large?.substring(1)}
+              alt={video.title + "'s image"}
+            />
+          </picture>
+
+          // <LazyLoadImage
+          //   src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
+          //   alt={video.title + "'s image"}
+          //   className="video-card__img"
+          // />
         )}
 
         <div className="video-card__overlay">
@@ -48,9 +74,9 @@ function VideoCard({ video, index, search }) {
         <p className="video-card__icon">
           <img
             src={
-              video.category == "Movie"
-                ? "/assets/icon-category-movie.svg"
-                : "/assets/icon-category-tv.svg"
+              video.category == 'Movie'
+                ? '/assets/icon-category-movie.svg'
+                : '/assets/icon-category-tv.svg'
             }
             alt="icon"
           />

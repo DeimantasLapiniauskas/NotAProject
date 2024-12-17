@@ -1,6 +1,6 @@
-import { useRef, useEffect, useState } from "react";
-import "./Trending.css";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useRef, useEffect, useState } from 'react';
+import './Trending.css';
+// import { LazyLoadImage } from 'react-lazy-load-image-component';
 // import playIcon from "./../../public/assets/icon-play.svg";
 
 const Trending = ({ entries }) => {
@@ -8,24 +8,24 @@ const Trending = ({ entries }) => {
   let isDragging = false;
   let startX;
   let scrollLeft;
-  const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
-  const [imgSize, setImgSize] = useState("");
+  // const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
+  // const [imgSize, setImgSize] = useState('');
   useEffect(() => {
-    setScreenWidth(window.visualViewport.width);
-    screenWidth < 640 ? setImgSize("small") : setImgSize("large");
+    // setScreenWidth(window.visualViewport.width);
+    // screenWidth < 640 ? setImgSize('small') : setImgSize('large');
 
     const carousel = carouselRef.current;
 
-    const onMouseDown = (e) => {
+    const onMouseDown = e => {
       if (e.button !== 0) return;
       isDragging = true;
-      carousel.classList.add("dragging");
+      carousel.classList.add('dragging');
       startX = e.pageX - carousel.offsetLeft;
       scrollLeft = carousel.scrollLeft;
       e.preventDefault();
     };
 
-    const onMouseMove = (e) => {
+    const onMouseMove = e => {
       if (!isDragging) return;
       e.preventDefault();
       const x = e.pageX - carousel.offsetLeft;
@@ -35,19 +35,19 @@ const Trending = ({ entries }) => {
 
     const onMouseUpOrLeave = () => {
       isDragging = false;
-      carousel.classList.remove("dragging");
+      carousel.classList.remove('dragging');
     };
 
-    carousel.addEventListener("mousedown", onMouseDown);
-    carousel.addEventListener("mousemove", onMouseMove);
-    carousel.addEventListener("mouseup", onMouseUpOrLeave);
-    carousel.addEventListener("mouseleave", onMouseUpOrLeave);
+    carousel.addEventListener('mousedown', onMouseDown);
+    carousel.addEventListener('mousemove', onMouseMove);
+    carousel.addEventListener('mouseup', onMouseUpOrLeave);
+    carousel.addEventListener('mouseleave', onMouseUpOrLeave);
 
     return () => {
-      carousel.removeEventListener("mousedown", onMouseDown);
-      carousel.removeEventListener("mousemove", onMouseMove);
-      carousel.removeEventListener("mouseup", onMouseUpOrLeave);
-      carousel.removeEventListener("mouseleave", onMouseUpOrLeave);
+      carousel.removeEventListener('mousedown', onMouseDown);
+      carousel.removeEventListener('mousemove', onMouseMove);
+      carousel.removeEventListener('mouseup', onMouseUpOrLeave);
+      carousel.removeEventListener('mouseleave', onMouseUpOrLeave);
     };
   }, []);
 
@@ -60,7 +60,7 @@ const Trending = ({ entries }) => {
     getMovies();
   }, []);
 
-  const trendingMovie = movies.filter((item) => item.isTrending);
+  const trendingMovie = movies.filter(item => item.isTrending);
 
   return (
     <>
@@ -69,11 +69,22 @@ const Trending = ({ entries }) => {
         {trendingMovie.map((item, index) => (
           <div key={index} className="carousel">
             <div className="carousel__image-change">
-              <LazyLoadImage
+              <picture>
+                <source
+                  srcSet={item.thumbnail.trending.small}
+                  media="(max-width: 640px)"
+                />
+                <img
+                  className="carousel__image"
+                  src={item.thumbnail.trending.large}
+                  alt={item.title}
+                />
+              </picture>
+              {/* <LazyLoadImage
                 className="carousel__image"
                 src={item.thumbnail.trending[`${imgSize}`]?.substring(1)}
                 alt={item.title}
-              />
+              /> */}
 
               <div className="trending__overlay">
                 <div className="plays">
@@ -110,9 +121,8 @@ const Trending = ({ entries }) => {
                 </span> */}
                 <span className="dot__color">&#8226;</span>
                 <div>
-
                   <span>
-                    {item.category === "Movie" ? (
+                    {item.category === 'Movie' ? (
                       <img
                         className="movie"
                         src="assets/icon-category-movie.svg"
