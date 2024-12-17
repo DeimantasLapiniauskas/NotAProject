@@ -1,6 +1,10 @@
 import axios from "axios";
+const url = import.meta.env.VITE_API_URL;
+console.log("API URL:", url);
 
-const url = `http://localhost:5000`;
+if (!url) {
+  console.error("API URL is not defined! Check your .env file.");
+}
 
 export const getAll = async (endpoint) => {
   const res = await axios.get(`${url}/${endpoint}`);
