@@ -9,7 +9,6 @@ import FallbackToasts from "./components/errorHandling/FallbackToasts";
 import { Suspense, lazy } from "react";
 import { Toaster } from "react-hot-toast";
 import { Circles } from "react-loader-spinner";
-import { ReactDOM, createRoot } from "react-dom/client";
 
 // Lazy-loaded components
 const Home = lazy(() => import("./pages/Home"));
@@ -21,7 +20,6 @@ const Login = lazy(() => import("./pages/Login"));
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(() => {
     const currentUser = sessionStorage.getItem(`user`);
     return JSON.parse(currentUser) || null;
@@ -54,109 +52,99 @@ function App() {
 
   useEffect(() => {
     getMovies();
-    window.onload=setTimeout(() => {
-      const loadingCircle = document.getElementById("loadingCircle");
-      console.log(loadingCircle.parentNode.childElementCount);
-      
-      // loadingCircle.parentNode.removeChild(loadingCircle);
-
-      setLoading("false");
-    }, 2000);
-    console.log("hi");
   }, []);
 
   return (
     <>
-
-      <div id="loadingCircle" className="loadingCircle">
-        <Circles
-          height="80"
-          width="80"
-          color="#4fa94d"
-          ariaLabel="circles-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-        />
-      </div>
-      {!loading && 
-        <main>
-          {/* Database erorrs */}
-          {error && <div>OOPS</div>}
-          {/* Components errors */}
-          {/* Check components and they childs, if get error show a toast */}
-          <Toaster position="top-right" />
-          <ErrorBoundary FallbackComponent={FallbackToasts}>
-            <Suspense fallback={<div>Loading...</div>}>
-              <Routes>
-                <Route
-                  path="/signup"
-                  element={
-                    <>
-                      <PageTitle title="Sign up" />
-                      <Signup setUser={setUser} users={users} />
-                    </>
-                  }
-                />
-                <Route
-                  path="/login"
-                  element={
-                    <>
-                      <PageTitle title="Login" />
-                      <Login users={users} setUser={setUser} />
-                    </>
-                  }
-                />
-                <Route path="*" element={<Navigate to="/home" />} />
-                <Route
-                  path="/home"
-                  element={
-                    <>
-                      <PageTitle title="Home" />
-                      <Home user={user} setUser={setUser} entries={movies} />
-                    </>
-                  }
-                />
-                <Route
-                  path="/movies"
-                  element={
-                    <>
-                      <PageTitle title="Movies" />
-                      <Movies user={user} setUser={setUser} entries={movies} />
-                    </>
-                  }
-                />
-                <Route
-                  path="/tvseries"
-                  element={
-                    <>
-                      <PageTitle title="TV series" />
-                      <TvSeries
-                        user={user}
-                        setUser={setUser}
-                        entries={movies}
-                      />
-                    </>
-                  }
-                />
-                <Route
-                  path="/bookmarked"
-                  element={
-                    <>
-                      <PageTitle title="Bookmarks" />
-                      <Bookmarked
-                        user={user}
-                        setUser={setUser}
-                        entries={movies}
-                      />
-                    </>
-                  }
-                />
-              </Routes>
-            </Suspense>
-          </ErrorBoundary>
-        </main>
-      }
+      <main>
+        {/* Database erorrs */}
+        {error && <div>OOPS</div>}
+        {/* Components errors */}
+        {/* Check components and they childs, if get error show a toast */}
+        <Toaster position="top-right" />
+        <ErrorBoundary FallbackComponent={FallbackToasts}>
+          <Suspense
+            fallback={
+              <div>
+                {" "}
+                <div id="loadingCircle" className="loadingCircle">
+                  <Circles
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="circles-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                </div>
+              </div>
+            }
+          >
+            <Routes>
+              <Route
+                path="/signup"
+                element={
+                  <>
+                    <PageTitle title="Sign up" />
+                    <Signup setUser={setUser} users={users} />
+                  </>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <>
+                    <PageTitle title="Login" />
+                    <Login users={users} setUser={setUser} />
+                  </>
+                }
+              />
+              <Route path="*" element={<Navigate to="/home" />} />
+              <Route
+                path="/home"
+                element={
+                  <>
+                    <PageTitle title="Home" />
+                    <Home user={user} setUser={setUser} entries={movies} />
+                  </>
+                }
+              />
+              <Route
+                path="/movies"
+                element={
+                  <>
+                    <PageTitle title="Movies" />
+                    <Movies user={user} setUser={setUser} entries={movies} />
+                  </>
+                }
+              />
+              <Route
+                path="/tvseries"
+                element={
+                  <>
+                    <PageTitle title="TV series" />
+                    <TvSeries user={user} setUser={setUser} entries={movies} />
+                  </>
+                }
+              />
+              <Route
+                path="/bookmarked"
+                element={
+                  <>
+                    <PageTitle title="Bookmarks" />
+                    <Bookmarked
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                    />
+                  </>
+                }
+              />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
+      </main>
     </>
   );
 }
