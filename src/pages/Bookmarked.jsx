@@ -4,7 +4,6 @@ import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
 import EntryList from "../components/EntryList";
 
-
 const Bookmarked = ({ user, setUser, entries }) => {
   const navigate = useNavigate();
   const [searching, setSearching] = useState(false);
@@ -21,12 +20,22 @@ const Bookmarked = ({ user, setUser, entries }) => {
           setSearching={setSearching}
           page="Bookmarked"
         />
-        {!searching && <EntryList title="Movies" entries={entries.filter((entry) => {
-              return entry.isBookmarked && entry.category === "Movie"
-            })} />}
-                    {!searching && <EntryList title="TV series" entries={entries.filter((entry) => {
-              return entry.isBookmarked && entry.category === "TV Series"
-            })} />}
+        {!searching && (
+          <EntryList
+            title="Bookmarked Movies"
+            entries={entries.filter((entry) => {
+              return entry.isBookmarked && entry.category === "Movie";
+            })}
+          />
+        )}
+        {!searching && (
+          <EntryList
+            title="Bookmarked TV Series"
+            entries={entries.filter((entry) => {
+              return entry.isBookmarked && entry.category === "TV Series";
+            })}
+          />
+        )}
       </div>
     </>
   );
