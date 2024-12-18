@@ -8,6 +8,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import FallbackToasts from "./components/errorHandling/FallbackToasts";
 import { Suspense, lazy } from "react";
 import { Toaster } from "react-hot-toast";
+import { Circles } from "react-loader-spinner";
 
 // Lazy-loaded components
 const Home = lazy(() => import("./pages/Home"));
@@ -16,8 +17,6 @@ const TvSeries = lazy(() => import("./pages/TvSeries"));
 const Bookmarked = lazy(() => import("./pages/Bookmarked"));
 const Signup = lazy(() => import("./pages/Signup"));
 const Login = lazy(() => import("./pages/Login"));
-
-
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -55,6 +54,14 @@ function App() {
     getMovies();
   }, []);
 
+  const handleBookmarkToggle = (id, newBookmarkState) => {
+    setMovies((prevMovies) =>
+      prevMovies.map((movie) =>
+        movie.id === id ? { ...movie, isBookmarked: newBookmarkState } : movie
+      )
+    );
+  };
+  
   return (
     <>
       <main>
@@ -64,14 +71,35 @@ function App() {
         {/* Check components and they childs, if get error show a toast */}
         <Toaster position="top-right" />
         <ErrorBoundary FallbackComponent={FallbackToasts}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <div>
+                {" "}
+                <div id="loadingCircle" className="loadingCircle">
+                  <Circles
+                    height="80"
+                    width="80"
+                    color="#4fa94d"
+                    ariaLabel="circles-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                </div>
+              </div>
+            }
+          >
             <Routes>
               <Route
                 path="/signup"
                 element={
                   <>
                     <PageTitle title="Sign up" />
-                    <Signup setUser={setUser} users={users} />
+                    <Signup
+                      setUser={setUser}
+                      setUsers={setUsers}
+                      users={users}
+                    />
                   </>
                 }
               />
@@ -90,7 +118,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Home" />
-                    <Home user={user} setUser={setUser} entries={movies} />
+                    <Home user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
                   </>
                 }
               />
@@ -99,7 +127,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Movies" />
-                    <Movies user={user} setUser={setUser} entries={movies} />
+                    <Movies user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
                   </>
                 }
               />
@@ -108,7 +136,7 @@ function App() {
                 element={
                   <>
                     <PageTitle title="TV series" />
-                    <TvSeries user={user} setUser={setUser} entries={movies}/>
+                    <TvSeries user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
                   </>
                 }
               />
@@ -117,7 +145,12 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Bookmarks" />
-                    <Bookmarked user={user} setUser={setUser} entries={movies} />
+                    <Bookmarked
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                      onBookmarkToggle={handleBookmarkToggle}
+                    />
                   </>
                 }
               />

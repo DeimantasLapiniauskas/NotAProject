@@ -3,7 +3,8 @@ import "./SearchBar.css";
 import SearchResults from "./SearchResults";
 import { useSearchParams } from "react-router";
 
-function SearchBar({ entries, searching, setSearching, page }) {
+
+function SearchBar({ entries, searching, setSearching, page, searchValue, setSearchValue, onBookmarkToggle }) {
   // value = what's typed in the search bar.
   // Suggestions = What in the entries fits the criteria
   // hideSuggestions = used to hide everything except the bar itself onblur, and unhide it on focus.
@@ -20,21 +21,23 @@ function SearchBar({ entries, searching, setSearching, page }) {
   useEffect(() => {
     const suggestionData = () => {
       setSuggestions(entries);
-      if (searchParams.get("search")) handleSubmit();
+      if (searchParams.get("search")) {
+        setSearchValue(searchParams.get("search"));
+        handleSubmit();
+      }
     };
     suggestionData();
   }, []);
 
   function handleSubmit(e) {
-    if (!searchParams.get("search")) e.preventDefault();
+    if (e?.target) e.preventDefault();
+    let Vals = "";
+    if (e?.target) Vals = e.target.querySelector("input").value.trim();
+    else Vals = searchParams.get("search");
+    let AgeVals = "";
+    if (e?.target) AgeVals = e.target.querySelector("select").value;
 
-    let Vals =
-      searchParams.get("search") ||
-      e.target.querySelector("input").value.trim();
 
-    let AgeVals = searchParams.get("search")
-      ? ""
-      : e?.target.querySelector("select").value;
     setAgeValue(AgeVals);
     if (!Vals.match(searchRegex)) {
       setError("Search query contains invalid characters!");
@@ -49,6 +52,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
           ? { search: e.target.querySelector("input").value.trim() }
           : { search: Vals }
       );
+
       setValue(Vals.toLowerCase());
       setSearchEntries(
         entries.filter((entry) => {
@@ -66,7 +70,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
       setSearchParams({});
       setValue("");
       setSearching(false);
-      setError("")
+      setError("");
     }
     return;
   }
@@ -85,7 +89,9 @@ function SearchBar({ entries, searching, setSearching, page }) {
             <input
               onFocus={() => setHideSuggestions(false)}
               onBlur={() => setHideSuggestions(true)}
+              onChange={(e) => setSearchValue(e.target.value)}
               type="text"
+              value={searchValue}
               placeholder={`Search for ${
                 page === "Home"
                   ? "movies or TV series"
@@ -109,7 +115,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
         <p className="error">{error}</p>
 
         {/* Counts suggestions */}
-        {value && (
+        {value && searchValue && (
           <div
             className={`suggestion ${hideSuggestions && "suggestion-hidden"}`}
           >
@@ -147,7 +153,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
       </form>
       {/* Displays all results */}
       {searching && !error && (
-        <SearchResults searchEntries={searchEntries} page={page} />
+        <SearchResults searchEntries={searchEntries} page={page} onBookmarkToggle={onBookmarkToggle}  />
       )}
     </>
   );

@@ -1,20 +1,14 @@
 import { useRef, useEffect, useState } from "react";
 import "./Trending.css";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import BookmarkButton from "./BookmarkButton";
-
 
 const Trending = ({ entries, onBookmarkToggle }) => {
   const carouselRef = useRef(null);
   let isDragging = false;
   let startX;
   let scrollLeft;
-  const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
-  const [imgSize, setImgSize] = useState("");
-  useEffect(() => {
-    setScreenWidth(window.visualViewport.width);
-    screenWidth < 640 ? setImgSize("small") : setImgSize("large");
 
+  useEffect(() => {
     const carousel = carouselRef.current;
 
     const onMouseDown = (e) => {
@@ -64,17 +58,23 @@ const Trending = ({ entries, onBookmarkToggle }) => {
   const trendingMovie = movies.filter((item) => item.isTrending);
 
   return (
-    <>
+    <div className="video-list trending-list">
       <h4 className="video-list__title">Trending</h4>
       <div className="trending" ref={carouselRef}>
         {trendingMovie.map((item, index) => (
           <div key={index} className="carousel">
             <div className="carousel__image-change">
-              <LazyLoadImage
-                className="carousel__image"
-                src={item.thumbnail.trending[`${imgSize}`]?.substring(1)}
-                alt={item.title}
-              />
+              <picture>
+                <source
+                  srcSet={item.thumbnail.trending.small}
+                  media="(max-width: 640px)"
+                />
+                <img
+                  className="carousel__image"
+                  src={item.thumbnail.trending.large}
+                  alt={item.title}
+                />
+              </picture>
 
               <div className="trending__overlay">
                 <div className="plays">
@@ -88,34 +88,18 @@ const Trending = ({ entries, onBookmarkToggle }) => {
               </div>
             </div>
             <BookmarkButton
-          id={item.id}
-          initialIsBookmarked={item.isBookmarked}
-          onToggle={(newBookmarkState) =>
-            onBookmarkToggle(item.id, newBookmarkState)  }
-        />
+              id={item.id}
+              initialIsBookmarked={item.isBookmarked}
+              onToggle={(newBookmarkState) =>
+                onBookmarkToggle(item.id, newBookmarkState)
+              }
+            />
             <div className="trending__content">
               <div className="trending__content--data">
 
                 <span className="categories">{item.year}</span>
-                {/* <span className="dot">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="3"
-                    height="3"
-                    viewBox="0 0 3 3"
-                    fill="none"
-                  >
-                    <circle
-                      opacity="0.5"
-                      cx="1.5"
-                      cy="1.5"
-                      r="1.5"
-                      fill="white"
-                    />
-                  </svg>
-                  
-                </span> */}
-                <span>&#8226;</span>
+
+                <span className="dot__color">&#8226;</span>
                 <div>
                   <span>
                     {item.category === "Movie" ? (
@@ -132,26 +116,12 @@ const Trending = ({ entries, onBookmarkToggle }) => {
                       />
                     )}
                   </span>
+                </div>
+                <div>
                   <span className="categories">{item.category}</span>
                 </div>
-                {/* <span className="dot">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="3"
-                    height="3"
-                    viewBox="0 0 3 3"
-                    fill="none"
-                  >
-                    <circle
-                      opacity="0.5"
-                      cx="1.5"
-                      cy="1.5"
-                      r="1.5"
-                      fill="white"
-                    />
-                  </svg>
-                </span> */}
-                <span>&#8226;</span>
+
+                <span className="dot__color">&#8226;</span>
                 <span className="categories">{item.rating}</span>
               </div>
               <h3>{item.title}</h3>
@@ -159,7 +129,7 @@ const Trending = ({ entries, onBookmarkToggle }) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

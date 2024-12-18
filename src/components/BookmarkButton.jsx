@@ -11,16 +11,18 @@ function BookmarkButton({ id, initialIsBookmarked, onToggle }) {
 
   const handleToggle = async () => {
     const newBookmarkState = !isBookmarked;
+    setIsBookmarked((newBookmarkState)=>!newBookmarkState);
 
     try {
-      await updateOne("videos", id, { isBookmarked: newBookmarkState });
-
-      setIsBookmarked(newBookmarkState);
-      onToggle(newBookmarkState);
-    } catch (error) {
-      console.error("Error updating bookmark status:", error);
-    }
-  };
+        await updateOne("videos", id, { isBookmarked: newBookmarkState });
+        if (onToggle) {
+          onToggle(newBookmarkState);
+        }
+      } catch (error) {
+        console.error("Error updating bookmark status:", error);
+        setIsBookmarked((newBookmarkState)=>!newBookmarkState);
+      }
+    };
 
   return (
     <button

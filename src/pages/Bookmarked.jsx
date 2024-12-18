@@ -4,29 +4,53 @@ import Nav from "../components/Nav";
 import SearchBar from "../components/SearchBar";
 import EntryList from "../components/EntryList";
 
-
-const Bookmarked = ({ user, setUser, entries }) => {
+const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
   const navigate = useNavigate();
   const [searching, setSearching] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
   useEffect(() => {
     if (!user?.isLoggedIn) navigate(`/login`);
   }, []);
   return (
     <>
-      <Nav user={user} setUser={setUser} />
+      <meta itemProp="description" content="Bookmark page" />
+      <Nav
+        user={user}
+        setUser={setUser}
+        setSearching={setSearching}
+        setSearchValue={setSearchValue}
+      />
       <div className="pagecontent">
         <SearchBar
           entries={entries}
           searching={searching}
           setSearching={setSearching}
           page="Bookmarked"
+          onBookmarkToggle={onBookmarkToggle}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
         />
-        {!searching && <EntryList title="Movies" entries={entries.filter((entry) => {
-              return entry.isBookmarked && entry.category === "Movie"
-            })} />}
-                    {!searching && <EntryList title="TV series" entries={entries.filter((entry) => {
-              return entry.isBookmarked && entry.category === "TV Series"
-            })} />}
+        {!searching && (
+          <EntryList
+            className="mb"
+            title="Bookmarked Movies"
+            entries={entries.filter((entry) => {
+              return entry.isBookmarked && entry.category === "Movie";
+            })}
+            onBookmarkToggle={onBookmarkToggle}
+          />
+        )}
+        {!searching && (
+          <EntryList
+            className="mb"
+            title="Bookmarked TV Series"
+            entries={entries.filter((entry) => {
+              return entry.isBookmarked && entry.category === "TV Series";
+            })}
+            onBookmarkToggle={onBookmarkToggle}
+          />
+        )}
       </div>
     </>
   );
