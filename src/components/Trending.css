@@ -1,13 +1,15 @@
 /* CSS Didesniems ekranams */
 
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-device-width: 641px) {
   .trending {
     display: flex;
-    gap: 1rem;
+    gap: 4rem;
     overflow-x: scroll;
     scroll-behavior: smooth;
     scrollbar-width: none; /* Paslepia scroll juosta */
     cursor: grab;
+
+    @apply mt-[3.2rem] mb-[4.7rem];
   }
 
   .trending.dragging {
@@ -107,9 +109,8 @@
   }
 }
 
-
-.dot__color { 
-  color: #FFF;
+.dot__color {
+  color: #fff;
   opacity: 0.5;
   font-size: 1.5rem;
 }
@@ -144,7 +145,7 @@
 
 /* Mazesniu ekranu CSS */
 
-@media only screen and (max-device-width: 768px) {
+@media only screen and (max-device-width: 640px) {
   .trending {
     display: flex;
     gap: 1.6rem;
