@@ -14,6 +14,8 @@ const Movies = ({ user, setUser, entries, onBookmarkToggle }) => {
   }, []);
   return (
     <>
+      <meta itemProp="description" content="Movies page" />
+
       <Nav
         user={user}
         setUser={setUser}

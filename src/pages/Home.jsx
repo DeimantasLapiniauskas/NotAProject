@@ -15,6 +15,10 @@ const Home = ({ user, setUser, entries, onBookmarkToggle }) => {
   }, []);
   return (
     <>
+      <meta
+        itemProp="description"
+        content="The main page of site"
+      />
       <Nav
         user={user}
         setUser={setUser}
@@ -34,10 +38,13 @@ const Home = ({ user, setUser, entries, onBookmarkToggle }) => {
         {!searching && (
           <div>
             <Trending entries={entries} onBookmarkToggle={onBookmarkToggle} />
-            <EntryList title="Recommended for you" entries={entries.filter((entry) => {
-              return !entry.isTrending;
-            })} 
-            onBookmarkToggle={onBookmarkToggle} />
+            <EntryList
+              title="Recommended for you"
+              entries={entries.filter((entry) => {
+                return !entry.isTrending;
+              })}
+              onBookmarkToggle={onBookmarkToggle}
+            />
           </div>
         )}
       </div>

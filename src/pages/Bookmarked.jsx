@@ -14,6 +14,7 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
   }, []);
   return (
     <>
+      <meta itemProp="description" content="Bookmark page" />
       <Nav
         user={user}
         setUser={setUser}
