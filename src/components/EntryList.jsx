@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
 
-function EntryList({ entries, title }) {
+function EntryList({ entries, title, onBookmarkToggle }) {
   const [video, setVideo] = useState([]);
+
   const getVideo = async () => {
     setVideo(entries);
   };
 
   useEffect(() => {
     getVideo();
-  }, []);
+  }, [entries]);
+
   return (
     <section className="video-list">
       <h4 className="video-list__title">{title}</h4>
@@ -17,7 +19,7 @@ function EntryList({ entries, title }) {
         // console.log(index + "From entrylist");
         // console.log(key);
 
-        return <VideoCard video={entry} index={key} key={key} />;
+        return <VideoCard video={entry} index={key} key={key} onBookmarkToggle={onBookmarkToggle} />;
       })}
     </section>
   );
