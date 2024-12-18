@@ -14,8 +14,12 @@
 }
 .search__params {
   width: 100%;
-  display: flex;
   justify-content: space-between;
+}
+@media (min-width: 375px) {
+  .search__params {
+    display: flex;
+  }
 }
 .search__bar {
   display: flex;
