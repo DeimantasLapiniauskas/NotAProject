@@ -22,7 +22,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
     const suggestionData = () => {
       setSuggestions(entries);
       if (searchParams.get("search")) {
-         setSearchValue(searchParams.get("search"));
+        setSearchValue(searchParams.get("search"));
         handleSubmit();
       }
     };
@@ -36,7 +36,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
     else Vals = searchParams.get("search");
 
     let AgeVals = searchParams.get("search")
-      ? ""
+    ? ""
       : e?.target.querySelector("select").value;
     setAgeValue(AgeVals);
     if (!Vals.match(searchRegex)) {
@@ -49,10 +49,10 @@ function SearchBar({ entries, searching, setSearching, page }) {
       setError("");
       setSearchParams(
         e
-          ? { search: e.target.querySelector("input").value.trim() }
-          : { search: Vals }
+        ? { search: e.target.querySelector("input").value.trim() }
+        : { search: Vals }
       );
-
+      
       setValue(Vals.toLowerCase());
       setSearchEntries(
         entries.filter((entry) => {
@@ -89,6 +89,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
             <input
               onFocus={() => setHideSuggestions(false)}
               onBlur={() => setHideSuggestions(true)}
+              onChange={(e)=>setSearchValue(e.target.value)}
               type="text"
               value={searchValue}
               placeholder={`Search for ${
