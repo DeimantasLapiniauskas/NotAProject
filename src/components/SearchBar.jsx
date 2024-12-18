@@ -3,7 +3,7 @@ import "./SearchBar.css";
 import SearchResults from "./SearchResults";
 import { useSearchParams } from "react-router";
 
-function SearchBar({ entries, searching, setSearching, page }) {
+function SearchBar({ entries, searching, setSearching, page, searchValue, setSearchValue }) {
   // value = what's typed in the search bar.
   // Suggestions = What in the entries fits the criteria
   // hideSuggestions = used to hide everything except the bar itself onblur, and unhide it on focus.
@@ -15,7 +15,6 @@ function SearchBar({ entries, searching, setSearching, page }) {
   const [searchEntries, setSearchEntries] = useState("");
   const [error, setError] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchValue, setSearchValue] = useState("");
 
   const searchRegex = /^[A-Za-z0-9 ]*$/g;
   useEffect(() => {
@@ -115,7 +114,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
         <p className="error">{error}</p>
 
         {/* Counts suggestions */}
-        {value && (
+        {value && searchValue && (
           <div
             className={`suggestion ${hideSuggestions && "suggestion-hidden"}`}
           >
