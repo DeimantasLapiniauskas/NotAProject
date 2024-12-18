@@ -66,7 +66,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
       setSearchParams({});
       setValue("");
       setSearching(false);
-      setError("")
+      setError("");
     }
     return;
   }

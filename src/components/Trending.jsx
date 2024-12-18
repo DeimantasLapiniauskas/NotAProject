@@ -1,8 +1,9 @@
 import { useRef, useEffect, useState } from "react";
 import "./Trending.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import BookmarkButton from "./BookmarkButton";
 
-const Trending = ({ entries }) => {
+const Trending = ({ entries, onBookmarkToggle }) => {
   const carouselRef = useRef(null);
   let isDragging = false;
   let startX;
@@ -58,7 +59,7 @@ const Trending = ({ entries }) => {
   const trendingMovie = movies.filter((item) => item.isTrending);
 
   return (
-    <>
+    <div className="video-list trending-list">
       <h4 className="video-list__title">Trending</h4>
       <div className="trending" ref={carouselRef}>
         {trendingMovie.map((item, index) => (
@@ -87,7 +88,13 @@ const Trending = ({ entries }) => {
                 </div>
               </div>
             </div>
-
+            <BookmarkButton
+              id={item.id}
+              initialIsBookmarked={item.isBookmarked}
+              onToggle={(newBookmarkState) =>
+                onBookmarkToggle(item.id, newBookmarkState)
+              }
+            />
             <div className="trending__content">
               <div className="trending__content--data">
                 <span className="categories">{item.year}</span>
@@ -122,7 +129,7 @@ const Trending = ({ entries }) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

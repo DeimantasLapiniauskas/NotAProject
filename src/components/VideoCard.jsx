@@ -1,6 +1,7 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import BookmarkButton from "./BookmarkButton";
 
-function VideoCard({ video, index }) {
+function VideoCard({ video, index, onBookmarkToggle }) {
   return (
     <div key={index} className="video-card">
       <div className="video-card__main">
@@ -32,6 +33,13 @@ function VideoCard({ video, index }) {
         </div>
       </div>
       <div className="video-card__details">
+        <BookmarkButton
+          id={video.id}
+          initialIsBookmarked={video.isBookmarked}
+          onToggle={(newBookmarkState) =>
+            onBookmarkToggle(video.id, newBookmarkState)
+          }
+        />
         <p className="video-card__year">{video.year}</p>
         <span>&#8226;</span>
         <p className="video-card__icon">

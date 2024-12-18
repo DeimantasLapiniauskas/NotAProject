@@ -4,7 +4,7 @@ import Nav from "../components/Nav";
 import EntryList from "../components/EntryList";
 import SearchBar from "../components/SearchBar";
 
-const TvSeries = ({ user, setUser, entries }) => {
+const TvSeries = ({ user, setUser, entries, onBookmarkToggle }) => {
   const navigate = useNavigate();
   const [searching, setSearching] = useState(false);
   useEffect(() => {
@@ -20,9 +20,16 @@ const TvSeries = ({ user, setUser, entries }) => {
           setSearching={setSearching}
           page="TV Series"
         />
-        {!searching && <EntryList title="TV Series" entries={entries.filter((entry) => {
+        {!searching && (
+          <EntryList
+            className="mb"
+            title="TV Series"
+            entries={entries.filter((entry) => {
               return entry.category === "TV Series";
-            })} />}
+            })}
+            onBookmarkToggle={onBookmarkToggle}
+          />
+        )}
       </div>
     </>
   );
