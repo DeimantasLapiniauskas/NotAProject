@@ -15,7 +15,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
   const [searchEntries, setSearchEntries] = useState("");
   const [error, setError] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchValue, setSearchValue] = useState("")
+  const [searchValue, setSearchValue] = useState("");
 
   const searchRegex = /^[A-Za-z0-9 ]*$/g;
   useEffect(() => {
@@ -30,14 +30,14 @@ function SearchBar({ entries, searching, setSearching, page }) {
   }, []);
 
   function handleSubmit(e) {
-    if (e) e.preventDefault();
+    if (e?.target) e.preventDefault();
     let Vals = "";
-    if (e) Vals = e.target.querySelector("input").value.trim();
+    if (e?.target) Vals = e.target.querySelector("input").value.trim();
     else Vals = searchParams.get("search");
+    let AgeVals = "";
+    if (e?.target) AgeVals = e.target.querySelector("select").value;
 
-    let AgeVals = searchParams.get("search")
-    ? ""
-      : e?.target.querySelector("select").value;
+
     setAgeValue(AgeVals);
     if (!Vals.match(searchRegex)) {
       setError("Search query contains invalid characters!");
@@ -49,10 +49,10 @@ function SearchBar({ entries, searching, setSearching, page }) {
       setError("");
       setSearchParams(
         e
-        ? { search: e.target.querySelector("input").value.trim() }
-        : { search: Vals }
+          ? { search: e.target.querySelector("input").value.trim() }
+          : { search: Vals }
       );
-      
+
       setValue(Vals.toLowerCase());
       setSearchEntries(
         entries.filter((entry) => {
@@ -89,7 +89,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
             <input
               onFocus={() => setHideSuggestions(false)}
               onBlur={() => setHideSuggestions(true)}
-              onChange={(e)=>setSearchValue(e.target.value)}
+              onChange={(e) => setSearchValue(e.target.value)}
               type="text"
               value={searchValue}
               placeholder={`Search for ${
