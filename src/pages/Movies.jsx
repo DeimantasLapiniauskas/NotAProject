@@ -26,6 +26,7 @@ const Movies = ({ user, setUser, entries, onBookmarkToggle }) => {
           searching={searching}
           setSearching={setSearching}
           page="Movies"
+          onBookmarkToggle={onBookmarkToggle}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />

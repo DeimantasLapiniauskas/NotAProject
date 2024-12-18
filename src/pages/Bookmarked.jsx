@@ -26,6 +26,7 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
           searching={searching}
           setSearching={setSearching}
           page="Bookmarked"
+          onBookmarkToggle={onBookmarkToggle}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />

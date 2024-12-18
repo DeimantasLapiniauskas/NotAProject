@@ -27,6 +27,7 @@ const Home = ({ user, setUser, entries, onBookmarkToggle }) => {
           searching={searching}
           setSearching={setSearching}
           page="Home"
+          onBookmarkToggle={onBookmarkToggle}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
