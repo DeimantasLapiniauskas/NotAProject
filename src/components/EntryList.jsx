@@ -19,7 +19,7 @@ function EntryList({ entries, title, onBookmarkToggle }) {
         // console.log(index + "From entrylist");
         // console.log(key);
 
-        return <VideoCard video={entry} index={key} key={key} onBookmarkToggle={onBookmarkToggle} />;
+        return <VideoCard video={entry} index={key} key={entry.id} onBookmarkToggle={onBookmarkToggle} />;
       })}
     </section>
   );

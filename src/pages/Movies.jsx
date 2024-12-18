@@ -21,6 +21,7 @@ const Movies = ({ user, setUser, entries, onBookmarkToggle }) => {
           searching={searching}
           setSearching={setSearching}
           page="Movies"
+          onBookmarkToggle={onBookmarkToggle}
         />
         {!searching && (
           <EntryList title="Movies"

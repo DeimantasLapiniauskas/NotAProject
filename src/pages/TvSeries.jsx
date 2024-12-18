@@ -19,6 +19,7 @@ const TvSeries = ({ user, setUser, entries, onBookmarkToggle }) => {
           searching={searching}
           setSearching={setSearching}
           page="TV Series"
+          onBookmarkToggle={onBookmarkToggle}
         />
         {!searching && <EntryList title="TV Series" entries={entries.filter((entry) => {
               return entry.category === "TV Series";

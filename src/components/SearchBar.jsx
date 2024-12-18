@@ -3,7 +3,7 @@ import "./SearchBar.css";
 import SearchResults from "./SearchResults";
 import { useSearchParams } from "react-router";
 
-function SearchBar({ entries, searching, setSearching, page }) {
+function SearchBar({ entries, searching, setSearching, page, onBookmarkToggle }) {
   // value = what's typed in the search bar.
   // Suggestions = What in the entries fits the criteria
   // hideSuggestions = used to hide everything except the bar itself onblur, and unhide it on focus.
@@ -147,7 +147,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
       </form>
       {/* Displays all results */}
       {searching && !error && (
-        <SearchResults searchEntries={searchEntries} page={page} />
+        <SearchResults searchEntries={searchEntries} page={page} onBookmarkToggle={onBookmarkToggle}  />
       )}
     </>
   );
