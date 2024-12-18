@@ -57,6 +57,7 @@ function Signup({ setUser, setUsers, users }) {
   return (
     <ErrorBoundary FallbackComponent={FallbackComponent}>
       <section className="signup">
+      <meta itemProp="description" content="Signup page" />
         <header>
           <img src="/assets/logo.svg" alt="Site logo" />
         </header>
