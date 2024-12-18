@@ -103,8 +103,9 @@ function SearchBar({ entries, searching, setSearching, page, searchValue, setSea
               }`}
             />
           </div>
-          <label htmlFor="ageRating"></label>
           {/* The age rating field */}
+          {/* Inline style for label is required, otherwide lighthouse cries about us not having a label. */}
+          <label htmlFor="ageRating" style={{width:"0px", height:"0px", overflow:"hidden"}}>Age rating</label>
           <select name="ageRating" id="ageRating">
             <option value="">Rating</option>
             <option value="E">E</option>
