@@ -26,11 +26,10 @@ function SearchBar({ entries, searching, setSearching, page }) {
   }, []);
 
   function handleSubmit(e) {
-    if (!searchParams.get("search")) e.preventDefault();
-
-    let Vals =
-      searchParams.get("search") ||
-      e.target.querySelector("input").value.trim();
+    if (e) e.preventDefault();
+    let Vals = "";
+    if (e) Vals = e.target.querySelector("input").value.trim();
+    else Vals = searchParams.get("search");
 
     let AgeVals = searchParams.get("search")
       ? ""
@@ -49,6 +48,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
           ? { search: e.target.querySelector("input").value.trim() }
           : { search: Vals }
       );
+
       setValue(Vals.toLowerCase());
       setSearchEntries(
         entries.filter((entry) => {
@@ -66,7 +66,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
       setSearchParams({});
       setValue("");
       setSearching(false);
-      setError("")
+      setError("");
     }
     return;
   }
@@ -86,6 +86,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
               onFocus={() => setHideSuggestions(false)}
               onBlur={() => setHideSuggestions(true)}
               type="text"
+              value={searchParams.get("search")}
               placeholder={`Search for ${
                 page === "Home"
                   ? "movies or TV series"

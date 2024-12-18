@@ -504,7 +504,7 @@
       "id": "17b8",
       "email": "ahr@ss.com",
       "password": "$2a$08$RVdKIeq/17sh72eyvJj0I.adB9X5yaUryCrzQyhRcci2XaGCYFWcG",
-      "isLoggedIn": false,
+      "isLoggedIn": true,
       "isAdmin": false
     },
     {
