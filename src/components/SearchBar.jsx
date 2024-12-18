@@ -15,12 +15,16 @@ function SearchBar({ entries, searching, setSearching, page }) {
   const [searchEntries, setSearchEntries] = useState("");
   const [error, setError] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
+  const [searchValue, setSearchValue] = useState("")
 
   const searchRegex = /^[A-Za-z0-9 ]*$/g;
   useEffect(() => {
     const suggestionData = () => {
       setSuggestions(entries);
-      if (searchParams.get("search")) handleSubmit();
+      if (searchParams.get("search")) {
+         setSearchValue(searchParams.get("search"));
+        handleSubmit();
+      }
     };
     suggestionData();
   }, []);
@@ -86,7 +90,7 @@ function SearchBar({ entries, searching, setSearching, page }) {
               onFocus={() => setHideSuggestions(false)}
               onBlur={() => setHideSuggestions(true)}
               type="text"
-              value={searchParams.get("search")}
+              value={searchValue}
               placeholder={`Search for ${
                 page === "Home"
                   ? "movies or TV series"
