@@ -29,16 +29,17 @@ const TvSeries = ({ user, setUser, entries, onBookmarkToggle }) => {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
-        {!searching && 
+        {!searching && (
           <EntryList
+            className="mb"
             title="TV Series"
             entries={entries.filter((entry) => {
               return entry.category === "TV Series";
             })}
-            onBookmarkToggle={onBookmarkToggle} />
-          }
-            </div>
-
+            onBookmarkToggle={onBookmarkToggle}
+          />
+        )}
+      </div>
     </>
   );
 };

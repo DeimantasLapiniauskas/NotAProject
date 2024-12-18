@@ -63,7 +63,7 @@ const Trending = ({ entries, onBookmarkToggle }) => {
   const trendingMovie = movies.filter((item) => item.isTrending);
 
   return (
-    <>
+    <div className="video-list trending-list">
       <h4 className="video-list__title">Trending</h4>
       <div className="trending" ref={carouselRef}>
         {trendingMovie.map((item, index) => (
@@ -161,7 +161,7 @@ const Trending = ({ entries, onBookmarkToggle }) => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

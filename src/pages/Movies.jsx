@@ -32,6 +32,7 @@ const Movies = ({ user, setUser, entries, onBookmarkToggle }) => {
         {!searching && (
           <EntryList
             title="Movies"
+            className="mb"
             entries={entries.filter((entry) => {
               return entry.category === "Movie";
             })}

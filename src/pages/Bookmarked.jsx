@@ -31,6 +31,7 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
         />
         {!searching && (
           <EntryList
+            className="mb"
             title="Bookmarked Movies"
             entries={entries.filter((entry) => {
               return entry.isBookmarked && entry.category === "Movie";
@@ -40,6 +41,7 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
         )}
         {!searching && (
           <EntryList
+            className="mb"
             title="Bookmarked TV Series"
             entries={entries.filter((entry) => {
               return entry.isBookmarked && entry.category === "TV Series";
