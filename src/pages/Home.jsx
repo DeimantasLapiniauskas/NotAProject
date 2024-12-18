@@ -5,7 +5,7 @@ import SearchBar from "../components/SearchBar";
 import { useState, useEffect } from "react";
 import EntryList from "../components/EntryList";
 
-const Home = ({ user, setUser, entries }) => {
+const Home = ({ user, setUser, entries, onBookmarkToggle }) => {
   const navigate = useNavigate();
   const [searching, setSearching] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -32,13 +32,11 @@ const Home = ({ user, setUser, entries }) => {
         />
         {!searching && (
           <div>
-            <Trending entries={entries} />
-            <EntryList
-              title="Recommended for you"
-              entries={entries.filter((entry) => {
-                return !entry.isTrending;
-              })}
-            />
+            <Trending entries={entries} onBookmarkToggle={onBookmarkToggle} />
+            <EntryList title="Recommended for you" entries={entries.filter((entry) => {
+              return !entry.isTrending;
+            })} 
+            onBookmarkToggle={onBookmarkToggle} />
           </div>
         )}
       </div>
