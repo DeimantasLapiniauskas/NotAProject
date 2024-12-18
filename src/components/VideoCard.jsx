@@ -1,37 +1,24 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useEffect, useState } from "react";
 import BookmarkButton from "./BookmarkButton";
 
-function VideoCard({ video, index, search, onBookmarkToggle }) {
-  // console.log(index);
-  const [screenWidth, setScreenWidth] = useState(window.visualViewport.width);
-  const [imgSize, setImgSize] = useState("");
-
-  useEffect(() => {
-    setScreenWidth(window.visualViewport.width);
-    screenWidth < 640
-      ? setImgSize("small")
-      : screenWidth < 1024
-      ? setImgSize("medium")
-      : setImgSize("large");
-  }, []);
-
+function VideoCard({ video, index, onBookmarkToggle }) {
   return (
     <div key={index} className="video-card">
       <div className="video-card__main">
-        {search ? (
+        <picture>
+          <source
+            srcSet={video.thumbnail.regular.small?.substring(1)}
+            media="(width < 640px)"
+          />
+          <source
+            srcSet={video.thumbnail.regular.medium?.substring(1)}
+            media="(width < 1024px)"
+          />
           <img
-            src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
-            alt={video.title + "'s image"}
             className="video-card__img"
-          />
-        ) : (
-          <LazyLoadImage
-            src={video.thumbnail.regular[`${imgSize}`]?.substring(1)}
+            src={video.thumbnail.regular.large?.substring(1)}
             alt={video.title + "'s image"}
-            className="video-card__img"
           />
-        )}
+        </picture>
 
         <div className="video-card__overlay">
           <div className="play">
@@ -45,7 +32,7 @@ function VideoCard({ video, index, search, onBookmarkToggle }) {
         </div>
       </div>
       <div className="video-card__details">
-      <BookmarkButton
+        <BookmarkButton
           id={video.id}
           initialIsBookmarked={video.isBookmarked}
           onToggle={(newBookmarkState) =>
