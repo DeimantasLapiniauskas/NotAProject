@@ -1,4 +1,3 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import BookmarkButton from "./BookmarkButton";
 
 function VideoCard({ video, index, onBookmarkToggle }) {
@@ -14,7 +13,7 @@ function VideoCard({ video, index, onBookmarkToggle }) {
             srcSet={video.thumbnail.regular.medium?.substring(1)}
             media="(width < 1024px)"
           />
-          <LazyLoadImage
+          <img
             className="video-card__img"
             src={video.thumbnail.regular.large?.substring(1)}
             alt={video.title + "'s image"}

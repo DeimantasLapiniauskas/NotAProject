@@ -1,6 +1,5 @@
 import { useRef, useEffect, useState } from "react";
 import "./Trending.css";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import BookmarkButton from "./BookmarkButton";
 
 const Trending = ({ entries, onBookmarkToggle }) => {
@@ -70,7 +69,7 @@ const Trending = ({ entries, onBookmarkToggle }) => {
                   srcSet={item.thumbnail.trending.small}
                   media="(max-width: 640px)"
                 />
-                <LazyLoadImage
+                <img
                   className="carousel__image"
                   src={item.thumbnail.trending.large}
                   alt={item.title}
