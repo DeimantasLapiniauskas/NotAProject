@@ -13,18 +13,21 @@ const Home = ({ user, setUser, entries, onBookmarkToggle }) => {
   useEffect(() => {
     if (!user?.isLoggedIn) navigate(`/login`);
   }, []);
+
   return (
     <>
       <meta
         itemProp="description"
         content="The main page of site"
       />
+
       <Nav
         user={user}
         setUser={setUser}
         setSearching={setSearching}
         setSearchValue={setSearchValue}
       />
+
       <div className="pagecontent">
         <SearchBar
           entries={entries}
@@ -35,6 +38,7 @@ const Home = ({ user, setUser, entries, onBookmarkToggle }) => {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
+
         {!searching && (
           <div>
             <Trending entries={entries} onBookmarkToggle={onBookmarkToggle} />
