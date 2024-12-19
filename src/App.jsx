@@ -3,7 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { getAll } from "./../helpers/CRUD";
 import PageTitle from "./components/PageTitle";
-// Libs for error hadlings
+// Libs for error handlings
 import { ErrorBoundary } from "react-error-boundary";
 import FallbackToasts from "./components/errorHandling/FallbackToasts";
 import { Suspense, lazy } from "react";
@@ -30,7 +30,6 @@ function App() {
   const getUsers = async () => {
     try {
       const users = await getAll(`users`);
-
       setUsers(users);
     } catch (err) {
       setError(err.message);
@@ -39,6 +38,7 @@ function App() {
 
   useEffect(() => {
     getUsers();
+    getMovies();
   }, []);
 
   const getMovies = async () => {
@@ -49,10 +49,6 @@ function App() {
       console.error("Error fetching movies:", err);
     }
   };
-
-  useEffect(() => {
-    getMovies();
-  }, []);
 
   const handleBookmarkToggle = (id, newBookmarkState) => {
     setMovies((prevMovies) =>
