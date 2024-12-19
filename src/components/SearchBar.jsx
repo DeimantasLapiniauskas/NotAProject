@@ -80,7 +80,7 @@ function SearchBar({ entries, searching, setSearching, page, searchValue, setSea
         {/* The input field */}
         <div className="search__params">
           <div className="search__bar">
-          <img src="assets/icon-search.svg" alt="search"></img>
+          <img src="assets/icon-search.svg" alt="search" />
             <input
               onFocus={() => setHideSuggestions(false)}
               onBlur={() => setHideSuggestions(true)}
