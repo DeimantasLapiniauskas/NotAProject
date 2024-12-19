@@ -14,6 +14,11 @@ export const getOne = async (endpoint, id) => {
   return res.data;
 };
 
+export const postOne = async (endpoint, data) => {
+  const res = await axios.post(`${url}/${endpoint}`, data);
+  return res.data;
+};
+
 export const updateOne = async (endpoint, id, data) => {
   const res = await axios.patch(`${url}/${endpoint}/${id}`, data);
   return res.data;
