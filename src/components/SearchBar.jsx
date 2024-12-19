@@ -3,8 +3,15 @@ import "./SearchBar.css";
 import SearchResults from "./SearchResults";
 import { useSearchParams } from "react-router";
 
-
-function SearchBar({ entries, searching, setSearching, page, searchValue, setSearchValue, onBookmarkToggle }) {
+function SearchBar({
+  entries,
+  searching,
+  setSearching,
+  page,
+  searchValue,
+  setSearchValue,
+  onBookmarkToggle,
+}) {
   // value = what's typed in the search bar.
   // Suggestions = What in the entries fits the criteria
   // hideSuggestions = used to hide everything except the bar itself onblur, and unhide it on focus.
@@ -31,37 +38,40 @@ function SearchBar({ entries, searching, setSearching, page, searchValue, setSea
 
   function handleSubmit(e) {
     if (e?.target) e.preventDefault();
-    let Vals = "";
-    if (e?.target) Vals = e.target.querySelector("input").value.trim();
-    else Vals = searchParams.get("search");
-    let AgeVals = "";
-    if (e?.target) AgeVals = e.target.querySelector("select").value;
 
-
-    setAgeValue(AgeVals);
-    if (!Vals.match(searchRegex)) {
+    let searchInputValue = e?.target
+      ? e.target.querySelector("input").value.trim()
+      : searchParams.get("search");
+    let searchSelectValue = e?.target
+      ? e.target.querySelector("select").value
+      : "";
+    // check to see if there's any errors with searchInputValue. If not, perform search
+    setAgeValue(searchSelectValue);
+    if (!searchInputValue.match(searchRegex)) {
       setError("Search query contains invalid characters!");
       setSearching(true);
-    } else if (Vals.length >= 100) {
+    } else if (searchInputValue.length >= 100) {
       setError("Search query too long!");
       setSearching(true);
-    } else if (Vals.length > 2) {
+    } else if (searchInputValue.length > 2) {
       setError("");
       setSearchParams(
         e
           ? { search: e.target.querySelector("input").value.trim() }
-          : { search: Vals }
+          : { search: searchInputValue }
       );
 
-      setValue(Vals.toLowerCase());
+      setValue(searchInputValue.toLowerCase());
       setSearchEntries(
         entries.filter((entry) => {
           return (
             // filters based on if the show matches the requested age rating, and if it either includes the search query as a title or as its release year.
-            (entry.title.toLowerCase().includes(Vals.toLowerCase()) &&
-              entry.rating.includes(AgeVals)) ||
-            (entry.year.toString().includes(Vals) &&
-              entry.rating.includes(AgeVals))
+            (entry.title
+              .toLowerCase()
+              .includes(searchInputValue.toLowerCase()) &&
+              entry.rating.includes(searchSelectValue)) ||
+            (entry.year.toString().includes(searchInputValue) &&
+              entry.rating.includes(searchSelectValue))
           );
         })
       );
@@ -80,12 +90,7 @@ function SearchBar({ entries, searching, setSearching, page, searchValue, setSea
         {/* The input field */}
         <div className="search__params">
           <div className="search__bar">
-            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="m 21.711198,20.291333 -3.400025,-3.390279 a 7.9206496,7.9206485 0 0 0 1.689885,-4.900156 C 20.001058,7.5822924 16.419526,4 12.000912,4 7.582293,4 4,7.5822924 4,12.000898 c 0,4.417862 3.582293,8.000161 8.000912,8.000161 a 7.9206496,7.9206485 0 0 0 4.900141,-1.68989 l 3.390279,3.40003 a 0.99983134,0.99983125 0 0 0 1.419866,0 0.99983134,0.99983125 0 0 0 0,-1.419866 z M 6.0004141,12.000898 a 6.0004929,6.000491 0 1 1 12.0009849,0 6.0004929,6.0004909 0 0 1 -12.0009849,0 z"
-                fill="#ffffff"
-              />
-            </svg>
+          <img src="assets/icon-search.svg" alt="search" />
             <input
               onFocus={() => setHideSuggestions(false)}
               onBlur={() => setHideSuggestions(true)}
@@ -103,8 +108,14 @@ function SearchBar({ entries, searching, setSearching, page, searchValue, setSea
               }`}
             />
           </div>
-          <label htmlFor="ageRating"></label>
           {/* The age rating field */}
+          {/* Inline style for label is required, otherwide lighthouse cries about us not having a label. */}
+          <label
+            htmlFor="ageRating"
+            style={{ width: "0px", height: "0px", overflow: "hidden" }}
+          >
+            Age rating
+          </label>
           <select name="ageRating" id="ageRating">
             <option value="">Rating</option>
             <option value="E">E</option>
@@ -151,9 +162,13 @@ function SearchBar({ entries, searching, setSearching, page, searchValue, setSea
           </div>
         )}
       </form>
-      {/* Displays all results */}
+      {/* Displays all results if there's no error.*/}
       {searching && !error && (
-        <SearchResults searchEntries={searchEntries} page={page} onBookmarkToggle={onBookmarkToggle}  />
+        <SearchResults
+          searchEntries={searchEntries}
+          page={page}
+          onBookmarkToggle={onBookmarkToggle}
+        />
       )}
     </>
   );

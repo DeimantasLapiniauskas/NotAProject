@@ -9,6 +9,8 @@ const Trending = ({ entries, onBookmarkToggle }) => {
   let scrollLeft;
 
   useEffect(() => {
+    getMovies();
+
     const carousel = carouselRef.current;
 
     const onMouseDown = (e) => {
@@ -51,9 +53,6 @@ const Trending = ({ entries, onBookmarkToggle }) => {
   const getMovies = () => {
     setMovies(entries);
   };
-  useEffect(() => {
-    getMovies();
-  }, []);
 
   const trendingMovie = movies.filter((item) => item.isTrending);
 
@@ -87,6 +86,7 @@ const Trending = ({ entries, onBookmarkToggle }) => {
                 </div>
               </div>
             </div>
+
             <BookmarkButton
               id={item.id}
               initialIsBookmarked={item.isBookmarked}
@@ -94,12 +94,14 @@ const Trending = ({ entries, onBookmarkToggle }) => {
                 onBookmarkToggle(item.id, newBookmarkState)
               }
             />
+            
             <div className="trending__content">
               <div className="trending__content--data">
 
                 <span className="categories">{item.year}</span>
 
                 <span className="dot__color">&#8226;</span>
+
                 <div>
                   <span>
                     {item.category === "Movie" ? (
@@ -117,6 +119,7 @@ const Trending = ({ entries, onBookmarkToggle }) => {
                     )}
                   </span>
                 </div>
+
                 <div>
                   <span className="categories">{item.category}</span>
                 </div>

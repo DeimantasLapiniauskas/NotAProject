@@ -3,7 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { getAll } from "./../helpers/CRUD";
 import PageTitle from "./components/PageTitle";
-// Libs for error hadlings
+// Libs for error handlings
 import { ErrorBoundary } from "react-error-boundary";
 import FallbackToasts from "./components/errorHandling/FallbackToasts";
 import { Suspense, lazy } from "react";
@@ -30,16 +30,11 @@ function App() {
   const getUsers = async () => {
     try {
       const users = await getAll(`users`);
-
       setUsers(users);
     } catch (err) {
       setError(err.message);
     }
   };
-
-  useEffect(() => {
-    getUsers();
-  }, []);
 
   const getMovies = async () => {
     try {
@@ -50,10 +45,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    getMovies();
-  }, []);
-
   const handleBookmarkToggle = (id, newBookmarkState) => {
     setMovies((prevMovies) =>
       prevMovies.map((movie) =>
@@ -61,14 +52,19 @@ function App() {
       )
     );
   };
-  
+
+  useEffect(() => {
+    getUsers();
+    getMovies();
+  }, []);
+
   return (
     <>
       <main>
         {/* Database erorrs */}
         {error && <div>OOPS</div>}
         {/* Components errors */}
-        {/* Check components and they childs, if get error show a toast */}
+        {/* Check components and their childs, if get error show a toast */}
         <Toaster position="top-right" />
         <ErrorBoundary FallbackComponent={FallbackToasts}>
           <Suspense
@@ -118,7 +114,12 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Home" />
-                    <Home user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
+                    <Home
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                      onBookmarkToggle={handleBookmarkToggle}
+                    />
                   </>
                 }
               />
@@ -127,7 +128,12 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Movies" />
-                    <Movies user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
+                    <Movies
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                      onBookmarkToggle={handleBookmarkToggle}
+                    />
                   </>
                 }
               />
@@ -136,7 +142,12 @@ function App() {
                 element={
                   <>
                     <PageTitle title="TV series" />
-                    <TvSeries user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
+                    <TvSeries
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                      onBookmarkToggle={handleBookmarkToggle}
+                    />
                   </>
                 }
               />
