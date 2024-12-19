@@ -12,15 +12,18 @@ const TvSeries = ({ user, setUser, entries, onBookmarkToggle }) => {
   useEffect(() => {
     if (!user?.isLoggedIn) navigate(`/login`);
   }, []);
+
   return (
     <>
       <meta itemProp="description" content="TvSeries page" />
+      
       <Nav
         user={user}
         setUser={setUser}
         setSearching={setSearching}
         setSearchValue={setSearchValue}
       />
+
       <div className="pagecontent">
         <SearchBar
           entries={entries}
@@ -31,6 +34,7 @@ const TvSeries = ({ user, setUser, entries, onBookmarkToggle }) => {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
+
         {!searching && (
           <EntryList
             className="mb"

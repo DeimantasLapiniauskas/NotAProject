@@ -29,9 +29,6 @@ function Signup({ setUser, setUsers, users }) {
       }
 
       const hashedPwd = await bcrypt.hash(values.password, 8);
-
-      // console.log(hashedPwd);
-
       const user = await postOne(`users`, {
         email: values.email,
         password: hashedPwd,
