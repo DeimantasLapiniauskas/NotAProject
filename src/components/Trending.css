@@ -10,6 +10,10 @@
     cursor: grab;
 
     @apply mt-[3.2rem] mb-[4.7rem];
+
+    & .bookmark-button {
+      @apply sm:right-[2.4rem];
+    }
   }
 
   .trending.dragging {
