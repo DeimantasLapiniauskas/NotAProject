@@ -21,6 +21,11 @@
     display: flex;
   }
 }
+@media (max-width: 375px) {
+  .search__params label {
+    display: flex;
+  }
+}
 .search__bar {
   display: flex;
 
