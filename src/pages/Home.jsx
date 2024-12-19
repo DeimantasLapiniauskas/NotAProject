@@ -15,13 +15,12 @@ const Home = ({ user, setUser, entries, onBookmarkToggle }) => {
   }, []);
 
   return (
-
     <>
       <meta
         itemProp="description"
         content="The main page of site"
       />
-      
+
       <Nav
         user={user}
         setUser={setUser}
