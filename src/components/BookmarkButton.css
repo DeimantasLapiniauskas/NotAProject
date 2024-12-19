@@ -23,7 +23,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+
+  z-index: 9;
 
   @apply sm:top-[1.6rem] sm:right-[1.6rem];
 }
