@@ -12,7 +12,12 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
   useEffect(() => {
     if (!user?.isLoggedIn) navigate(`/login`);
   }, []);
-
+  const bookmarkedMovies = entries.filter(
+    (entry) => entry.isBookmarked && entry.category === "Movie"
+  );
+  const bookmarkedTVSeries = entries.filter(
+    (entry) => entry.isBookmarked && entry.category === "TV Series"
+  );
   return (
     <>
       <meta itemProp="description" content="Bookmark page" />
@@ -36,25 +41,33 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
         />
 
         {!searching && (
-          <EntryList
-            className="mb"
-            title="Bookmarked Movies"
-            entries={entries.filter((entry) => {
-              return entry.isBookmarked && entry.category === "Movie";
-            })}
-            onBookmarkToggle={onBookmarkToggle}
-          />
+          <>
+            <h4 className="bookmark-title">Bookmarked Movies</h4>   
+            {bookmarkedMovies.length > 0 ? (
+              <EntryList
+                className="mb"
+                entries={bookmarkedMovies}
+                onBookmarkToggle={onBookmarkToggle}
+              />
+            ) : (
+              <h6 className="bookmark-title__error">No bookmarks found. Add movies to your bookmarks to see them here!</h6>
+            )}
+          </>
         )}
         
         {!searching && (
-          <EntryList
-            className="mb"
-            title="Bookmarked TV Series"
-            entries={entries.filter((entry) => {
-              return entry.isBookmarked && entry.category === "TV Series";
-            })}
-            onBookmarkToggle={onBookmarkToggle}
-          />
+          <>
+            <h4 className="bookmark-title">Bookmarked TV series</h4>          
+            {bookmarkedTVSeries.length > 0 ? (
+              <EntryList
+                className="mb"
+                entries={bookmarkedTVSeries}
+                onBookmarkToggle={onBookmarkToggle}
+              />
+            ) : (
+              <h6 className="bookmark-title__error">No bookmarks found. Add TV series to your bookmarks to see them here!</h6>
+            )}
+          </>
         )}
       </div>
     </>

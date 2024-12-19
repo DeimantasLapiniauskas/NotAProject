@@ -100,7 +100,7 @@
     }
 
     &.mb {
-      @apply mb-[-1.3rem];
+      @apply mb-[-.3rem] lg:mb-[-1.3rem];
 
       .video-list__title {
         @apply lg:mb-[1.5rem] lg:mt-[.5rem];
@@ -167,6 +167,13 @@
     }
   }
 
+ .bookmark-title {
+    @apply tracking-[-0.31px] sm:tracking-[-0.5px] text-[2rem] sm:text-[3.2rem] leading-[2.5rem] mb-[.9rem] col-span-full mb-[-1.3rem] lg:mb-[1.5rem] lg:mt-[.5rem];
+  }
+
+  .bookmark-title__error {
+    @apply text-[1.2rem] sm:text-[1.4rem] lg:text-[1.8rem] mt-[1.2rem] sm:mt-[1.2rem];
+  }
   .trending-list {
     @apply block sm:mt-[4rem] pb-0 pr-0;
   }
