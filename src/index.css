@@ -100,7 +100,7 @@
     }
 
     &.mb {
-      @apply mb-[-1.3rem];
+      @apply mb-[-.3rem] lg:mb-[-1.3rem];
 
       .video-list__title {
         @apply lg:mb-[1.5rem] lg:mt-[.5rem];
