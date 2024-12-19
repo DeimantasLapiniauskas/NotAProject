@@ -29,9 +29,6 @@ function Signup({ setUser, setUsers, users }) {
       }
 
       const hashedPwd = await bcrypt.hash(values.password, 8);
-
-      // console.log(hashedPwd);
-
       const user = await postOne(`users`, {
         email: values.email,
         password: hashedPwd,
@@ -57,6 +54,7 @@ function Signup({ setUser, setUsers, users }) {
   return (
     <ErrorBoundary FallbackComponent={FallbackComponent}>
       <section className="signup">
+      <meta itemProp="description" content="Signup page" />
         <header>
           <img src="/assets/logo.svg" alt="Site logo" />
         </header>

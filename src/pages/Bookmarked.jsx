@@ -20,13 +20,16 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
   );
   return (
     <>
+      <meta itemProp="description" content="Bookmark page" />
+
       <Nav
         user={user}
         setUser={setUser}
         setSearching={setSearching}
         setSearchValue={setSearchValue}
       />
- <div className="pagecontent">
+
+      <div className="pagecontent">
         <SearchBar
           entries={entries}
           searching={searching}
@@ -36,6 +39,7 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
+
         {!searching && (
           <>
             <h4 className="bookmark-title">Bookmarked Movies</h4>   
@@ -50,6 +54,7 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
             )}
           </>
         )}
+        
         {!searching && (
           <>
             <h4 className="bookmark-title">Bookmarked TV series</h4>          

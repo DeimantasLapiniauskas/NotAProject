@@ -237,7 +237,7 @@
   }
 
   .signup {
-    @apply md:mt-[0.8rem] lg:mt-[0.2rem];
+    @apply md:pt-[8.8rem] lg:pt-[8rem];
     main {
       @apply pb-[2.4rem];
       button {
