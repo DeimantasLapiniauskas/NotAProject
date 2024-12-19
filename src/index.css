@@ -172,7 +172,7 @@
   }
 
   .bookmark-title__error {
-    @apply text-[1.2rem] sm:text-[1.4rem] lg:text-[1.8rem] mt-[1.2rem] sm:mt-[1.2rem];
+    @apply text-[1.2rem] sm:text-[1.4rem] lg:text-[1.8rem] mt-[1.2rem] sm:mt-[1.2rem] mb-[2rem];
   }
   .trending-list {
     @apply block sm:mt-[4rem] pb-0 pr-0;

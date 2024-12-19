@@ -42,30 +42,34 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
 
         {!searching && (
           <>
-            <h4 className="bookmark-title">Bookmarked Movies</h4>   
+
             {bookmarkedMovies.length > 0 ? (
               <EntryList
                 className="mb"
+                title="Bookmarked Movies"
                 entries={bookmarkedMovies}
                 onBookmarkToggle={onBookmarkToggle}
               />
             ) : (
-              <h6 className="bookmark-title__error">No bookmarks found. Add movies to your bookmarks to see them here!</h6>
+              <div className="bookmark-title">Bookmarked Movies
+              <h6 className="bookmark-title__error">No bookmarks found. Add movies to your bookmarks to see them here!</h6></div>   
             )}
           </>
         )}
         
         {!searching && (
           <>
-            <h4 className="bookmark-title">Bookmarked TV series</h4>          
+       
             {bookmarkedTVSeries.length > 0 ? (
               <EntryList
                 className="mb"
+                title="Bookmarked TV Series"
                 entries={bookmarkedTVSeries}
                 onBookmarkToggle={onBookmarkToggle}
               />
             ) : (
-              <h6 className="bookmark-title__error">No bookmarks found. Add TV series to your bookmarks to see them here!</h6>
+              <div className="bookmark-title">Bookmarked TV Series
+              <h6 className="bookmark-title__error">No bookmarks found. Add TV series to your bookmarks to see them here!</h6></div>   
             )}
           </>
         )}
