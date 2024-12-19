@@ -6,16 +6,15 @@ if (!url) {
 
 export const getAll = async (endpoint) => {
   const res = await axios.get(`${url}/${endpoint}`);
-
   return res.data;
 };
+
 export const getOne = async (endpoint, id) => {
   const res = await axios.get(`${url}/${endpoint}/${id}`);
-
   return res.data;
 };
+
 export const updateOne = async (endpoint, id, data) => {
   const res = await axios.patch(`${url}/${endpoint}/${id}`, data);
-
   return res.data;
 };

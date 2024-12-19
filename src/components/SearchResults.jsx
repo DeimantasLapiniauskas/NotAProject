@@ -13,7 +13,7 @@ function SearchResults({ searchEntries, page, onBookmarkToggle }) {
                 onBookmarkToggle={onBookmarkToggle}
               />
             );
-            // page.slice is needed, since the page is "movies", but the category is "movie"
+            // page.slice is needed, since the page can be "movies", but the category is instead "movie"
           if (
             video.category === page ||
             video.category === page.slice(0, -1) ||

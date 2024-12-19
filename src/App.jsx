@@ -36,11 +36,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    getUsers();
-    getMovies();
-  }, []);
-
   const getMovies = async () => {
     try {
       const movies = await getAll("videos");
@@ -57,14 +52,19 @@ function App() {
       )
     );
   };
-  
+
+  useEffect(() => {
+    getUsers();
+    getMovies();
+  }, []);
+
   return (
     <>
       <main>
         {/* Database erorrs */}
         {error && <div>OOPS</div>}
         {/* Components errors */}
-        {/* Check components and they childs, if get error show a toast */}
+        {/* Check components and their childs, if get error show a toast */}
         <Toaster position="top-right" />
         <ErrorBoundary FallbackComponent={FallbackToasts}>
           <Suspense
@@ -114,7 +114,12 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Home" />
-                    <Home user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
+                    <Home
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                      onBookmarkToggle={handleBookmarkToggle}
+                    />
                   </>
                 }
               />
@@ -123,7 +128,12 @@ function App() {
                 element={
                   <>
                     <PageTitle title="Movies" />
-                    <Movies user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
+                    <Movies
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                      onBookmarkToggle={handleBookmarkToggle}
+                    />
                   </>
                 }
               />
@@ -132,7 +142,12 @@ function App() {
                 element={
                   <>
                     <PageTitle title="TV series" />
-                    <TvSeries user={user} setUser={setUser} entries={movies} onBookmarkToggle={handleBookmarkToggle} />
+                    <TvSeries
+                      user={user}
+                      setUser={setUser}
+                      entries={movies}
+                      onBookmarkToggle={handleBookmarkToggle}
+                    />
                   </>
                 }
               />
