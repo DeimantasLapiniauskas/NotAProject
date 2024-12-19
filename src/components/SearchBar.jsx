@@ -3,8 +3,15 @@ import "./SearchBar.css";
 import SearchResults from "./SearchResults";
 import { useSearchParams } from "react-router";
 
-
-function SearchBar({ entries, searching, setSearching, page, searchValue, setSearchValue, onBookmarkToggle }) {
+function SearchBar({
+  entries,
+  searching,
+  setSearching,
+  page,
+  searchValue,
+  setSearchValue,
+  onBookmarkToggle,
+}) {
   // value = what's typed in the search bar.
   // Suggestions = What in the entries fits the criteria
   // hideSuggestions = used to hide everything except the bar itself onblur, and unhide it on focus.
@@ -31,37 +38,40 @@ function SearchBar({ entries, searching, setSearching, page, searchValue, setSea
 
   function handleSubmit(e) {
     if (e?.target) e.preventDefault();
-    let Vals = "";
-    if (e?.target) Vals = e.target.querySelector("input").value.trim();
-    else Vals = searchParams.get("search");
-    let AgeVals = "";
-    if (e?.target) AgeVals = e.target.querySelector("select").value;
 
-
-    setAgeValue(AgeVals);
-    if (!Vals.match(searchRegex)) {
+    let searchInputValue = e?.target
+      ? e.target.querySelector("input").value.trim()
+      : searchParams.get("search");
+    let searchSelectValue = e?.target
+      ? e.target.querySelector("select").value
+      : "";
+    // check to see if there's any errors with searchInputValue. If not, perform search
+    setAgeValue(searchSelectValue);
+    if (!searchInputValue.match(searchRegex)) {
       setError("Search query contains invalid characters!");
       setSearching(true);
-    } else if (Vals.length >= 100) {
+    } else if (searchInputValue.length >= 100) {
       setError("Search query too long!");
       setSearching(true);
-    } else if (Vals.length > 2) {
+    } else if (searchInputValue.length > 2) {
       setError("");
       setSearchParams(
         e
           ? { search: e.target.querySelector("input").value.trim() }
-          : { search: Vals }
+          : { search: searchInputValue }
       );
 
-      setValue(Vals.toLowerCase());
+      setValue(searchInputValue.toLowerCase());
       setSearchEntries(
         entries.filter((entry) => {
           return (
             // filters based on if the show matches the requested age rating, and if it either includes the search query as a title or as its release year.
-            (entry.title.toLowerCase().includes(Vals.toLowerCase()) &&
-              entry.rating.includes(AgeVals)) ||
-            (entry.year.toString().includes(Vals) &&
-              entry.rating.includes(AgeVals))
+            (entry.title
+              .toLowerCase()
+              .includes(searchInputValue.toLowerCase()) &&
+              entry.rating.includes(searchSelectValue)) ||
+            (entry.year.toString().includes(searchInputValue) &&
+              entry.rating.includes(searchSelectValue))
           );
         })
       );
@@ -105,7 +115,12 @@ function SearchBar({ entries, searching, setSearching, page, searchValue, setSea
           </div>
           {/* The age rating field */}
           {/* Inline style for label is required, otherwide lighthouse cries about us not having a label. */}
-          <label htmlFor="ageRating" style={{width:"0px", height:"0px", overflow:"hidden"}}>Age rating</label>
+          <label
+            htmlFor="ageRating"
+            style={{ width: "0px", height: "0px", overflow: "hidden" }}
+          >
+            Age rating
+          </label>
           <select name="ageRating" id="ageRating">
             <option value="">Rating</option>
             <option value="E">E</option>
@@ -152,9 +167,13 @@ function SearchBar({ entries, searching, setSearching, page, searchValue, setSea
           </div>
         )}
       </form>
-      {/* Displays all results */}
+      {/* Displays all results if there's no error.*/}
       {searching && !error && (
-        <SearchResults searchEntries={searchEntries} page={page} onBookmarkToggle={onBookmarkToggle}  />
+        <SearchResults
+          searchEntries={searchEntries}
+          page={page}
+          onBookmarkToggle={onBookmarkToggle}
+        />
       )}
     </>
   );
