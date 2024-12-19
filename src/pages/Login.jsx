@@ -49,6 +49,7 @@ function Login({ users, setUser }) {
   return (
     <ErrorBoundary FallbackComponent={FallbackComponent}>
       <section className="login">
+        <meta itemProp="description" content="Login page" />
         <header>
           <img src="/assets/logo.svg" alt="Site logo" />
         </header>

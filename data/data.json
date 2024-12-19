@@ -16,7 +16,7 @@
       "year": 2019,
       "category": "Movie",
       "rating": "PG",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": true,
       "id": "7784"
     },
@@ -76,7 +76,7 @@
       "year": 2021,
       "category": "Movie",
       "rating": "18+",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": true,
       "id": "17ee"
     },
@@ -96,7 +96,7 @@
       "year": 2018,
       "category": "TV Series",
       "rating": "PG",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": true,
       "id": "a149"
     },
@@ -112,7 +112,7 @@
       "year": 2019,
       "category": "Movie",
       "rating": "E",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "b248"
     },
@@ -128,7 +128,7 @@
       "year": 2019,
       "category": "TV Series",
       "rating": "PG",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "ce3d"
     },
@@ -504,7 +504,7 @@
       "id": "17b8",
       "email": "ahr@ss.com",
       "password": "$2a$08$RVdKIeq/17sh72eyvJj0I.adB9X5yaUryCrzQyhRcci2XaGCYFWcG",
-      "isLoggedIn": true,
+      "isLoggedIn": false,
       "isAdmin": false
     },
     {

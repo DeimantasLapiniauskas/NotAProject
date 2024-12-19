@@ -23,7 +23,7 @@ function EntryList({ entries, title, className, onBookmarkToggle }) {
           <VideoCard
             video={entry}
             index={key}
-            key={key}
+            key={entry.id}
             onBookmarkToggle={onBookmarkToggle}
           />
         );

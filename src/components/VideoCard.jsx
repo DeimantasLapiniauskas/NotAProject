@@ -20,6 +20,7 @@ function VideoCard({ video, index, onBookmarkToggle }) {
               alt={video.title + "'s image"}
             />
           </picture>
+
           <BookmarkButton
             id={video.id}
             initialIsBookmarked={video.isBookmarked}
@@ -40,6 +41,7 @@ function VideoCard({ video, index, onBookmarkToggle }) {
           </div>
         </div>
       </div>
+      
       <div className="video-card__details">
         <p className="video-card__year">{video.year}</p>
         <span>&#8226;</span>

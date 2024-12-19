@@ -12,23 +12,29 @@ const Movies = ({ user, setUser, entries, onBookmarkToggle }) => {
   useEffect(() => {
     if (!user?.isLoggedIn) navigate(`/login`);
   }, []);
+
   return (
     <>
+      <meta itemProp="description" content="Movies page" />
+
       <Nav
         user={user}
         setUser={setUser}
         setSearching={setSearching}
         setSearchValue={setSearchValue}
       />
+
       <div className="pagecontent">
         <SearchBar
           entries={entries}
           searching={searching}
           setSearching={setSearching}
           page="Movies"
+          onBookmarkToggle={onBookmarkToggle}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
+        
         {!searching && (
           <EntryList
             title="Movies"

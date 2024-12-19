@@ -12,23 +12,29 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
   useEffect(() => {
     if (!user?.isLoggedIn) navigate(`/login`);
   }, []);
+
   return (
     <>
+      <meta itemProp="description" content="Bookmark page" />
+
       <Nav
         user={user}
         setUser={setUser}
         setSearching={setSearching}
         setSearchValue={setSearchValue}
       />
+
       <div className="pagecontent">
         <SearchBar
           entries={entries}
           searching={searching}
           setSearching={setSearching}
           page="Bookmarked"
+          onBookmarkToggle={onBookmarkToggle}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
+
         {!searching && (
           <EntryList
             className="mb"
@@ -39,6 +45,7 @@ const Bookmarked = ({ user, setUser, entries, onBookmarkToggle }) => {
             onBookmarkToggle={onBookmarkToggle}
           />
         )}
+        
         {!searching && (
           <EntryList
             className="mb"
