@@ -168,7 +168,7 @@
   }
 
  .bookmark-title {
-    @apply tracking-[-0.31px] sm:tracking-[-0.5px] text-[2rem] sm:text-[3.2rem] leading-[2.5rem] mb-[.9rem] col-span-full mb-[0.2rem] lg:mb-[1.5rem] lg:mt-[.5rem];
+    @apply tracking-[-0.31px] sm:tracking-[-0.5px] text-[2rem] sm:text-[3.2rem] leading-[2.5rem] col-span-full;
   }
 
   .bookmark-title__error {
