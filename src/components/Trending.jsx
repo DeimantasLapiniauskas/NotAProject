@@ -97,6 +97,7 @@ const Trending = ({ entries, onBookmarkToggle }) => {
             
             <div className="trending__content">
               <div className="trending__content--data">
+
                 <span className="categories">{item.year}</span>
 
                 <span className="dot__color">&#8226;</span>
